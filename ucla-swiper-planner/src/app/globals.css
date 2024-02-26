@@ -105,3 +105,8 @@ a {
     color-scheme: dark;
   }
 }
+
+/* globals.css */
+
+@import url('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css');
+/* Add your global styles below */
