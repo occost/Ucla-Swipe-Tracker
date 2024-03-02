@@ -1,29 +1,50 @@
-// pages/index.js (Home page)
-'use client'; 
+'use client';
 
-import { useState } from 'react';
-import Navbar from "./components/navbar";
-import Home from "./components/Home";
-import FullMenu from "./components/FullMenu";
-import Profile from "./components/Profile";
-import Calendar from "./components/Calendar";
+// pages/index.js
 
-const HomePage = () => {
-  const [currentPage, setCurrentPage] = useState('Home');
+import { useEffect, useState } from 'react';
+import styles from './ui/Home.module.css'; // Make sure to have this CSS file for styling
+import Navbar from './ui/Navbar';
 
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-  };
+// Mock data, assuming you would replace this with real data fetched from the backend
+const mockTotalSwipesUsed = 120;
+const mockWeeklySwipesUsed = 15;
+const totalWeeks = 10;
+const swipesPerWeek = 19;
+const totalSwipesAvailable = totalWeeks * swipesPerWeek;
 
-  return (
-    <>
-      <Navbar onPageChange={handlePageChange} />
-      {currentPage === 'Home' && <Home />}
-      {currentPage === 'FullMenu' && <FullMenu />}
-      {currentPage === 'Profile' && <Profile />}
-      {currentPage === 'Calendar' && <Calendar />}
-    </>
-  );
-};
+export default function Home() {
+    const [totalSwipesUsed, setTotalSwipesUsed] = useState(mockTotalSwipesUsed);
+    const [weeklySwipesUsed, setWeeklySwipesUsed] = useState(mockWeeklySwipesUsed);
 
-export default HomePage;
+    useEffect(() => {
+        // Here, you would fetch the actual swipe data from your backend
+        // For demonstration, we're using mock data
+        // Example:
+        // fetch('/api/swipe-data').then(res => res.json()).then(data => {
+        //     setTotalSwipesUsed(data.total);
+        //     setWeeklySwipesUsed(data.weekly);
+        // });
+    }, []);
+
+    const onTrack = (totalSwipesUsed / totalSwipesAvailable) <= (1 / totalWeeks);
+
+    return (
+        <div className={styles.container}>
+            <main className={styles.main}>
+              <Navbar />
+                <h1 className={styles.title}>Welcome to UCLA Swipe Planner!</h1>
+                <div className={styles.swipeTracker}>
+                    <h2>Swipe Tracker</h2>
+                    <p>Total Swipes Used: {totalSwipesUsed}</p>
+                    <p>This Week's Swipes: {weeklySwipesUsed}</p>
+                </div>
+
+                <div className={styles.balanceInfo}>
+                    <h2>Meal Swipe Balance</h2>
+                    <p>You are {onTrack ? "on track" : "not on track"} with your meal swipe balance.</p>
+                </div>
+            </main>
+        </div>
+    );
+}
