@@ -5,6 +5,7 @@
 import { useEffect, useState } from 'react';
 import styles from './ui/Home.module.css'; // Make sure to have this CSS file for styling
 import Navbar from './ui/Navbar';
+import Menu from './ui/Menu';
 
 // Mock data, assuming you would replace this with real data fetched from the backend
 const mockTotalSwipesUsed = 120;
@@ -44,6 +45,7 @@ export default function Home() {
                     <h2>Meal Swipe Balance</h2>
                     <p>You are {onTrack ? "on track" : "not on track"} with your meal swipe balance.</p>
                 </div>
+                <Menu />
             </main>
         </div>
     );
