@@ -14,12 +14,12 @@ const Navbar = () => {
         </li>
         <li className={styles.navItem}>
           <Link href="/about" legacyBehavior>
-            <a className={styles.navLink}>About</a>
+            <a className={styles.navLink}>Profile</a>
           </Link>
         </li>
         <li className={styles.navItem}>
           <Link href="/contact" legacyBehavior>
-            <a className={styles.navLink}>Contact</a>
+            <a className={styles.navLink}>Calendar</a>
           </Link>
         </li>
       </ul>
