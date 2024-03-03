@@ -8,7 +8,7 @@ import { Inter, Rubik } from "next/font/google";
 import "./globals.css";
 
 // components
-import Navbar from "./components/Navbar";
+import Navbar from "./components/navbar";
 
 const rubik = Rubik({ subsets: ["latin"] });    // Get a subset from the font
 
