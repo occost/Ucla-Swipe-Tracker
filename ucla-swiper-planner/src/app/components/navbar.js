@@ -1,27 +1,28 @@
 // components/Navbar.js
-import React from 'react';
 import Link from 'next/link';
+import styles from '../styles/Navbar.module.css'; // Assuming you have this CSS file for styling
 
-const Navbar = ({ onPageChange }) => {
+const Navbar = () => {
   return (
-    <nav className="navbar navbar-dark bg-dark d-flex">
-      <Link href="/" onClick={() => onPageChange('Home')} className="navbar-brand">
-        UCLA-Swiper-Planner
-      </Link>
-      <div className="navbar-nav ml-auto">
-        <Link href="/" onClick={() => onPageChange('Home')} className="nav-link mr-5">
-          Home&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </Link>
-        <Link href="/" onClick={() => onPageChange('FullMenu')} className="nav-link mr-5">
-          Full Menu&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </Link>
-        <Link href="/" onClick={() => onPageChange('Profile')} className="nav-link mr-5">
-          Profile&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </Link>
-        <Link href="/" onClick={() => onPageChange('Calendar')} className="nav-link">
-          Calendar
-        </Link>
-      </div>
+    <nav className={styles.navbar}>
+      <ul className={styles.navList}>
+        <li className={styles.navItem}>
+          {/* Use Link with legacyBehavior prop */}
+          <Link href="/" className={styles.navLink}>
+            Home
+          </Link>
+        </li>
+        <li className={styles.navItem}>
+          <Link href="/Profile" className={styles.navLink}>
+            Profile
+          </Link>
+        </li>
+        <li className={styles.navItem}>
+          <Link href="/Calendar" className={styles.navLink}>
+           Calendar
+          </Link>
+        </li>
+      </ul>
     </nav>
   );
 };

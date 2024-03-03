@@ -1,3 +1,4 @@
+// /Profile/page.js
 import React from 'react';
 
 const Profile = () => {

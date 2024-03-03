@@ -1,4 +1,4 @@
-/* components/Menu.module.css */
+/* styles/Menu.module.css */
 .menu {
     background-color: var(--light-gray);
     border-radius: var(--border-radius);
@@ -20,10 +20,15 @@
     width: 30%; /* Adjust based on preference and available space */
     margin-bottom: var(--spacing-large);
     transition: transform 0.3s ease; /* Smooth transition for hover effect */
+    padding: 50px;
   }
   
   .mealSection:hover {
     transform: scale(1.05); /* Slightly enlarge sections on hover */
+  }
+
+  .mealSection div {
+    margin: var(--spacing-small) 0;
   }
   
   .mealSection h3 {
@@ -35,7 +40,13 @@
   .mealSection:hover h3 {
     color: var(--ucla-gold); /* Change color on hover */
   }
-  
+
+
+  .mealSection h4 {
+    margin-top: 100px;
+  }
+
+
   .mealSection ul {
     list-style-type: none;
     padding: 0;
