@@ -1,7 +1,8 @@
-/* components/Navbar.module.css */
+/* styles/Navbar.module.css */
 .navbar {
     background-color: var(--ucla-blue);
     padding: var(--spacing-medium);
+    font-size: 20px;
   }
   
   .navList {
@@ -18,9 +19,13 @@
     color: var(--white);
     text-decoration: none;
     font-weight: bold;
+    border-radius: 8px;
   }
   
   .navLink:hover {
-    text-decoration: underline;
+    text-decoration: none;
+    color: var(--ucla-gold);
   }
+
+
   
