@@ -1,0 +1,48 @@
+[
+    {
+        "Dining Hall": "Epicuria",
+        "Breakfast Menu": [],
+        "Lunch Menu": [],
+        "Dinner Menu": [
+            "Cheese Ravioli W/ Mushroom Sauce",
+            "Shrimp Alfredo Pizza",
+            "Chicken Parmesan Sandwich",
+            "Crusty Gruyere Cheese Sandwich",
+            "Cod W/ White Wine & Almonds",
+            "Cauliflower With Toum",
+            "Flank Steak W/ Harissa Dry Rub",
+            "High Carbon Footprint",
+            "Wild Mushroom Risotto"
+        ]
+    },
+    {
+        "Dining Hall": "De Neve",
+        "Breakfast Menu": [],
+        "Lunch Menu": [],
+        "Dinner Menu": [
+            "Bar Lemon Garlic Chicken Thighs",
+            "The Santa Maria Rubbed Tri Tip",
+            "Santa Maria Rubbed Tofu",
+            "The Pizzeria Chicken Ranch Pizza",
+            "Pepperoni Deluxe Pizza",
+            "The Socal Burger",
+            "High Carbon Footprint",
+            "Col. Karapet's Yardbird Cruncher"
+        ]
+    },
+    {
+        "Dining Hall": "Bruin Plate",
+        "Breakfast Menu": [],
+        "Lunch Menu": [],
+        "Dinner Menu": [
+            "Tofu, Black-eyed Peas, & Collard Greens Bowl",
+            "Whole Wheat Spaghetti W/ Wheatballs & Spinach Bowl",
+            "Roast Chicken W/ Almond Mojo",
+            "Lentil Lasagna",
+            "Bbq Tofu Flatbread",
+            "Soy Garlic Flank Steak",
+            "High Carbon Footprint",
+            "Portobello Mushroom"
+        ]
+    }
+]

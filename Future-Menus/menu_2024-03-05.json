@@ -1,0 +1,46 @@
+[
+    {
+        "Dining Hall": "Epicuria",
+        "Breakfast Menu": [],
+        "Lunch Menu": [],
+        "Dinner Menu": [
+            "Pasta W/ Shrimp And Pesto",
+            "Pasta W/ Spring Vegetables",
+            "Moussaka Pizza",
+            "High Carbon Footprint",
+            "Beef & Lamb Gyro",
+            "High Carbon Footprint",
+            "Kale Caesar Pita",
+            "Basque Style Chicken",
+            "Masabacha",
+            "Harissa Pork Ribs",
+            "Spinach Florentine Lasagna"
+        ]
+    },
+    {
+        "Dining Hall": "De Neve",
+        "Breakfast Menu": [],
+        "Lunch Menu": [],
+        "Dinner Menu": [
+            "Bar Chicken Thigh",
+            "The Fried Vegan Chick'n",
+            "Roasted Chicken Wings",
+            "The Habanero Pepper Jack Burger",
+            "High Carbon Footprint",
+            "Nashville Hot Chicken Sandwich"
+        ]
+    },
+    {
+        "Dining Hall": "Bruin Plate",
+        "Breakfast Menu": [],
+        "Lunch Menu": [],
+        "Dinner Menu": [
+            "Greek Style Whole Wheat Penne W/ Chicken",
+            "Seitan Mole W/ Carrots & Zucchini",
+            "Maple Chipotle Pork Tenderloin",
+            "Tempeh, Potato, & Mushroom Burrito",
+            "Shrimp",
+            "Chayote"
+        ]
+    }
+]

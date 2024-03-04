@@ -1,0 +1,34 @@
+[
+    {
+        "Dining Hall": "Epicuria",
+        "Breakfast Menu": [],
+        "Lunch Menu": [],
+        "Dinner Menu": []
+    },
+    {
+        "Dining Hall": "De Neve",
+        "Breakfast Menu": [],
+        "Lunch Menu": [],
+        "Dinner Menu": [
+            "Bar Honey Lime Chicken Thighs",
+            "The Front Burner Pancakes",
+            "The Chipotle Chilaquiles",
+            "The Pizzeria Shrimp Scampi Pizza",
+            "The Breakfast Slam Burger",
+            "D.f.c."
+        ]
+    },
+    {
+        "Dining Hall": "Bruin Plate",
+        "Breakfast Menu": [],
+        "Lunch Menu": [],
+        "Dinner Menu": [
+            "Mahi Mahi W/ Pickled Vegetables",
+            "Honey-glazed Tempeh, Tri Color Quinoa & Collard Greens",
+            "Roasted South Carolina Style Mustard Bbq Chicken",
+            "Wheat Berry, Apricot & Arugula Salad",
+            "Mojo-marinated Pork Tenderloin",
+            "Pork Loin, Lime, Orange, Cumin, Oregano, Cilantro Mojo-marinated Tofu"
+        ]
+    }
+]
