@@ -14,6 +14,8 @@ const mockWeeklySwipesUsed = 15;
 const totalWeeks = 10;
 const swipesPerWeek = 19;
 const totalSwipesAvailable = totalWeeks * swipesPerWeek;
+const currentWeek = 9;
+const currentDay = 1;
 
 export default function Home() {
     const [totalSwipesUsed, setTotalSwipesUsed] = useState(mockTotalSwipesUsed);
@@ -43,6 +45,8 @@ export default function Home() {
 
                 <div className={styles.balanceInfo}>
                     <h2>Meal Swipe Balance</h2>
+                    <p>You have {totalSwipesAvailable - totalSwipesUsed} swipes remaining.</p>
+                    <p>You should have {totalSwipesAvailable - ( (currentWeek  * swipesPerWeek) - (currentDay * 3))} swipes remaining.</p>
                     <p>You are {onTrack ? "on track" : "not on track"} with your meal swipe balance.</p>
                 </div>
                 <Menu />
