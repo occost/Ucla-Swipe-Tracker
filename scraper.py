@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 from unidecode import unidecode
 
 def condense_whitespace(input_text):
-    # Condense consecutive spaces into one
+    # Change whitespace so that each line is simply a dining hall and whatnot
     condensed_text = re.sub(r'(Contains.*|Prepared.*|Vegan Menu Option|Vegetarian Menu Option|Halal Menu Option|Low Carbon Footprint)|', '', input_text)
     condensed_text = re.sub(r' {2,}', ' ', input_text)
     condensed_text = re.sub(r'\n{3,}', '\n\n', condensed_text)
@@ -16,14 +16,14 @@ def condense_whitespace(input_text):
     return condensed_text
     
 def clean_menu(menu_string):
-    # Words to remove from menu items
+    # Removed menu's sublocation
     words_to_remove = ['Capri', 'Mezze', 'Flex', 'bar', 'Psistaria', 'Alimenti', 
                        'Kitchen', 'The Pizzeria', 'Grill', 'Freshly', 'Bowled', 
                        'Harvest', 'Stone', 'Oven', 'Simply', 'Grilled']
     
     lines = menu_string.split('\n')
     cleaned_lines = []
-    for line in lines:
+    for line in lines: #removing extraneous information
         if not any(phrase in line for phrase in ['Vegan Menu Option', 'Vegetarian Menu Option', 'Halal Menu Option', 'Low Carbon Footprint', 'Prepared', 'Detailed Menu' , 'Activity Level']) and 'Contains' not in line:
             cleaned_line = ' '.join(word for word in line.split() if not any(remove_word in word for remove_word in words_to_remove))
             cleaned_lines.append(cleaned_line)
@@ -32,7 +32,7 @@ def clean_menu(menu_string):
     
     return cleaned_menu
 
-def fetch_menu_items_html(date):
+def fetch_menu_items_html(date): #should be pretty obvious
     url = f'https://menu.dining.ucla.edu/Menus/{date}/'
     response = requests.get(url)
     if response.status_code == 200:
@@ -43,50 +43,62 @@ def fetch_menu_items_html(date):
 
 def parse_menu_items(html_content):
     soup = BeautifulSoup(html_content, 'lxml')
-    allMenus=[]
-    h2Tags=soup.find_all('h2', id='page-header')
-    
+    allMenus = []
+    h2Tags = soup.find_all('h2', id='page-header')
+
     for i in range(3):
-        if h2Tags and i < len(h2Tags):  # Ensure there are h2Tags and index is within range
+        if h2Tags and i < len(h2Tags):
             for sibling in h2Tags[i].find_next_siblings():
-                if sibling.name == 'h2':
+                if sibling.name == 'h2' or sibling.name == 'hr':
                     break
                 allMenus.append(sibling)
-    
+
     menu_map = {'Epicuria': {'Breakfast': [], 'Lunch': [], 'Dinner': []},
                 'De Neve': {'Breakfast': [], 'Lunch': [], 'Dinner': []},
                 'Bruin Plate': {'Breakfast': [], 'Lunch': [], 'Dinner': []}}
-    
+
     current_hall = None
-    
+    current_meal = None
+
     for menu in allMenus:
         text_menu = unidecode(menu.text.strip())
         no_whitespace_menu = condense_whitespace(text_menu)
         clean_menu_text = clean_menu(no_whitespace_menu)
         
-        hall_name = clean_menu_text.split('\n')[0]  # Extracting the dining hall name
+        lines = clean_menu_text.split('\n')
         
-        if hall_name in menu_map:
-            hall_key = hall_name
-            meal_type = 'Breakfast' if 'Breakfast' in hall_key else 'Lunch' if 'Lunch' in hall_key else 'Dinner'
-            menu_items = clean_menu_text.split('\n')[1:]
-            menu_map[hall_key][meal_type] = menu_items
-        else:
-            continue
-    
+        for line in lines:
+            if 'Detailed Breakfast Menu' in line:
+                current_meal = 'Breakfast'
+                continue
+            elif 'Detailed Lunch Menu' in line:
+                current_meal = 'Lunch'
+                continue
+            elif 'Detailed Dinner Menu' in line:
+                current_meal = 'Dinner'
+                continue
+            
+            hall_name = line.strip()
+            if hall_name in menu_map:
+                current_hall = hall_name
+            elif current_meal and current_hall:
+                menu_items = line.split(',')
+                menu_map[current_hall][current_meal].extend(menu_items)
+
     return menu_map
 
+
 def write_menu_to_json(menu_data, date):
-    formatted_menus = []
+    formatted_menus = {
+        "Breakfast": {},
+        "Lunch": {},
+        "Dinner": {}
+    }
     
     for hall_name, menu in menu_data.items():
-        formatted_menu = {
-            "Dining Hall": hall_name,
-            "Breakfast Menu": menu["Breakfast"],
-            "Lunch Menu": menu["Lunch"],
-            "Dinner Menu": menu["Dinner"]
-        }
-        formatted_menus.append(formatted_menu)
+        formatted_menus["Breakfast"][hall_name] = menu["Breakfast"]
+        formatted_menus["Lunch"][hall_name] = menu["Lunch"]
+        formatted_menus["Dinner"][hall_name] = menu["Dinner"]
 
     # Format the date for the filename
     formatted_date = date.strftime("%Y-%m-%d")
@@ -101,7 +113,6 @@ def write_menu_to_json(menu_data, date):
     with open(filename, 'w') as json_file:
         json.dump(formatted_menus, json_file, indent=4)
 
-# Loop through the next 7 days
 # Loop through the next 7 days
 for i in range(7):
     deltaDay = datetime.date.today() + datetime.timedelta(days=i)
