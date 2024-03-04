@@ -1,95 +1,56 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client';
+
+// app/page.js
+
+import { useEffect, useState } from 'react';
+
+// Components
+import styles from './styles/Home.module.css'; // Make sure to have this CSS file for styling
+import Menu from './components/Menu';
+
+// Mock data, assuming you would replace this with real data fetched from the backend
+const mockTotalSwipesUsed = 120;
+const mockWeeklySwipesUsed = 15;
+const totalWeeks = 10;
+const swipesPerWeek = 19;
+const totalSwipesAvailable = totalWeeks * swipesPerWeek;
+const currentWeek = 9;
+const currentDay = 1;
 
 export default function Home() {
-  return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    const [totalSwipesUsed, setTotalSwipesUsed] = useState(mockTotalSwipesUsed);
+    const [weeklySwipesUsed, setWeeklySwipesUsed] = useState(mockWeeklySwipesUsed);
+
+    useEffect(() => {
+        // Here, you would fetch the actual swipe data from your backend
+        // For demonstration, we're using mock data
+        // Example:
+        // fetch('/api/swipe-data').then(res => res.json()).then(data => {
+        //     setTotalSwipesUsed(data.total);
+        //     setWeeklySwipesUsed(data.weekly);
+        // });
+    }, []);
+
+    const onTrack = (totalSwipesUsed / totalSwipesAvailable) <= (1 / totalWeeks);
+
+    return (
+        <div className={styles.container}>
+            <main className={styles.main}>
+                <h1 className={styles.title}>Welcome to UCLA Swipe Planner!</h1>
+                <div className={styles.swipeTracker}>
+                    <h2>Swipe Tracker</h2>
+                    <p>Total Swipes Used: {totalSwipesUsed}</p>
+                    <p>This Week's Swipes: {weeklySwipesUsed}</p>
+                </div>
+
+                <div className={styles.balanceInfo}>
+                    <h2>Meal Swipe Balance</h2>
+                    <p>You have {totalSwipesAvailable - totalSwipesUsed} swipes remaining.</p>
+                    <p>You should have {totalSwipesAvailable - ( (currentWeek  * swipesPerWeek) - (currentDay * 3))} swipes remaining.</p>
+                    <p>You are {onTrack ? "on track" : "not on track"} with your meal swipe balance.</p>
+                </div>
+                <Menu />
+            </main>
         </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  );
+    );
 }
