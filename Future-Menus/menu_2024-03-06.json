@@ -1,0 +1,50 @@
+[
+    {
+        "Dining Hall": "Epicuria",
+        "Breakfast Menu": [],
+        "Lunch Menu": [],
+        "Dinner Menu": [
+            "Spaghetti & Meatballs",
+            "High Carbon Footprint",
+            "Spaghetti W/ Eggplant, Tomatoes & Olives",
+            "Smoked Chicken & Pesto Pizza",
+            "Sumac Salmon W/ Olive Pita",
+            "Frito Mixto De Verdura - Italian Style Fried Vegetables",
+            "Honey Balsamic Roasted Pork Chop",
+            "Pesto Potato Frittata",
+            "Italian Fried Chicken",
+            "Roasted Beets & Sweet Potatoes W/ Polenta"
+        ]
+    },
+    {
+        "Dining Hall": "De Neve",
+        "Breakfast Menu": [],
+        "Lunch Menu": [],
+        "Dinner Menu": [
+            "Bar Dijon Chicken Thigh",
+            "The Front Burner Nola Style Blackened Market Fish",
+            "Blackened Tofu W/ Cajun Salsa",
+            "The Cajun Fried Chicken",
+            "Vegan Chick'n Fingers",
+            "The Pizzeria Creole Chicken Pizza",
+            "The Tabasco Beef Burger",
+            "Shrimp Po Boy Sandwich"
+        ]
+    },
+    {
+        "Dining Hall": "Bruin Plate",
+        "Breakfast Menu": [],
+        "Lunch Menu": [],
+        "Dinner Menu": [
+            "Baked Cod W/ Spicy Roma Sauce Over Herbed Spaghetti",
+            "Szechuan Eggplant W/ Jasmine Brown Rice",
+            "Lemongrass Beef W/ Brown Rice & Cucumber Relish",
+            "High Carbon Footprint",
+            "Winter Squash Taco W/ Guajillo Sauce",
+            "Guajillo Chili Chicken & Poblano Pepper Tortilla Pizza",
+            "Hawaiian Macadamia Pesto, Goat Cheese, & Peppadew Flatbread",
+            "Ancho Mango Marinated Pork Tenderloin",
+            "Yuca W/ Honey Habanero & Mojo"
+        ]
+    }
+]

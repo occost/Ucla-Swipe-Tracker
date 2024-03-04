@@ -1,0 +1,39 @@
+[
+    {
+        "Dining Hall": "Epicuria",
+        "Breakfast Menu": [],
+        "Lunch Menu": [],
+        "Dinner Menu": []
+    },
+    {
+        "Dining Hall": "De Neve",
+        "Breakfast Menu": [],
+        "Lunch Menu": [],
+        "Dinner Menu": [
+            "Bar Fresh Herb Marinated Chicken Thigh",
+            "The Front Burner Old Bay Shrimp W/ Pan Sauce And Cheddar Johnnycakes",
+            "Old Bay Vegan Chicken W/ Pan Sauce And Cheddar Johnnycakes",
+            "The Buffalo Chicken Wings",
+            "Vegan Chick'n Fingers",
+            "The Pizzeria New Haven-style White Clam Pizza",
+            "Pepperoni Deluxe Pizza",
+            "The Chili Cheese Burger",
+            "High Carbon Footprint",
+            "Buffalo Bleu Chicken Sandwich"
+        ]
+    },
+    {
+        "Dining Hall": "Bruin Plate",
+        "Breakfast Menu": [],
+        "Lunch Menu": [],
+        "Dinner Menu": [
+            "Chipotle Chicken, Brown Rice, & Avocado Bowl",
+            "Potato, Kale, Brown Rice, & Red Bean Bowl",
+            "Toasted Rice Trout W/ Coconut Curried Lentils",
+            "Flageolet Bean Ragout",
+            "Classic Steakhouse Tri-tip",
+            "High Carbon Footprint",
+            "Roasted Plantains"
+        ]
+    }
+]
