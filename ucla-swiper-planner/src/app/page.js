@@ -1,54 +1,45 @@
-'use client';
+// app/page/index.page.
 
-// app/page.js
+// Components 
+import React from 'react';
+import Menu from './components/Menu'; // Adjust the import path as needed
+import SwipeTracker from './components/SwipeTracker'; // Adjust the import path as needed
+import BalanceInfo from './components/BalanceInfo'; // Adjust the import path as needed
 
-import { useEffect, useState } from 'react';
+// Styles
+import styles from './styles/Home.module.css'; // Adjust the import path as needed
 
-// Components
-import styles from './styles/Home.module.css'; // Make sure to have this CSS file for styling
-import Menu from './components/Menu';
+// Mock data for demonstration
+// Replace Database fetching logic here 
+const mockData = {
+    totalSwipesUsed: 120,
+    weeklySwipesUsed: 15,
+    totalWeeks: 10,
+    swipesPerWeek: 19,
+    currentWeek: 9,
+    currentDay: 1,
+};
 
-// Mock data, assuming you would replace this with real data fetched from the backend
-const mockTotalSwipesUsed = 120;
-const mockWeeklySwipesUsed = 15;
-const totalWeeks = 10;
-const swipesPerWeek = 19;
-const totalSwipesAvailable = totalWeeks * swipesPerWeek;
-const currentWeek = 9;
-const currentDay = 1;
+// Calculate additional data based on mockData
+const totalSwipesAvailable = mockData.totalWeeks * mockData.swipesPerWeek;
+const onTrack = (mockData.totalSwipesUsed / totalSwipesAvailable) <= (1 / mockData.totalWeeks);
 
 export default function Home() {
-    const [totalSwipesUsed, setTotalSwipesUsed] = useState(mockTotalSwipesUsed);
-    const [weeklySwipesUsed, setWeeklySwipesUsed] = useState(mockWeeklySwipesUsed);
-
-    useEffect(() => {
-        // Here, you would fetch the actual swipe data from your backend
-        // For demonstration, we're using mock data
-        // Example:
-        // fetch('/api/swipe-data').then(res => res.json()).then(data => {
-        //     setTotalSwipesUsed(data.total);
-        //     setWeeklySwipesUsed(data.weekly);
-        // });
-    }, []);
-
-    const onTrack = (totalSwipesUsed / totalSwipesAvailable) <= (1 / totalWeeks);
+    // Here, you'd replace mockData with actual data fetched from your database
 
     return (
         <div className={styles.container}>
             <main className={styles.main}>
                 <h1 className={styles.title}>Welcome to UCLA Swipe Planner!</h1>
-                <div className={styles.swipeTracker}>
-                    <h2>Swipe Tracker</h2>
-                    <p>Total Swipes Used: {totalSwipesUsed}</p>
-                    <p>This Week's Swipes: {weeklySwipesUsed}</p>
-                </div>
-
-                <div className={styles.balanceInfo}>
-                    <h2>Meal Swipe Balance</h2>
-                    <p>You have {totalSwipesAvailable - totalSwipesUsed} swipes remaining.</p>
-                    <p>You should have {totalSwipesAvailable - ( (currentWeek  * swipesPerWeek) - (currentDay * 3))} swipes remaining.</p>
-                    <p>You are {onTrack ? "on track" : "not on track"} with your meal swipe balance.</p>
-                </div>
+                <SwipeTracker totalSwipesUsed={mockData.totalSwipesUsed} weeklySwipesUsed={mockData.weeklySwipesUsed} />        
+                <BalanceInfo 
+                    totalSwipesUsed={mockData.totalSwipesUsed} 
+                    totalSwipesAvailable={totalSwipesAvailable} 
+                    currentWeek={mockData.currentWeek} 
+                    currentDay={mockData.currentDay} 
+                    swipesPerWeek={mockData.swipesPerWeek} 
+                    onTrack={onTrack} 
+                />
                 <Menu />
             </main>
         </div>
