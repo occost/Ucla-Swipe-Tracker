@@ -1,80 +1,123 @@
-/* src/app/ui/Profile.module.css */
+/* src/app/styles/Profile.module.css */
 
 .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  .buttonGroup {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .button {
-    padding: 10px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  .table {
-    border-collapse: collapse;
-    width: 100%;
-  }
-  
-  .table th, .table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: center;
-  }
-  
-  .standings {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .standingsItem {
-    text-align: center;
-  }
-  
-  .arrow {
-    cursor: pointer;
-    font-size: 20px;
-  }
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
 
-  .selected {
-    background-color: #536895; 
-    color: #fff; 
-  }
+.buttonGroup {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
 
-  .podium {
-    display: flex;
-    align-items: flex-end; /* Align podium bottoms */
-    justify-content: space-around;
-    margin-top: 20px;
-  }
+.button {
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.button:hover {
+  transform: scale(1.1);
+  background-color: #4285f4;
+  color: #fff;
+}
+
+.table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.table th,
+.table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.adjustButtons {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+}
+
+.adjustButtons button {
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 1.2em;
+  transition: transform 0.3s;
+}
+
+.adjustButtons button:hover {
+  transform: scale(1.1);
   
-  .podiumBlock {
-    width: 100px;
-    text-align: center;
-    color: white;
-  }
-  
-  .podiumBlock1 {
-    height: 120px; 
-    background-color: #3498db; /* Color for B-Plate */
-    order: 2; /* Place first place in the middle */
-  }
-  
-  .podiumBlock2 {
-    height: 80px; 
-    background-color: #e74c3c; /* Color for Epicuria */
-    order: 1; /* Place second place to the left */
-  }
-  
-  .podiumBlock3 {
-    height: 60px; 
-    background-color: #2ecc71; /* Color for De Neve */
-    order: 3; /* Place third place to the right */
-  }
+}
+
+.standings {
+  display: flex;
+  justify-content: space-between;
+}
+
+.standingsItem {
+  text-align: center;
+}
+
+.arrow {
+  cursor: pointer;
+  font-size: 20px;
+  transition: color 0.3s;
+}
+
+.arrow:hover {
+  color: #e74c3c;
+}
+
+.selected {
+  background-color: #536895;
+  color: #fff;
+}
+
+.message {
+  margin-top: 10px;
+  padding: 5px;
+  border: 1px solid #ddd;
+  background-color: #f2f2f2;
+  transition: background-color 0.3s;
+}
+
+.message:hover {
+  background-color: #ddd;
+}
+
+.podium {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.podiumBlock {
+  width: 100px;
+  text-align: center;
+  color: white;
+}
+
+.podiumBlock1 {
+  height: 120px;
+  background-color: #536895;
+  order: 2;
+}
+
+.podiumBlock2 {
+  height: 80px;
+  background-color: #536895;
+  order: 1;
+}
+
+.podiumBlock3 {
+  height: 60px;
+  background-color: #536895;
+  order: 3;
+}
