@@ -5,6 +5,7 @@ import React from 'react';
 import Menu from './components/Menu'; // Adjust the import path as needed
 import SwipeTracker from './components/SwipeTracker'; // Adjust the import path as needed
 import BalanceInfo from './components/BalanceInfo'; // Adjust the import path as needed
+import SignOut from './components/SignOutButton';
 
 // Styles
 import styles from './styles/Home.module.css'; // Adjust the import path as needed
@@ -28,20 +29,23 @@ export default function Home() {
     // Here, you'd replace mockData with actual data fetched from your database
 
     return (
-        <div className={styles.container}>
-            <main className={styles.main}>
-                <h1 className={styles.title}>Welcome to UCLA Swipe Planner!</h1>
-                <SwipeTracker totalSwipesUsed={mockData.totalSwipesUsed} weeklySwipesUsed={mockData.weeklySwipesUsed} />        
-                <BalanceInfo 
-                    totalSwipesUsed={mockData.totalSwipesUsed} 
-                    totalSwipesAvailable={totalSwipesAvailable} 
-                    currentWeek={mockData.currentWeek} 
-                    currentDay={mockData.currentDay} 
-                    swipesPerWeek={mockData.swipesPerWeek} 
-                    onTrack={onTrack} 
-                />
-                <Menu />
-            </main>
-        </div>
+        <>
+            <SignOut />
+            <div className={styles.container}>
+                <main className={styles.main}>
+                    <h1 className={styles.title}>Welcome to UCLA Swipe Planner!</h1>
+                    <SwipeTracker totalSwipesUsed={mockData.totalSwipesUsed} weeklySwipesUsed={mockData.weeklySwipesUsed} />        
+                    <BalanceInfo 
+                        totalSwipesUsed={mockData.totalSwipesUsed} 
+                        totalSwipesAvailable={totalSwipesAvailable} 
+                        currentWeek={mockData.currentWeek} 
+                        currentDay={mockData.currentDay} 
+                        swipesPerWeek={mockData.swipesPerWeek} 
+                        onTrack={onTrack} 
+                    />
+                    <Menu />
+                </main>
+            </div>
+        </>
     );
 }
