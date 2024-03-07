@@ -2,33 +2,29 @@
 
 
 import styles from '../styles/Profile.module.css'; // Import your CSS file for styling
-import SwipePlanner from "../components/UserPreferences.js";
-
-const podiumData = [
-  { name: "B-Plate", visits: 70 },
-  { name: "Epicuria", visits: 60 },
-  { name: "De Neve", visits: 30 },
-  // Add more restaurant entries as needed
-];
+import SwipePlanner from "../components/Profile.js";
 
 const Profile = () => {
-  const sortedPodiumData = [...podiumData].sort((a, b) => b.visits - a.visits);
 
   return (
     <>
       <SwipePlanner />
-      <div className={styles.container}>  
+      <div className={styles.container}>
+
         <div className={styles.podium}>
-          {/* Display the top 3 most visited restaurants */}
-          {sortedPodiumData.slice(0, 3).map((restaurant, index) => (
-            <div key={index} className={`${styles.podiumBlock} ${styles[`podiumBlock${index + 1}`]}`}>
-              <p>{restaurant.name}</p>
-            </div>
-          ))}
+          <div className={`${styles.podiumBlock} ${styles.podiumBlock1}`}>
+            <p>B-Plate</p>
+          </div>
+          <div className={`${styles.podiumBlock} ${styles.podiumBlock2}`}>
+            <p>Epicuria</p>
+          </div>
+          <div className={`${styles.podiumBlock} ${styles.podiumBlock3}`}>
+            <p>De Neve</p>
+          </div>
         </div>
       </div>
     </>
   );
 };
 
-export default Profile;  
+export default Profile;

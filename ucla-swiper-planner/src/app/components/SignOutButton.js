@@ -12,6 +12,7 @@ export default function SignOut() {
     const auth= getAuth();
     const router = useRouter();
     const [user, loading] = useAuthState(auth);
+    
     if (loading){
         return <div>Currently Loading D:</div>;
     }
