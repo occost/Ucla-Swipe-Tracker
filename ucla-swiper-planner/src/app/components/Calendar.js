@@ -21,7 +21,7 @@ const Calendar = () => {
 
   
 const UpdateWeeklySwipes = async (e) =>{
-  const swipeRef=collection(db,"Swipe Tracking")
+  const swipeRef=collection(db,"Users")
   
   const result = createOptionMap(tableData);
   await setDoc(doc(swipeRef, "Current Week Swipe Locations"),{
