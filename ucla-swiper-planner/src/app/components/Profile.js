@@ -10,45 +10,17 @@ import { db } from "../../../firebase/FirebaseApp";
 
 import { doc, setDoc, getDoc, collection, query, where, getDocs } from 'firebase/firestore';
 import { getAuth } from "firebase/auth";
-
+import {
+  fetchWeeklySwipeSchedule,
+  fetchAllTimeSwipes,
+  fetchWeeklySwipesForLocations,
+  updateWeeklySwipeCount,
+  updateAllTimeSwipes,
+  updateWeeklySwipesForLocations 
+} from "../../../firebase/FirebaseUtils"
 
 const auth = getAuth();
 const usersRef = collection(db, "Users");
-
-async function fetchDataFromFirestore() {
-  const user = auth.currentUser;
-  const q = query(usersRef, where("uid", "==", user.uid)); // Construct query using query() and where()
-  try {
-    const querySnapshot = await getDocs(q);
-    const userData = [];
-    querySnapshot.forEach((doc) => {
-      // doc.data() is the document data
-      userData.push(doc.data());
-    });
-    return userData;
-  } catch (error) {
-    console.log("Error getting documents: ", error);
-    return [];
-  }
-}
-
-async function fetchWeeklySwipeSchedule() {
-  const userInfo = await fetchDataFromFirestore();
-  console.log(userInfo[0]["Weekly Swipe Count"]);
-  return userInfo[0]["Weekly Swipe Count"];
-}
-
-async function fetchAllTimeSwipes() {
-  const userInfo = await fetchDataFromFirestore();
-  console.log(userInfo[0]["All Time Swipes"]);
-  return userInfo[0]["All Time Swipes"];
-}
-
-async function fetchWeeklySwipesForLocations() {
-  const userInfo = await fetchDataFromFirestore();
-  console.log(userInfo[0]["Current Week's Location Swipes"]);
-  return userInfo[0]["Current Week's Location Swipes"];
-}
 
 const SwipePlanner = () => {
   const [selectedOption, setSelectedOption] = useState("11p"); // Default selection
@@ -68,13 +40,15 @@ const SwipePlanner = () => {
     fetchAllTimeSwipes();
     fetchWeeklySwipesForLocations();
   }, []); // Call fetchWeeklySwipeSchedule on component mount
-  // Function to handle option change
-  const handleOptionChange = (option) => {
-    setSelectedOption(option);
 
+  // Function to handle option change
+  const handleOptionChange = async (option) => {
+    setSelectedOption(option);
+  
     // Update swipe values based on the selected option
+    let newSwipeValues;
     if (option === "14p") {
-      setSwipeValues({
+      newSwipeValues = {
         Mon: 2,
         Tue: 2,
         Wed: 2,
@@ -82,9 +56,9 @@ const SwipePlanner = () => {
         Fri: 2,
         Sat: 2,
         Sun: 2,
-      });
+      };
     } else if (option === "19p") {
-      setSwipeValues({
+      newSwipeValues = {
         Mon: 3,
         Tue: 3,
         Wed: 3,
@@ -92,10 +66,10 @@ const SwipePlanner = () => {
         Fri: 3,
         Sat: 2,
         Sun: 2,
-      });
+      };
     } else {
       // Default option "11p" or any other option
-      setSwipeValues({
+      newSwipeValues = {
         Mon: 2,
         Tue: 2,
         Wed: 2,
@@ -103,15 +77,18 @@ const SwipePlanner = () => {
         Fri: 1,
         Sat: 1,
         Sun: 1,
-      });
+      };
     }
-
+  
+    await setSwipeValues(newSwipeValues);
+    await updateWeeklySwipeCount(newSwipeValues);
+  
     setMessage("You are using a valid amount of Swipes"); // Clear the message when changing the option
-    //updatefirestore(set)
   };
+  
 
   // Function to handle swipe value change for a day
-  const handleSwipeChange = (day, direction) => {
+  const handleSwipeChange = async (day, direction) => {
     const newSwipeValues = { ...swipeValues };
     newSwipeValues[day] = Math.max(0, newSwipeValues[day] + direction); // Ensure swipe values don't go below 0
 
@@ -126,8 +103,9 @@ const SwipePlanner = () => {
     } else {
       setMessage("You are using a valid amount of Swipes"); // Clear the message if total swipes meet the limit
     }  
-    setSwipeValues(newSwipeValues);
-    //updateFirestore(newSwipesValues )
+
+    await setSwipeValues(newSwipeValues);
+    await updateWeeklySwipeCount(newSwipeValues);
   };
 
   return (
