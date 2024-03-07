@@ -19,6 +19,7 @@ function SignIn() {
         const result = await signInWithPopup(auth, provider);
         console.log(result.user);
 
+        userID=result.user.uid;
     }  
 
     if (loading){

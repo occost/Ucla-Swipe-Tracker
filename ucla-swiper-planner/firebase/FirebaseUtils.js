@@ -6,22 +6,66 @@ import { getAuth } from "firebase/auth";
 const auth = getAuth();
 const usersRef = collection(db, "Users");
 
+export async function InitNewUser(){
+user = auth.currentUser;
+
+let dict = {
+    deneve: 0,
+    bplate: 0,
+    epicuria: 0,
+    thestudy:0,
+    rendewest: 0,
+    rendeeast: 0,
+    feast: 0,
+    bcafe:0,
+    campus: 0,
+    foodtruck: 0
+  };
+
+  updateAllTimeSwipes(dict);
+  updateWeeklySwipesForLocations(dict);
+
+  let WeeklySwipeScheudle = {
+    Mon: 0,
+    Tue: 0,
+    Wed: 0,
+    Thu: 0,
+    Fri: 0,
+    Sat: 0,
+    Sun: 0,
+  };
+  updateWeeklySwipeCount(WeeklySwipeScheudle);
+
+  await setDoc(usersRef, { "uid": user.uid }, { merge: true });
+}
+
 export async function fetchDataFromFirestore() {
     const user = auth.currentUser;
     const q = query(usersRef, where("uid", "==", user.uid)); // Construct query using query() and where()
     try {
-      const querySnapshot = await getDocs(q);
-      const userData = [];
-      querySnapshot.forEach((doc) => {
-        // doc.data() is the document data
-        userData.push(doc.data());
-      });
-      return userData;
+        const querySnapshot = await getDocs(q);
+        const userData = [];
+        if (!querySnapshot.empty) {
+            querySnapshot.forEach((doc) => {
+                // doc.data() is the document data
+                userData.push(doc.data());
+            });
+            return userData;
+        } else {
+            // If no documents found, initialize new user
+            await InitNewUser();
+            // Fetch user data again after initialization
+            const newQuerySnapshot = await getDocs(q);
+            newQuerySnapshot.forEach((doc) => {
+                userData.push(doc.data());
+            });
+            return userData;
+        }
     } catch (error) {
-      console.log("Error getting documents: ", error);
-      return [];
+        console.log("Error getting documents: ", error);
+        return [];
     }
-  }
+}
   
   export async function fetchWeeklySwipeSchedule() {
     const userInfo = await fetchDataFromFirestore();
