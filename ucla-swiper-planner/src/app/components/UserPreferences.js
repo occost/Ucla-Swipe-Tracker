@@ -7,16 +7,21 @@
 import { useState } from "react";
 import styles from '../styles/Profile.module.css'; // Import your CSS file for styling
 
+// when we implement firestore
+// import firebase from 'firebase/app';
+// import 'firebase/firestore';
+
+
 const SwipePlanner = () => {
-  const [selectedOption, setSelectedOption] = useState("11p"); // Default selection
+  const [selectedOption, setSelectedOption] = useState("14p"); // Default selection
   const [swipeValues, setSwipeValues] = useState({
     Mon: 2,
     Tue: 2,
     Wed: 2,
     Thu: 2,
-    Fri: 1,
-    Sat: 1,
-    Sun: 1,
+    Fri: 2,
+    Sat: 2,
+    Sun: 2,
   });
   const [message, setMessage] = useState("You are using a valid amount of swipes"); // Message for swipe limit
 
@@ -67,6 +72,7 @@ const SwipePlanner = () => {
     const newSwipeValues = { ...swipeValues };
     newSwipeValues[day] = Math.max(0, newSwipeValues[day] + direction); // Ensure swipe values don't go below 0
 
+    console.log('newSwipeValues:', newSwipeValues);
     // Check if the total swipes meet the limit
     const totalSwipes = Object.values(newSwipeValues).reduce((total, value) => total + value, 0);
     const limit = selectedOption === "11p" ? 11 : selectedOption === "14p" ? 14 : 19;
@@ -83,8 +89,35 @@ const SwipePlanner = () => {
     //updateFirestore(newSwipesValues )
   };
 
+  // Firebase initialization
+  //  if (!firebase.apps.length) {
+  //   const firebaseConfig = {
+  //     // Your Firebase config here
+  //   };
+  //   firebase.initializeApp(firebaseConfig);
+  // }
+
+  // const handleSaveToFirestore = () => {
+  //   const firestore = firebase.firestore();
+  //   const collectionRef = firestore.collection('yourCollectionPath'); // Update with your specific path
+
+  //   const dataToSave = {
+  //     mealPlan: selectedOption,
+  //     values: Object.values(swipeValues),
+  //   };
+
+  //   collectionRef.add(dataToSave)
+  //     .then(() => {
+  //       console.log('Data successfully saved to Firestore!');
+  //     })
+  //     .catch((error) => {
+  //       console.error('Error saving data to Firestore:', error);
+  //     });
+  // };
+
   return (
     <div className={styles.container}>
+      <h1 className={styles.title}>WELCOME TO THE PROFILE PAGE</h1>
       <div className={styles.buttonGroup}>
         <button
           className={`${styles.button} ${selectedOption === "11p" && styles.selected}`}
@@ -128,8 +161,14 @@ const SwipePlanner = () => {
           </tr>
         </tbody>
       </table>
-
       {message && <div className={styles.message}>{message}</div>}
+
+      <button className={`${styles.button} ${styles.saveButton}`} >
+        Save 
+      </button>
+
+      {/* onClick={handleSaveToFirestore} */}
+      <h2 className={styles.podiumMessage}>Your Lunch-Wrapped</h2>
 
     </div>
   );
