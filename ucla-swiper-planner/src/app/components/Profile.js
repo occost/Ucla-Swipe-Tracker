@@ -4,8 +4,51 @@
 "use client";
 
 // Import useState from 'react' library
-import { useState } from "react";
+import { useState, useEffect} from "react";
 import styles from '../styles/Profile.module.css'; // Import your CSS file for styling
+import { db } from "../../../firebase/FirebaseApp";
+
+import { doc, setDoc, getDoc, collection, query, where, getDocs } from 'firebase/firestore';
+import { getAuth } from "firebase/auth";
+
+
+const auth = getAuth();
+const usersRef = collection(db, "Users");
+
+async function fetchDataFromFirestore() {
+  const user = auth.currentUser;
+  const q = query(usersRef, where("uid", "==", user.uid)); // Construct query using query() and where()
+  try {
+    const querySnapshot = await getDocs(q);
+    const userData = [];
+    querySnapshot.forEach((doc) => {
+      // doc.data() is the document data
+      userData.push(doc.data());
+    });
+    return userData;
+  } catch (error) {
+    console.log("Error getting documents: ", error);
+    return [];
+  }
+}
+
+async function fetchWeeklySwipeSchedule() {
+  const userInfo = await fetchDataFromFirestore();
+  console.log(userInfo[0]["Weekly Swipe Count"]);
+  return userInfo[0]["Weekly Swipe Count"];
+}
+
+async function fetchAllTimeSwipes() {
+  const userInfo = await fetchDataFromFirestore();
+  console.log(userInfo[0]["All Time Swipes"]);
+  return userInfo[0]["All Time Swipes"];
+}
+
+async function fetchWeeklySwipesForLocations() {
+  const userInfo = await fetchDataFromFirestore();
+  console.log(userInfo[0]["Current Week's Location Swipes"]);
+  return userInfo[0]["Current Week's Location Swipes"];
+}
 
 const SwipePlanner = () => {
   const [selectedOption, setSelectedOption] = useState("11p"); // Default selection
@@ -20,6 +63,11 @@ const SwipePlanner = () => {
   });
   const [message, setMessage] = useState("You are using a valid amount of swipes"); // Message for swipe limit
 
+  useEffect(() => {
+    fetchWeeklySwipeSchedule();
+    fetchAllTimeSwipes();
+    fetchWeeklySwipesForLocations();
+  }, []); // Call fetchWeeklySwipeSchedule on component mount
   // Function to handle option change
   const handleOptionChange = (option) => {
     setSelectedOption(option);
@@ -77,8 +125,7 @@ const SwipePlanner = () => {
       setMessage(`You have ${limit - totalSwipes} swipes less than the limit`);
     } else {
       setMessage("You are using a valid amount of Swipes"); // Clear the message if total swipes meet the limit
-    }
-
+    }  
     setSwipeValues(newSwipeValues);
     //updateFirestore(newSwipesValues )
   };

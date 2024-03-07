@@ -12,7 +12,7 @@ import styles from '../styles/Profile.module.css'; // Import your CSS file for s
 // import 'firebase/firestore';
 
 
-const SwipePlanner = () => {
+const SwipePlanner = () => { 
   const [selectedOption, setSelectedOption] = useState("14p"); // Default selection
   const [swipeValues, setSwipeValues] = useState({
     Mon: 2,
