@@ -5,9 +5,7 @@
 import React, { useState } from 'react';
 import styles from '../styles/Calendar.module.css'
 
-// Imports for Firebase 
-import { db } from '../../../firebase/FirebaseApp';
-import { collection, doc, setDoc } from 'firebase/firestore';
+import { updateWeeklySwipesForLocations } from '../../../firebase/FirebaseUtils';
 
 
 
@@ -21,15 +19,8 @@ const Calendar = () => {
 
   
 const UpdateWeeklySwipes = async (e) =>{
-  const swipeRef=collection(db,"Users")
-  
   const result = createOptionMap(tableData);
-  await setDoc(doc(swipeRef, "Current Week Swipe Locations"),{
-    epicuria: result.epicuria,
-    bplate: result.bplate,
-    deneve: result.deneve
-  
-  });
+  updateWeeklySwipesForLocations(result);
   }
 
 
