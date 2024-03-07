@@ -1,3 +1,7 @@
+//Credit to Shekhar Ramola 2022, react-wheel-of-prizes
+//Link: https://www.npmjs.com/package/react-wheel-of-prizes
+
+
 'use client'
 import React, { useState } from 'react';
 
@@ -5,7 +9,7 @@ import React, { useState } from 'react';
 import WheelComponent from "./react-wheel-of-prizes";
 
 //styling
-import "../styles/Wheel.module.css";
+import styles from "../styles/Wheel.module.css";
 
 const Wheel= () => {
   
@@ -32,9 +36,9 @@ const Wheel= () => {
     return (
       <div>
 
-        <div className = "Wheel">
+        <div>
           <h1>What Should I Eat?</h1>
-            <WheelComponent
+            <WheelComponent className={styles.Wheel}
               segments={segments}
               segColors={segColors}
               onFinished={(winner) => onFinished(winner)}
