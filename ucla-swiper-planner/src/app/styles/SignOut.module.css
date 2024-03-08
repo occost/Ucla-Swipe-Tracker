@@ -1,0 +1,36 @@
+/* styles/SignOut.module.css */
+.signOutContainer {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    background-color: var(--gray-900); /* Assuming this is a darker shade defined in your root or globals.css */
+  }
+  
+  .signOutBox {
+    background-color: var(--gray-800); /* Assuming this is a shade defined in your root or globals.css */
+    padding: var(--spacing-medium);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 300px; /* Adjust width as necessary */
+  }
+  
+  .signOutButton {
+    width: 100%;
+    background-color: var(--ucla-blue);
+    color: var(--white);
+    padding: var(--spacing-medium) var(--spacing-large);
+    font-size: var(--font-size-base);
+    font-weight: bold;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .signOutButton:hover {
+    background-color: var(--ucla-gold);
+    color: var(--dark-blue);
+    transform: translateY(-2px);
+  }
+  

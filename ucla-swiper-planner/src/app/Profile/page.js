@@ -4,10 +4,15 @@
 import styles from '../styles/Profile.module.css'; // Import your CSS file for styling
 import SwipePlanner from "../components/Profile.js";
 
+import Navbar from '../components/Navbar';
+import SignOut from '../components/SignOutButton';
+
 const Profile = () => {
 
   return (
     <>
+      <Navbar />
+      <SignOut />
       <SwipePlanner />
       <div className={styles.container}>
 

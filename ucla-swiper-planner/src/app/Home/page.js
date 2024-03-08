@@ -9,6 +9,7 @@ import SignOut from '../components/SignOutButton';
 
 // Styles
 import styles from '../styles/Home.module.css'; // Adjust the import path as needed
+import Navbar from '../components/Navbar';
 
 // Mock data for demonstration
 // Replace Database fetching logic here 
@@ -30,6 +31,7 @@ export default function Home() {
 
     return (
         <>
+            <Navbar />
             <SignOut />
             <div className={styles.container}>
                 <main className={styles.main}>

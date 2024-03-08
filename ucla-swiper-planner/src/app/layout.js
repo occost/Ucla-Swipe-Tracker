@@ -7,9 +7,6 @@ import { Inter, Rubik } from "next/font/google";
 // Stylesheets
 import "./globals.css";
 
-// components
-import Navbar from "./components/Navbar";
-
 const rubik = Rubik({ subsets: ["latin"] });    // Get a subset from the font
 
 export const metadata = {                       // Metadata for the entire app
@@ -21,9 +18,9 @@ export default function RootLayout({ children }) {      // Children (default par
   return (
     <html lang="en">
       <body className={rubik.className}>
-        <nav>
+        {/* <nav>
           <Navbar />                                   
-        </nav>
+        </nav> */}
         {children}  
       </body>
     </html>

@@ -72,7 +72,7 @@ import styles from '../styles/Menu.module.css';
 export default function Menu(){
     return (
         <div className={styles.menu}>
-            <h2 className={styles.menuTitle}>Menu of the Day</h2>
+            <h2 className={styles.menuTitle}>Checkout Today's Dining Hall Options</h2>
             {Object.entries(meals).map(([mealType, diningOptions]) => (
                 <div key={mealType} className={styles.mealSection}>
                     <h3>{mealType}</h3>
