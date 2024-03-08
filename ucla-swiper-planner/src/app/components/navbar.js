@@ -8,7 +8,7 @@ const Navbar = () => {
       <ul className={styles.navList}>
         <li className={styles.navItem}>
           {/* Use Link with legacyBehavior prop */}
-          <Link href="/" className={styles.navLink}>
+          <Link href="/Home" className={styles.navLink}>
             Home
           </Link>
         </li>
