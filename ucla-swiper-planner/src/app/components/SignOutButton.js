@@ -19,7 +19,6 @@ export default function SignOut() {
 
     if (!user){
         router.push("/SignIn")
-        return <div>Currently Loading D:</div>;
     }  
 
     return ( 

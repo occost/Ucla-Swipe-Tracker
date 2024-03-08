@@ -35,12 +35,6 @@ const SwipePlanner = () => {
   });
   const [message, setMessage] = useState("You are using a valid amount of swipes"); // Message for swipe limit
 
-  useEffect(() => {
-    fetchWeeklySwipeSchedule();
-    fetchAllTimeSwipes();
-    fetchWeeklySwipesForLocations();
-  }, []); // Call fetchWeeklySwipeSchedule on component mount
-
   // Function to handle option change
   const handleOptionChange = async (option) => {
     setSelectedOption(option);
