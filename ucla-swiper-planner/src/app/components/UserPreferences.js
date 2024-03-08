@@ -15,13 +15,13 @@ import styles from '../styles/Profile.module.css'; // Import your CSS file for s
 const SwipePlanner = () => { 
   const [selectedOption, setSelectedOption] = useState("14p"); // Default selection
   const [swipeValues, setSwipeValues] = useState({
-    Mon: 2,
-    Tue: 2,
-    Wed: 2,
-    Thu: 2,
-    Fri: 2,
-    Sat: 2,
-    Sun: 2,
+    Monday: 2,
+    Tuesday: 2,
+    Wednesday: 2,
+    Thursday: 2,
+    Friday: 2,
+    Saturday: 2,
+    Sunday: 2,
   });
   const [message, setMessage] = useState("You are using a valid amount of swipes"); // Message for swipe limit
 
@@ -115,6 +115,13 @@ const SwipePlanner = () => {
   //     });
   // };
 
+  const [currentSwipes, setCurrentSwipes] = useState(""); // State to manage the entered number
+
+  const handleCurrentSwipesChange = (e) => {
+    // Update the state when the input value changes
+    setCurrentSwipes(e.target.value);
+  };
+
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>WELCOME TO THE PROFILE PAGE</h1>
@@ -137,6 +144,23 @@ const SwipePlanner = () => {
         >
           19p
         </button>
+
+      </div>
+
+      <div>
+        <form className={styles.formContainer}>
+          <label className={styles.formLabelCont}>
+            Update Current Swipes:
+            <input
+              type="number"
+              value={currentSwipes}
+              onChange={handleCurrentSwipesChange}
+            />
+          </label>
+          <p className={styles.updateSwipes}>
+            <a href="https://myhousing.hhs.ucla.edu/shib/swipes" target="_blank" rel="noopener noreferrer">Check Real-Time Swipes</a>
+          </p>
+        </form>
       </div>
 
       <table className={styles.table}>
@@ -163,12 +187,18 @@ const SwipePlanner = () => {
       </table>
       {message && <div className={styles.message}>{message}</div>}
 
+      {/* <button className={`${styles.button} ${styles.saveButton}`} >
+        Save
+      </button> */}
+
       <button className={`${styles.button} ${styles.saveButton}`} >
-        Save 
+        Save
       </button>
 
       {/* onClick={handleSaveToFirestore} */}
-      <h2 className={styles.podiumMessage}>Your Lunch-Wrapped</h2>
+      <h2 className={styles.podiumMessage}>
+        Your Lunch-Wrapped
+      </h2>
 
     </div>
   );
