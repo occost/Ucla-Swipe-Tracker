@@ -4,7 +4,7 @@
 import styles from '../styles/Profile.module.css'; // Import your CSS file for styling
 import SwipePlanner from "../components/Profile.js";
 
-import Navbar from '../components/Navbar';
+import Navbar from '../components/navbar';
 import SignOut from '../components/SignOutButton';
 
 const Profile = () => {
