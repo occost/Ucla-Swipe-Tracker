@@ -6,7 +6,7 @@
 import Wheel from "../components/Wheel.js";
 import Calendar from "../components/Calendar.js";
 
-import Navbar from "../components/Navbar.js";
+import Navbar from "../components/navbar.js";
 import SignOut from "../components/SignOutButton.js";
 
 //import WeekDatesDisplay from '../components/weekDates.js';
