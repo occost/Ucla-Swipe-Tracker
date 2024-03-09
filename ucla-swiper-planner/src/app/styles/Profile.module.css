@@ -20,6 +20,10 @@
   font-size: small;
 }
 
+.updateSwipes p {
+ color: green;
+}
+
 .formContainer {
   display: flex;
   margin-top: 10px;
