@@ -1,4 +1,5 @@
 'use client'
+import { useEffect } from 'react';
 
 import app from '../../../firebase/FirebaseApp'; // Adjust the path as needed
 import { getAuth, signOut } from "firebase/auth";
@@ -11,6 +12,18 @@ export default function SignOut() {
     const auth = getAuth(app); // Initialize auth with the Firebase app instance
     const router = useRouter();
     const [user, loading] = useAuthState(auth);
+
+    useEffect(() => {
+        const handleBeforeUnload = async (e) => {
+            await signOut(auth);
+            // Note: Custom logic here might not execute reliably
+        };
+
+        window.addEventListener('beforeunload', handleBeforeUnload);
+
+        return () => window.removeEventListener('beforeunload', handleBeforeUnload);
+    }, [auth]);
+
 
     const handleSignOut = async () => {
         await signOut(auth); // Correctly call signOut
