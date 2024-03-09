@@ -69,6 +69,8 @@ import styles from '../styles/Menu.module.css';
 // const meals = FetchMenu();
 // console.log(meals)
 
+
+
 export default function Menu(){
     return (
         <div className={styles.menu}>
