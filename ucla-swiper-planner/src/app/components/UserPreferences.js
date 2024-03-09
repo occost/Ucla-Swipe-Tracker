@@ -125,6 +125,16 @@ const SwipePlanner = () => {
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>WELCOME TO THE PROFILE PAGE</h1>
+
+      <div className={styles.explanationBox}>
+        <p className={styles.explanationText}>
+          This is the Profile Page where you will set the amount of swipes you would like to use each day.
+          We will use this information to display how many swipes you should have for the remaining week.
+          You can also update the current amount of swipes you have right now! This will give us an accurate
+          representation about how on track you actually are.
+        </p>
+      </div>
+
       <div className={styles.buttonGroup}>
         <button
           className={`${styles.button} ${selectedOption === "11p" && styles.selected}`}
@@ -144,11 +154,10 @@ const SwipePlanner = () => {
         >
           19p
         </button>
-
       </div>
 
       <div>
-        <form className={styles.formContainer}>
+        <form className={styles.formContainer} >
           <label className={styles.formLabelCont}>
             Update Current Swipes:
             <input
@@ -157,11 +166,15 @@ const SwipePlanner = () => {
               onChange={handleCurrentSwipesChange}
             />
           </label>
-          <p className={styles.updateSwipes}>
-            <a href="https://myhousing.hhs.ucla.edu/shib/swipes" target="_blank" rel="noopener noreferrer">Check Real-Time Swipes</a>
-          </p>
+          <div className={styles.updateSwipes}>
+            <div className={styles.p}>
+              <a href="https://myhousing.hhs.ucla.edu/shib/swipes" target="_blank" rel="noopener noreferrer">Check Real-Time Swipes</a>
+            </div>
+          </div>
         </form>
       </div>
+
+      <h4 className={styles.customP1}>Hit Enter To Save Swipes</h4>
 
       <table className={styles.table}>
         <thead>
@@ -197,7 +210,7 @@ const SwipePlanner = () => {
 
       {/* onClick={handleSaveToFirestore} */}
       <h2 className={styles.podiumMessage}>
-        Your Lunch-Wrapped UPDATED 
+        Your Lunch-Wrapped UPDATED
       </h2>
 
     </div>
@@ -205,3 +218,4 @@ const SwipePlanner = () => {
 };
 
 export default SwipePlanner;
+
