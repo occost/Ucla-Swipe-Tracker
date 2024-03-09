@@ -13,16 +13,6 @@ export default function SignOut() {
     const router = useRouter();
     const [user, loading] = useAuthState(auth);
 
-    useEffect(() => {
-        const handleBeforeUnload = async (e) => {
-            await signOut(auth);
-            // Note: Custom logic here might not execute reliably
-        };
-
-        window.addEventListener('beforeunload', handleBeforeUnload);
-
-        return () => window.removeEventListener('beforeunload', handleBeforeUnload);
-    }, [auth]);
 
 
     const handleSignOut = async () => {
