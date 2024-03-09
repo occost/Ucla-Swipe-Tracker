@@ -4,15 +4,36 @@
 "use client";
 
 // Import useState from 'react' library
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from '../styles/Profile.module.css'; // Import your CSS file for styling
+import {
+  updateWeeklySwipeCount,
+  fetchWeeklySwipeSchedule,
+  
+} from '../../../firebase/FirebaseUtils';
 
+import {
+  getAuth,
+  onAuthStateChanged
+} from 'firebase/auth';
+
+import {
+  collection,
+  doc,
+  getDoc
+} from 'firebase/firestore';
+
+import { db } from '../../../firebase/FirebaseApp';
 // when we implement firestore
 // import firebase from 'firebase/app';
 // import 'firebase/firestore';
 
+const auth = getAuth();
+const usersRef = collection(db, "Users");
+const user = auth.currentUser;
 
 const SwipePlanner = () => {
+  
   const [selectedOption, setSelectedOption] = useState("14p"); // Default selection
   const [swipeValues, setSwipeValues] = useState({
     Monday: 2,
@@ -24,7 +45,43 @@ const SwipePlanner = () => {
     Sunday: 2,
   });
   const [message, setMessage] = useState("You are using a valid amount of swipes"); // Message for swipe limit
+  const [user, setUser] = useState(null); // Initialize user state
+  
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser); // Update user state when auth state changes
+    });
 
+    if (user) { // Only proceed if the user object exists
+      const fetchData = async () => {
+        try {
+          console.log(user);
+          console.log('tableData', swipeValues);
+          const weekEntries = await fetchWeeklySwipeSchedule();
+          const formattedData = weekEntries[0]["Weekly Swipe Count"]; // Assuming fetchWeeklySwipeSchedule needs the user's UID
+          
+          // Sort the swipe values by days of the week
+          const sortedData = Object.keys(formattedData).sort((a, b) => {
+            const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+            return days.indexOf(a) - days.indexOf(b);
+          }).reduce((obj, key) => {
+            obj[key] = formattedData[key];
+            return obj;
+          }, {});
+    
+          setSwipeValues(sortedData);
+        } catch (error) {
+          console.error('Error fetching "week Entries":', error);
+        }
+      };
+    
+      fetchData(); 
+      // Call the fetchData function if the user is authenticated
+    }
+    
+
+    return () => unsubscribe(); // Cleanup subscription
+  }, [user]);
   // Function to handle option change
   const handleOptionChange = (option) => {
     setSelectedOption(option);
@@ -32,34 +89,34 @@ const SwipePlanner = () => {
     // Update swipe values based on the selected option
     if (option === "14p") {
       setSwipeValues({
-        Mon: 2,
-        Tue: 2,
+        Monday: 2,
+        Tuesday: 2,
         Wed: 2,
-        Thu: 2,
-        Fri: 2,
-        Sat: 2,
-        Sun: 2,
+        Thursday: 2,
+        Friday: 2,
+        Saturday: 2,
+        Sunday: 2,
       });
     } else if (option === "19p") {
       setSwipeValues({
-        Mon: 3,
-        Tue: 3,
-        Wed: 3,
-        Thu: 3,
-        Fri: 3,
-        Sat: 2,
-        Sun: 2,
+        Monday: 3,
+        Tuesday: 3,
+        Wednesday: 3,
+        Thursday: 3,
+        Friday: 3,
+        Saturday: 2,
+        Sunday: 2,
       });
     } else {
       // Default option "11p" or any other option
       setSwipeValues({
-        Mon: 2,
-        Tue: 2,
-        Wed: 2,
-        Thu: 2,
-        Fri: 1,
-        Sat: 1,
-        Sun: 1,
+        Monday: 2,
+        Tuesday: 2,
+        Wednesday: 2,
+        Thursday: 2,
+        Friday: 1,
+        Saturday: 1,
+        Sunday: 1,
       });
     }
 
@@ -68,52 +125,35 @@ const SwipePlanner = () => {
   };
 
   // Function to handle swipe value change for a day
-  const handleSwipeChange = (day, direction) => {
-    const newSwipeValues = { ...swipeValues };
-    newSwipeValues[day] = Math.max(0, newSwipeValues[day] + direction); // Ensure swipe values don't go below 0
+// Function to handle swipe value change for a day
+const handleSwipeChange = (day, direction) => {
+  const newSwipeValues = { ...swipeValues };
+  newSwipeValues[day] = Math.max(0, newSwipeValues[day] + direction); // Ensure swipe values don't go below 0
 
-    console.log('newSwipeValues:', newSwipeValues);
-    // Check if the total swipes meet the limit
-    const totalSwipes = Object.values(newSwipeValues).reduce((total, value) => total + value, 0);
-    const limit = selectedOption === "11p" ? 11 : selectedOption === "14p" ? 14 : 19;
+  // Order the days of the week
+  const orderedDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  const orderedSwipeValues = {};
 
-    if (totalSwipes > limit) {
-      setMessage(`You are using ${totalSwipes - limit} swipes over the limit`);
-    } else if (totalSwipes < limit) {
-      setMessage(`You have ${limit - totalSwipes} swipes less than the limit`);
-    } else {
-      setMessage("You are using a valid amount of Swipes"); // Clear the message if total swipes meet the limit
-    }
+  orderedDays.forEach(day => {
+    orderedSwipeValues[day] = newSwipeValues[day] || 0; // Set swipe value to 0 if it doesn't exist
+  });
 
-    setSwipeValues(newSwipeValues);
-    //updateFirestore(newSwipesValues )
-  };
+  // Check if the total swipes meet the limit
+  const totalSwipes = Object.values(orderedSwipeValues).reduce((total, value) => total + value, 0);
+  const limit = selectedOption === "11p" ? 11 : selectedOption === "14p" ? 14 : 19;
 
-  // Firebase initialization
-  //  if (!firebase.apps.length) {
-  //   const firebaseConfig = {
-  //     // Your Firebase config here
-  //   };
-  //   firebase.initializeApp(firebaseConfig);
-  // }
+  if (totalSwipes > limit) {
+    setMessage(`You are using ${totalSwipes - limit} swipes over the limit`);
+  } else if (totalSwipes < limit) {
+    setMessage(`You have ${limit - totalSwipes} swipes less than the limit`);
+  } else {
+    setMessage("You are using a valid amount of Swipes"); // Clear the message if total swipes meet the limit
+  }
 
-  // const handleSaveToFirestore = () => {
-  //   const firestore = firebase.firestore();
-  //   const collectionRef = firestore.collection('yourCollectionPath'); // Update with your specific path
+  setSwipeValues(orderedSwipeValues);
+  updateWeeklySwipeCount(orderedSwipeValues);
+};
 
-  //   const dataToSave = {
-  //     mealPlan: selectedOption,
-  //     values: Object.values(swipeValues),
-  //   };
-
-  //   collectionRef.add(dataToSave)
-  //     .then(() => {
-  //       console.log('Data successfully saved to Firestore!');
-  //     })
-  //     .catch((error) => {
-  //       console.error('Error saving data to Firestore:', error);
-  //     });
-  // };
 
   const [currentSwipes, setCurrentSwipes] = useState(""); // State to manage the entered number
 
@@ -125,6 +165,16 @@ const SwipePlanner = () => {
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>WELCOME TO THE PROFILE PAGE</h1>
+
+      <div className={styles.explanationBox}>
+        <p className={styles.explanationText}>
+          This is the Profile Page where you will set the amount of swipes you would like to use each day.
+          We will use this information to display how many swipes you should have for the remaining week.
+          You can also update the current amount of swipes you have right now! This will give us an accurate
+          representation about how on track you actually are.
+        </p>
+      </div>
+
       <div className={styles.buttonGroup}>
         <button
           className={`${styles.button} ${selectedOption === "11p" && styles.selected}`}
@@ -144,11 +194,10 @@ const SwipePlanner = () => {
         >
           19p
         </button>
-
       </div>
 
       <div>
-        <form className={styles.formContainer}>
+        <form className={styles.formContainer} >
           <label className={styles.formLabelCont}>
             Update Current Swipes:
             <input
@@ -157,11 +206,15 @@ const SwipePlanner = () => {
               onChange={handleCurrentSwipesChange}
             />
           </label>
-          <p className={styles.updateSwipes}>
-            <a href="https://myhousing.hhs.ucla.edu/shib/swipes" target="_blank" rel="noopener noreferrer">Check Real-Time Swipes</a>
-          </p>
+          <div className={styles.updateSwipes}>
+            <div className={styles.p}>
+              <a href="https://myhousing.hhs.ucla.edu/shib/swipes" target="_blank" rel="noopener noreferrer">Check Real-Time Swipes</a>
+            </div>
+          </div>
         </form>
       </div>
+
+      <h4 className={styles.customP1}>Hit Enter To Save Swipes</h4>
 
       <table className={styles.table}>
         <thead>
@@ -197,7 +250,7 @@ const SwipePlanner = () => {
 
       {/* onClick={handleSaveToFirestore} */}
       <h2 className={styles.podiumMessage}>
-        Your Lunch-Wrapped UPDATED 
+        Your Lunch-Wrapped UPDATED
       </h2>
 
     </div>
