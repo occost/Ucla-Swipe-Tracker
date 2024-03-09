@@ -7,7 +7,6 @@
 import { useState, useEffect} from "react";
 import styles from '../styles/Profile.module.css'; // Import your CSS file for styling
 import { db } from "../../../firebase/FirebaseApp";
-
 import { doc, setDoc, getDoc, collection, query, where, getDocs } from 'firebase/firestore';
 import { getAuth } from "firebase/auth";
 import {
