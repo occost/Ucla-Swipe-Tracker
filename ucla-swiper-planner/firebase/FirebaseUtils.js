@@ -37,7 +37,7 @@ export async function fetchWeeklySwipesForLocations() {
   
 export async function fetchWeeklySwipeSchedule() {
   const userInfo = await fetchFireStoreData();
-  const swipes=userInfo[0]["week entries"]
+  const swipes=userInfo[0]["Weekly Swipe Count"]
   console.log(swipes);
   return userInfo;
 }
@@ -96,7 +96,6 @@ export async function updateWeeklySwipesForLocations(newCount) {
   try {
     await fetchWeeklySwipeSchedule(); // Wait for fetchWeeklySwipeSchedule() to complete
     await setDoc(userRef, { "Current Week's Location Swipes": newCount }, { merge: true });
-    await setDoc(userRef, { "All Time Swipes": newCount }, { merge: true });
     console.log("Weekly Swipes for Locations updated successfully");
   } catch (error) {
     console.error("Error updating Weekly Swipes for Locations: ", error);
