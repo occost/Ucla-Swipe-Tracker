@@ -12,7 +12,6 @@ import {
   updateMealPlanType,
   fetchMealPlanType,
   updateRemainingBalance
-
 } from '../../../firebase/FirebaseUtils';
 
 import {
@@ -25,9 +24,6 @@ import {
 } from 'firebase/firestore';
 
 import { db } from '../../../firebase/FirebaseApp';
-// when we implement firestore
-// import firebase from 'firebase/app';
-// import 'firebase/firestore';
 
 const auth = getAuth();
 const usersRef = collection(db, "Users");
@@ -44,7 +40,7 @@ const SwipePlanner = () => {
     Saturday: 2,
     Sunday: 2,
   });
-  const [message, setMessage] = useState("You are using a valid amount of swipes"); // Message for swipe limit
+  const [message, setMessage] = useState(""); // Initialize message state with a default value
   const [user, setUser] = useState(null); // Initialize user state
   
   useEffect(() => {
@@ -60,7 +56,7 @@ const SwipePlanner = () => {
           const weekEntries = await fetchWeeklySwipeSchedule();
           const formattedData = weekEntries[0]["Weekly Swipe Count"]; // Assuming fetchWeeklySwipeSchedule needs the user's UID
           const fetchedPlan = weekEntries[0]["Meal Plan Type"];
-          console.log("fetched plane tpye fetchedPlan.type ");
+          console.log("fetched plane tpye fetchedPlan ");
           console.log(fetchedPlan);
           // Sort the swipe values by days of the week
           const sortedData = Object.keys(formattedData).sort((a, b) => {
@@ -84,9 +80,24 @@ const SwipePlanner = () => {
   
     return () => unsubscribe(); // Cleanup subscription
   }, [user]);
-  
+
   // Function to handle option change
-  const handleOptionChange = (option) => {
+  const handleOptionChange = (option,day) => {
+
+    const newSwipeValues = { ...swipeValues };
+    newSwipeValues[day] = Math.max(0, newSwipeValues[day]); // Ensure swipe values don't go below 0
+
+    // Order the days of the week
+    const orderedDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+    const orderedSwipeValues = {};
+
+    orderedDays.forEach(day => {
+      orderedSwipeValues[day] = newSwipeValues[day] || 0; // Set swipe value to 0 if it doesn't exist
+    });
+   
+    setSwipeValues(orderedSwipeValues);
+    updateWeeklySwipeCount(orderedSwipeValues);
+    
     setSelectedOption(option);
 
     // Update swipe values based on the selected option
@@ -125,38 +136,37 @@ const SwipePlanner = () => {
 
     setMessage("You are using a valid amount of Swipes"); // Clear the message when changing the option
     updateMealPlanType(option);
-    //updatefirestore(set)
+    
   };
 
-// Function to handle swipe value change for a day
-const handleSwipeChange = (day, direction) => {
-  const newSwipeValues = { ...swipeValues };
-  newSwipeValues[day] = Math.max(0, newSwipeValues[day] + direction); // Ensure swipe values don't go below 0
+  // Function to handle swipe value change for a day
+  const handleSwipeChange = (day, direction) => {
+    const newSwipeValues = { ...swipeValues };
+    newSwipeValues[day] = Math.max(0, newSwipeValues[day] + direction); // Ensure swipe values don't go below 0
 
-  // Order the days of the week
-  const orderedDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-  const orderedSwipeValues = {};
+    // Order the days of the week
+    const orderedDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+    const orderedSwipeValues = {};
 
-  orderedDays.forEach(day => {
-    orderedSwipeValues[day] = newSwipeValues[day] || 0; // Set swipe value to 0 if it doesn't exist
-  });
+    orderedDays.forEach(day => {
+      orderedSwipeValues[day] = newSwipeValues[day] || 0; // Set swipe value to 0 if it doesn't exist
+    });
 
-  // Check if the total swipes meet the limit
-  const totalSwipes = Object.values(orderedSwipeValues).reduce((total, value) => total + value, 0);
-  const limit = selectedOption === "11p" ? 11 : selectedOption === "14p" ? 14 : 19;
+    // Check if the total swipes meet the limit
+    const totalSwipes = Object.values(orderedSwipeValues).reduce((total, value) => total + value, 0);
+    const limit = selectedOption === "11p" ? 11 : selectedOption === "14p" ? 14 : 19;
 
-  if (totalSwipes > limit) {
-    setMessage(`You are using ${totalSwipes - limit} swipes over the limit`);
-  } else if (totalSwipes < limit) {
-    setMessage(`You have ${limit - totalSwipes} swipes less than the limit`);
-  } else {
-    setMessage("You are using a valid amount of Swipes"); // Clear the message if total swipes meet the limit
-  }
+    if (totalSwipes > limit) {
+      setMessage(`You are using ${totalSwipes - limit} swipes over the limit`);
+    } else if (totalSwipes < limit) {
+      setMessage(`You have ${limit - totalSwipes} swipes less than the limit`);
+    } else {
+      setMessage("You are using a valid amount of Swipes"); // Clear the message if total swipes meet the limit
+    }
 
-  setSwipeValues(orderedSwipeValues);
-  updateWeeklySwipeCount(orderedSwipeValues);
-};
-
+    setSwipeValues(orderedSwipeValues);
+    updateWeeklySwipeCount(orderedSwipeValues);
+  };
 
   const [currentSwipes, setCurrentSwipes] = useState(""); // State to manage the entered number
 
@@ -172,8 +182,8 @@ const handleSwipeChange = (day, direction) => {
       setCurrentSwipes("");
     }
   };
+
   
- 
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>WELCOME TO THE PROFILE PAGE</h1>
@@ -254,19 +264,13 @@ const handleSwipeChange = (day, direction) => {
       </table>
       {message && <div className={styles.message}>{message}</div>}
 
-      {/* <button className={`${styles.button} ${styles.saveButton}`} >
-        Save
-      </button> */}
-
       <button className={`${styles.button} ${styles.saveButton}`} >
         Save
       </button>
 
-      {/* onClick={handleSaveToFirestore} */}
       <h2 className={styles.podiumMessage}>
         Your Lunch-Wrapped UPDATED
       </h2>
-
     </div>
   );
 };
