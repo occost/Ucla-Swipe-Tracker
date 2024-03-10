@@ -46,20 +46,11 @@ function SwipeTracker({ totalSwipesAvailable, weeklySwipesUsed }) {
                 try {
                     console.log(user);
                     const swipesLeft = await fetchRemainingBalance();
-                    console.log(swipesLeft[0]["Remaining Balance"]);
                     setRemainingBalance(swipesLeft[0]["Remaining Balance"]);
                     setMealPlanType(swipesLeft[0]["Meal Plan Type"])
 
-                    //remaining swipes for week
                     const weekEntries = await fetchWeeklySwipeSchedule();
-                    const formattedData = weekEntries[0]["Current Week's Location Swipes"];
-                    const arrayLengths = Object.values(formattedData).map(dayArray => dayArray.length);
-                    const sumOfArrayLengths = arrayLengths.reduce((sum, length) => sum + length, 0);
-                    const modifiedSum = sumOfArrayLengths - 7;
-                    console.log("swipesUsedThisWeek: ", modifiedSum)
-                    setSwipesUsedThisWeek(modifiedSum);
-
-                    //swipes message
+                    //SWIPES REMAINING FOR THE WEEK
                     const preferenceData = weekEntries[0]["Weekly Swipe Count"];
                     const sortedData = Object.keys(preferenceData).sort((a, b) => {
                         const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
@@ -68,26 +59,52 @@ function SwipeTracker({ totalSwipesAvailable, weeklySwipesUsed }) {
                         obj[key] = preferenceData[key];
                         return obj;
                     }, {});
-
-                    console.log("sortedData: ", sortedData);
-
                     let intendedSwipes = 0;
                     const today = new Date().toLocaleDateString('en-US', { weekday: 'long' }); // Get the current day
                     const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
                     const currentDayIndex = days.indexOf(today);
 
                     Object.keys(sortedData).forEach((day, index) => {
-                        if (index < currentDayIndex) {
-                            intendedSwipes += sortedData[day]; 
+                        if (index < currentDayIndex || (currentDayIndex === 6 && index === 6)) {
+                            console.log(currentDayIndex, "index < currentDayIndex: ", index, '<', currentDayIndex)
+                            intendedSwipes += sortedData[day];
                         }
-                        console.log(day,"intendedSwipes",intendedSwipes);
+                        console.log(day, "intendedSwipes", intendedSwipes);
                     });
 
-                   // 10    8
+                    console.log("currentDayIndex:", currentDayIndex);
+                    console.log("intendedSwipes:", intendedSwipes);
+
+
+
+
+                    //remaining swipes for the week
+                    const sumNonEmptyNames = (loggedSwipes) => {
+                        const dayNames = Object.keys(loggedSwipes);
+                        let totalSum = 0;
+
+                        dayNames.forEach((day) => {
+                            const entries = loggedSwipes[day];
+                            const nonEmptyCount = entries.filter((entry) => entry.name !== '').length;
+                            totalSum += nonEmptyCount;
+                        });
+
+                        return totalSum;
+                    };
+
+                    const loggedSwipes = weekEntries[0]["Current Week's Location Swipes"];
+                    const nameCounts = sumNonEmptyNames(loggedSwipes);
+                    console.log("nameCounts: ",nameCounts);
+                    setSwipesUsedThisWeek(nameCounts);
+                    console.log(swipesUsedThisWeek);
+
+                    // 10    8 
                     if (intendedSwipes < swipesUsedThisWeek) {
-                        setSwipeMessage(`You have used ${swipesUsedThisWeek -weeklySwipesUsed } more swipes than intended in your profile.`);
+                        setSwipeMessage(`You have used ${swipesUsedThisWeek - intendedSwipes} more swipes than intended in your profile.`);
+                        console.log("swipesUsedThisWeek - intendedSwipes", swipesUsedThisWeek, '-', intendedSwipes)
                     } else if (intendedSwipes > swipesUsedThisWeek) {
-                        setSwipeMessage(`You have used ${intendedSwipes- weeklySwipesUsed} fewer swipes than intended in your profile.`);
+                        setSwipeMessage(`You have used ${intendedSwipes - swipesUsedThisWeek} fewer swipes than intended in your profile.`);
+                        console.log("intendedSwipes- swipesUsedThisWeek", intendedSwipes, '-', weekly)
                     } else {
                         setSwipeMessage("YOU ARE USING THE CORRECT AMOUNT OF SWIPES LETS GOOOO!!!!");
                     }
@@ -101,7 +118,8 @@ function SwipeTracker({ totalSwipesAvailable, weeklySwipesUsed }) {
         }
 
         return () => unsubscribe(); // Cleanup subscription
-    }, [user]);
+    }, [user,swipesUsedThisWeek]);
+    
 
     if (mealPlanType === "19p") {
         totalSwipesAvailable = 205;
@@ -116,6 +134,7 @@ function SwipeTracker({ totalSwipesAvailable, weeklySwipesUsed }) {
         weeklySwipesUsed = 11 - swipesUsedThisWeek;
     }
 
+    console.log("swipesUsedThisWeek: ", swipesUsedThisWeek)
 
 
     return (
