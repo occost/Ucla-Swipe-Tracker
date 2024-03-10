@@ -183,7 +183,8 @@ const handleSwipeChange = (day, direction) => {
           This is the Profile Page where you will set the amount of swipes you would like to use each day.
           We will use this information to display how many swipes you should have for the remaining week.
           You can also update the current amount of swipes you have right now! This will give us an accurate
-          representation about how on track you actually are.
+          representation about how on track you actually are. Below that features your Lunch-Wrapped! 
+          Discover your top 3 visited dining halls or takeout favorites, a review of your culinary adventures.
         </p>
       </div>
 
