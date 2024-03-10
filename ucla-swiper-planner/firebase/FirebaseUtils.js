@@ -1,6 +1,6 @@
-import { db } from "./FirebaseApp";
-import app from "./FirebaseApp"
 import { doc, setDoc, getDoc, collection, query, where, getDocs } from 'firebase/firestore';
+import app from "./FirebaseApp"
+import { db } from './FirebaseApp';
 import { getAuth } from "firebase/auth";
 
 
@@ -49,7 +49,6 @@ export async function updateWeeklySwipeCount(newCount) {
   const userRef = doc(db, "Users", user.uid);
   
   try {
-    await fetchWeeklySwipeSchedule(); // Wait for fetchWeeklySwipeSchedule() to complete
     await setDoc(userRef, { "Weekly Swipe Count": newCount }, { merge: true });
     console.log("Weekly Swipe Count updated successfully");
   } catch (error) {
@@ -57,6 +56,18 @@ export async function updateWeeklySwipeCount(newCount) {
   }
 }
   
+export async function initNewUser(newLogIn){
+  const user = newLogIn.currentUser;
+  const userRef = doc(db, "Users", user.uid);
+
+  try{
+    await setDoc(userRef, { "uid": user.uid }, { merge: true });
+    console.log("Initalized a new user");
+  }catch(error){
+    console.error("Initalizing a new user: ", error);
+  }
+}
+
 export async function updateAllTimeSwipes(newCount) {
   const user = auth.currentUser;
   const userRef = doc(db, "Users", user.uid);
