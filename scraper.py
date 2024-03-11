@@ -24,7 +24,7 @@ def clean_menu(menu_string):
     lines = menu_string.split('\n')
     cleaned_lines = []
     for line in lines: #removing extraneous information
-        if not any(phrase in line for phrase in ['Vegan Menu Option', 'Vegetarian Menu Option', 'Halal Menu Option', 'Low Carbon Footprint', 'Prepared', 'Detailed Menu', 'High Carbon Footprint' , 'Activity Level']) and 'Contains' not in line:
+        if not any(phrase in line for phrase in ['Vegan Menu Option', 'Vegetarian Menu Option', 'Halal Menu Option', 'Low Carbon Footprint', 'Prepared', 'Detailed Menu', 'High Carbon Footprint' , 'Activity Level', '\'', 'Origin/inspiration:']) and 'Contains' not in line:
             cleaned_line = ' '.join(word for word in line.split() if not any(remove_word in word for remove_word in words_to_remove))
             cleaned_lines.append(cleaned_line)
     
@@ -86,6 +86,7 @@ def parse_menu_items(html_content):
                 menu_items = []
                 for item in potential_items:
                     # Check if the item is wrapped in quotes
+                    capitalized_item = ' '.join(word.capitalize() for word in item.strip().split())
                     if item.startswith('"') and item.endswith('"'):
                         menu_items.append(item.strip('"'))
                     else:
