@@ -1,0 +1,77 @@
+{
+    "Breakfast": {
+        "Epicuria": [
+            "Closed"
+        ],
+        "De Neve": [
+            "Bacon",
+            "Breakfast Hash Brown",
+            "Scrambled Eggs",
+            "Belgian Waffle"
+        ],
+        "Bruin Plate": [
+            "Bruin Scramble (ham & Cheddar)",
+            "Bruin Scramble (vegetarian)",
+            "Mushroom Beef Ragout Bowl W/ Poached Egg",
+            "Scrambled Eggs",
+            "Vegan Scrambled Eggs",
+            "Whole Grain Banana Waffle",
+            "Whole Wheat Pancake"
+        ]
+    },
+    "Lunch": {
+        "Epicuria": [
+            "Closed"
+        ],
+        "De Neve": [
+            "Bar Pineapple & Cilantro Marinated Chicken Thigh",
+            "Bacon",
+            "Pork Sausage",
+            "Scrambled Eggs",
+            "Brunch Burger",
+            "D.f.c."
+        ],
+        "Bruin Plate": [
+            "Bruin Scramble (ham & Cheddar)",
+            "Bruin Scramble (vegetarian)",
+            "Pulled Pork Tenderloin Taco",
+            "Kale & Squash Salad W/ Gorgonzola",
+            "Pineapple & Goat Cheese Tortilla Pizza",
+            "Tri-tip, Arugula, & Parmesan Flatbread",
+            "Lemon Oregano Marinated Chicken Thigh",
+            "Potato & Brussel Sprouts Cake"
+        ]
+    },
+    "Dinner": {
+        "Epicuria": [
+            "Linguine W/ Pesto",
+            "Pasta W/ Salmon Cream Sauce",
+            "Greek Chicken Pizza",
+            "Greek Style Roasted Tri Tip Sandwich",
+            "Eggplant Sandwich W/ Honey & Melted Cheese",
+            "Rosemary Chicken",
+            "Swiss Chard & Mushroom Bread Pudding",
+            "Moroccan Spiced Scallops",
+            "Koshari Saute"
+        ],
+        "De Neve": [
+            "Bar Pineapple & Cilantro Marinated Chicken Thigh",
+            "Burner Al Pastor Pork Street Tacos",
+            "Al Pastor-style Mushroom Taco (taco De Hongos)",
+            "Pescado A La Veracruzana",
+            "Mole Tofu",
+            "Jalapeno Popper Pizza",
+            "Garlic Chicken Pizza",
+            "Brunch Burger",
+            "D.f.c."
+        ],
+        "Bruin Plate": [
+            "Mahi Mahi W/ Pickled Vegetables",
+            "Lentil, Chard, & Sweet Potato Curry",
+            "Lemongrass Beef W/ Brown Rice & Cucumber Relish",
+            "Green Chile Rice W/ Black Beans & Egg",
+            "Pork Tenderloin",
+            "Broiled Pork Tenderloin Seasoned With Berbere, An Earthy Blend Of Ethiopian Spices. Banana Pecan Buckwheat Pancake"
+        ]
+    }
+}
