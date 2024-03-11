@@ -7,7 +7,9 @@ import styles from '../styles/Calendar.module.css';
 
 import {
   updateWeeklySwipesForLocations,
-  fetchWeeklySwipeSchedule,
+  fetchWeeklySwipesForLocations,
+  updateRemainingBalance,
+  fetchRemainingBalance
   
 } from '../../../firebase/FirebaseUtils';
 
@@ -41,6 +43,7 @@ const Calendar = () => {
 
   const [tableData, setTableData] = useState(Array(7).fill([]).map(() => [{...defaultEntry }])); // Initialize as empty array
 
+  const [lastSentCalendar, setLastSentCalendar] = useState(Array(7).fill([]).map(() => [{...defaultEntry }])); 
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -52,7 +55,7 @@ const Calendar = () => {
         try {
           console.log(user);
           console.log('tableData', tableData);
-          const weekEntries = await fetchWeeklySwipeSchedule();
+          const weekEntries = await fetchWeeklySwipesForLocations();
           const formattedData = weekEntries[0]["Current Week's Location Swipes"]; // Assuming fetchWeeklySwipeSchedule needs the user's UID
           const updatedTableData = convertEntryMapToTableData(formattedData);
           
@@ -60,6 +63,7 @@ const Calendar = () => {
           console.log('formatted data', formattedData);
           console.log('week data', weekEntries);
           setTableData(updatedTableData);
+          setLastSentCalendar(updatedTableData);
           console.log('settingtabledata', tableData);
         } catch (error) {
           console.error('Error fetching "week Entries":', error);
@@ -74,7 +78,13 @@ const Calendar = () => {
     return () => unsubscribe(); // Cleanup subscription
   }, [user]);
   
-   
+   function swipesOnCalander(Calendar){
+    let total = 0;  
+    for (let i=0; i<7; i++){
+        total += (Calendar[i].length -1);
+      } 
+      return total;  //for some reason its returned as an object I SPENT SO LONG DISCOVERING THIS SO U PARSE TO INT
+   }
     //function to convert map from firebase back into tableData format
     const convertEntryMapToTableData = (entryMap) => {
       
@@ -98,13 +108,31 @@ const Calendar = () => {
     };
 
   
-const UpdateWeeklySwipes = async (e) =>{
-  const result = createOptionMap(tableData);
-  const entryMap = createEntryMap(tableData); 
-  console.log('sent map', entryMap)//Just to test
-  updateWeeklySwipesForLocations(entryMap);
-  console.log('DATATABLE', tableData);
-  }
+    const UpdateWeeklySwipes = async () => {
+      const entryMap = createEntryMap(tableData);
+    
+      const swipesOnOldCalendar = swipesOnCalander(lastSentCalendar);
+      const swipesOnNewCalendar = swipesOnCalander(tableData);
+    
+      console.log('swipesOnOldCalendar:', swipesOnOldCalendar);
+      console.log('typeOf swipesOnOldCalendar', typeof(swipesOnOldCalendar));
+      console.log('swipesOnNewCalendar:', swipesOnNewCalendar);
+      console.log('typeOf swipesOnNewCalendar', typeof(swipesOnNewCalendar));
+      const data = await fetchRemainingBalance();
+      const oldSwipeTotal = data[0]["Remaining Balance"]
+      console.log('oldSwipeTotal:', oldSwipeTotal);
+      console.log('swipesOnNewCalendar Type:', typeof(swipesOnNewCalendar));
+      const updatedSwipeTotal = oldSwipeTotal - (swipesOnNewCalendar - swipesOnOldCalendar);
+      console.log('updatedSwipeTotal:', updatedSwipeTotal);
+    
+      console.log('sent map', entryMap); // Just to test
+      updateWeeklySwipesForLocations(entryMap);
+      console.log('sent new bal: ', updatedSwipeTotal);
+      updateRemainingBalance(updatedSwipeTotal);
+      console.log('DATATABLE', tableData);
+      setLastSentCalendar(tableData);
+    };
+    
 
 //Creates a map to change tableData into a map firebase can take
 const createEntryMap = (tableData) => {

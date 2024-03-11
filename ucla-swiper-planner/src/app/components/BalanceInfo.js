@@ -104,7 +104,16 @@ function BalanceInfo({ totalSwipesUsed, totalSwipesAvailable, currentWeek, curre
   console.log("current week:");
   console.log(currentWeek);
 
-
+  let trackingMessage;
+  if(remainingBalance > totalSwipesAvailable - ((currentWeek - 1) * swipesPerWeek) - intendedData){
+    trackingMessage="Wow, you've got extra swipes to spare!";
+  }
+  else if (remainingBalance < totalSwipesAvailable - ((currentWeek - 1) * swipesPerWeek) - intendedData){
+    trackingMessage= "Uh oh, it seems you're using swipes faster than expected"
+  }
+  else{
+   trackingMessage= "You're right on target with your meal swipes! Keep it up!"
+  }
   return (
     <div className={styles.balanceInfo}>
       <h2>Meal Swipe Balance</h2>
@@ -112,7 +121,7 @@ function BalanceInfo({ totalSwipesUsed, totalSwipesAvailable, currentWeek, curre
       {/* <p>You should have {totalSwipesAvailable - ((currentWeek * swipesPerWeek) - (currentDay * 3))} swipes remaining.</p> */}
       <p>You should have {totalSwipesAvailable - ((currentWeek - 1) * swipesPerWeek) - intendedData} swipes remaining.</p>
 
-      <p>You are {onTrack ? "on track" : "not on track"} with your meal swipe balance.</p>
+      <p>{trackingMessage}</p>
     </div>
   );
 }
