@@ -1,0 +1,13 @@
+{
+  "hosting": {
+    "source": "./ucla-swiper-planner",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "frameworksBackend": {
+      "region": "us-west1"
+    }
+  }
+}
