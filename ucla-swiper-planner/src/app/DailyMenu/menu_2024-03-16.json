@@ -1,0 +1,67 @@
+{
+    "Breakfast": {
+        "Epicuria": [
+            "Closed"
+        ],
+        "De Neve": [
+            "Breakfast Hash Brown",
+            "Pork Sausage",
+            "Scrambled Eggs",
+            "Belgian Waffle"
+        ],
+        "Bruin Plate": [
+            "Bruin Scramble (ham & Cheddar)",
+            "Bruin Scramble (vegetarian)",
+            "Green Chile Eggs Benedict",
+            "Scrambled Eggs",
+            "Vegan Scrambled Eggs",
+            "Chickpea & Oat Waffle",
+            "Coconut Quinoa Pancakes"
+        ]
+    },
+    "Lunch": {
+        "Epicuria": [
+            "Closed"
+        ],
+        "De Neve": [
+            "Bar Honey Lime Chicken Thighs",
+            "Pork Sausage",
+            "Scrambled Eggs",
+            "Buffalo Chicken Pizza",
+            "Buffalo Blue Cheese Burger",
+            "D.f.c."
+        ],
+        "Bruin Plate": [
+            "Bruin Scramble (ham & Cheddar)",
+            "Bruin Scramble (vegetarian)",
+            "Spicy Thai Coconut Curry Chicken Wrap",
+            "Chickpea Salad Sandwich",
+            "Cajun Shrimp Flatbread",
+            "Vegetable Quinoa Cassoulet Flatbread",
+            "Pineapple & Cilantro Marinated Chicken Thigh",
+            "Mixed Grain Pita"
+        ]
+    },
+    "Dinner": {
+        "Epicuria": [
+            "Closed"
+        ],
+        "De Neve": [
+            "Bar Honey Lime Chicken Thighs",
+            "Burner Huevos Rancheros",
+            "Waffle",
+            "Fried Vegan Chick'n",
+            "Sundried Tomato Pesto Pizza",
+            "Margherita Pizza",
+            "Buffalo Blue Cheese Burger"
+        ],
+        "Bruin Plate": [
+            "Southern Pork & Black-eyed Pea Stew W/ Collard Greens Bowl",
+            "Seitan, Brown Rice, Kale, & Carrot Bowl",
+            "Turkey Meatballs",
+            "Scrambled Eggs",
+            "Mojo-marinated Flank Steak",
+            "Whole Wheat Pancakes W/ Amaranth & Chocolate Chips"
+        ]
+    }
+}
