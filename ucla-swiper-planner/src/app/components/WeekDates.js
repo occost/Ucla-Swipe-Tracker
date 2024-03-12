@@ -63,7 +63,7 @@ const WeekDatesDisplay = () => {
 export default WeekDatesDisplay;
 
 
-function calculateCurrentWeek() {
+export function calculateCurrentWeek() {
   const quarters = {
     fall: { start: new Date('2023-10-02'), end: new Date('2023-12-15') },
     winter: { start: new Date('2024-01-08'), end: new Date('2024-03-22') },
@@ -81,6 +81,3 @@ function calculateCurrentWeek() {
 
   return { currentWeek: null, currentQuarter: null };
 }
-
-const { currentWeek, currentQuarter } = calculateCurrentWeek();
-console.log(`Current week: ${currentWeek}, Current quarter: ${currentQuarter}`);
