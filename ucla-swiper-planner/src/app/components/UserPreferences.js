@@ -29,6 +29,7 @@ const auth = getAuth();
 const usersRef = collection(db, "Users");
 const user = auth.currentUser;
 
+
 const SwipePlanner = () => {
   const [selectedOption, setSelectedOption] = useState("14p"); // Default selection
   const [swipeValues, setSwipeValues] = useState({
@@ -96,13 +97,14 @@ const SwipePlanner = () => {
     });
    
     setSwipeValues(orderedSwipeValues);
-    updateWeeklySwipeCount(orderedSwipeValues);
+    // updateWeeklySwipeCount(orderedSwipeValues);
     
     setSelectedOption(option);
-
+    let newOption;
     // Update swipe values based on the selected option
     if (option === "14p") {
-      setSwipeValues({
+      console.log("GOT HERE 14P");
+     newOption={
         Monday: 2,
         Tuesday: 2,
         Wednesday: 2,
@@ -110,9 +112,10 @@ const SwipePlanner = () => {
         Friday: 2,
         Saturday: 2,
         Sunday: 2,
-      });
+      };
     } else if (option === "19p") {
-      setSwipeValues({
+      console.log("GOT HERE");
+      newOption={
         Monday: 3,
         Tuesday: 3,
         Wednesday: 3,
@@ -120,10 +123,10 @@ const SwipePlanner = () => {
         Friday: 3,
         Saturday: 2,
         Sunday: 2,
-      });
+      };
     } else {
       // Default option "11p" or any other option
-      setSwipeValues({
+      newOption={
         Monday: 2,
         Tuesday: 2,
         Wednesday: 2,
@@ -131,11 +134,14 @@ const SwipePlanner = () => {
         Friday: 1,
         Saturday: 1,
         Sunday: 1,
-      });
+      };
     }
 
     setMessage("You are using a valid amount of Swipes"); // Clear the message when changing the option
     updateMealPlanType(option);
+    console.log(newOption);
+    setSwipeValues(newOption);
+    updateWeeklySwipeCount(newOption);
     
   };
 
@@ -186,16 +192,16 @@ const SwipePlanner = () => {
   
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>WELCOME TO THE PROFILE PAGE</h1>
+      <h1 className={styles.CenterText} >Welcome to the Profile Page!</h1>
 
       <div className={styles.explanationBox}>
-        <p className={styles.explanationText}>
+        <styles.p1 className={styles.explanationText}>
           This is the Profile Page where you will set the amount of swipes you would like to use each day.
           We will use this information to display how many swipes you should have for the remaining week.
           You can also update the current amount of swipes you have right now! This will give us an accurate
           representation about how on track you actually are. Below that features your Lunch-Wrapped! 
           Discover your top 3 visited dining halls or takeout favorites, a review of your culinary adventures.
-        </p>
+        </styles.p1>
       </div>
 
       <div className={styles.buttonGroup}>
@@ -268,9 +274,9 @@ const SwipePlanner = () => {
         Save
       </button>
 
-      <h2 className={styles.podiumMessage}>
+      {/* <h2 className={styles.podiumMessage}>
         Your Lunch-Wrapped UPDATED
-      </h2>
+      </h2> */}
     </div>
   );
 };

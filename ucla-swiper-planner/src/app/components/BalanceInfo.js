@@ -20,6 +20,7 @@ import {
 
 import { db } from '../../../firebase/FirebaseApp';
 
+import { calculateCurrentWeek } from "./WeekDates";
 
 const auth = getAuth();
 const usersRef = collection(db, "Users");
@@ -27,8 +28,10 @@ const user = auth.currentUser;
 // Styles
 import styles from '../styles/Home.module.css';
 
-function BalanceInfo({ totalSwipesUsed, totalSwipesAvailable, currentWeek, currentDay, swipesPerWeek, onTrack }) {
-
+function BalanceInfo() {
+  const { currentWeek, currentQuarter } = calculateCurrentWeek();
+  let totalSwipesAvailable;
+  let swipesPerWeek;
   const [user, setUser] = useState(null);
   const [remainingBalance, setRemainingBalance] = useState('140');
   const [mealPlanType, setMealPlanType] = useState("14p");
@@ -66,7 +69,7 @@ function BalanceInfo({ totalSwipesUsed, totalSwipesAvailable, currentWeek, curre
           const currentDayIndex = days.indexOf(today);
 
           Object.keys(sortedData).forEach((day, index) => {
-            if (index < currentDayIndex) {
+            if (index <= currentDayIndex ) {
               intendedSwipes += sortedData[day];
             }
             console.log(day, "intendedSwipes", intendedSwipes);
