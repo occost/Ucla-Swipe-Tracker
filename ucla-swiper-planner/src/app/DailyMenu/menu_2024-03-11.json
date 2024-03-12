@@ -1,0 +1,83 @@
+{
+    "Breakfast": {
+        "Epicuria": [
+            "Closed"
+        ],
+        "De Neve": [
+            "Burner French Toast",
+            "Breakfast Hash Brown",
+            "Kielbasa",
+            "Scrambled Eggs",
+            "Belgian Waffle",
+            "Egg Benedict Sandwich"
+        ],
+        "Bruin Plate": [
+            "Bruin Scramble W/ Roasted Pork Tenderloin",
+            "Bruin Scramble (vegetarian)",
+            "Tofu Benedict W/ Corn Hollandaise",
+            "Scrambled Eggs",
+            "Vegan Scrambled Eggs",
+            "Oat & Whole Wheat Waffle",
+            "Cinnamon Polenta Pancake W/ Apple Cranberry Compote"
+        ]
+    },
+    "Lunch": {
+        "Epicuria": [
+            "Closed"
+        ],
+        "De Neve": [
+            "Bar Pineapple & Cilantro Marinated Chicken Thigh",
+            "Honey Huli Huli Rotisserie Chicken",
+            "Coconut Crusted Tofu",
+            "kokonatsu Tofu",
+            "Origin/inspiration: Japan",
+            "Luau Pizza",
+            "Pepperoni Deluxe Pizza",
+            "Big Island Burger",
+            "Chicken Katsu Sandwich"
+        ],
+        "Bruin Plate": [
+            "Cajun Tofu, Polenta, & Spinach Bowl",
+            "Plantain, Cranberry Bean, Quinoa, & Swiss Chard Bowl",
+            "Salmon, Dill Goat Cheese, & Cucumber Stacker",
+            "Roasted Cauliflower & Veggie Wrap",
+            "Balsamic Pear, Frisee, & Pecan Flatbread",
+            "Cilantro Pesto W/ Tri-tip Tortilla Pizza",
+            "Havana Pork Slider",
+            "Spinach & White Bean Stacker W/ Arugula"
+        ]
+    },
+    "Dinner": {
+        "Epicuria": [
+            "Penne W/ Artichokes & Eggplant",
+            "Spiralini W/ Chicken, Gorgonzola, & Sun-dried Tomatoes",
+            "Brisket & Sundried Tomato Pizza",
+            "Mediterranean Open-faced Tuna Sandwich",
+            "Vegan Campania Panini",
+            "Cod In Persillade",
+            "Roasted Carrots W/ Honey & Pistachio",
+            "Lamb, Rice, & Swiss Chard Saute",
+            "Iberian Cauliflower & Noodle Saute"
+        ],
+        "De Neve": [
+            "Bar Pineapple & Cilantro Marinated Chicken Thigh",
+            "Garlic Shrimp",
+            "Origin/inspiration: Hawaii",
+            "Cayenne Spiced Fried Cauliflower",
+            "Luau Pizza",
+            "Pepperoni Deluxe Pizza",
+            "Big Island Burger",
+            "Chicken Katsu Sandwich"
+        ],
+        "Bruin Plate": [
+            "Chickpea Panisse, Mixed Grains, & Rapini Bowl",
+            "Rotini, Pesto, & Kale Bowl",
+            "Roasted Lemongrass-ginger Chicken",
+            "Vegan Lasagna W/ Tofu Ricotta",
+            "Cioppino Flatbread",
+            "Kale Hummus, Winter Greens & Red Quinoa Flatbread",
+            "Santa Maria Tri-tip",
+            "Persian Style Tofu"
+        ]
+    }
+}

@@ -1,0 +1,65 @@
+{
+    "Breakfast": {
+        "Epicuria": [
+            "Closed"
+        ],
+        "De Neve": [
+            "Breakfast Hash Brown",
+            "Pork Sausage",
+            "Scrambled Eggs",
+            "Belgian Waffle",
+            "Smoked Salmon Egg Benedict"
+        ],
+        "Bruin Plate": [
+            "Bruin Scramble (ham & Cheddar)",
+            "Bruin Scramble (vegetarian)",
+            "Chayote, Tri-tip & Egg Bowl",
+            "Scrambled Eggs",
+            "Vegan Scrambled Eggs",
+            "Four Grain Waffles",
+            "Chunky Apple Oatmeal Pancake"
+        ]
+    },
+    "Lunch": {
+        "Epicuria": [
+            "Closed"
+        ],
+        "De Neve": [
+            "Bar Lemon Garlic Chicken Thighs",
+            "Country Fried Steak",
+            "Meatball Pizza",
+            "Patty Melt",
+            "Country Gravy Chicken Sandwich"
+        ],
+        "Bruin Plate": [
+            "Steak, Black Lentil & Butternut Squash Bowl",
+            "Golden Chickpeas W/ Rice, Beans & Kale Bowl",
+            "Baja Caesar Salad W/ Chipotle Chicken",
+            "Vegan Baja Caesar Salad",
+            "Cuban Pork Pizza",
+            "Tri-color Cauliflower Flatbread",
+            "Orange Chipotle Herb Marinated Chicken Thigh"
+        ]
+    },
+    "Dinner": {
+        "Epicuria": [
+            "Closed"
+        ],
+        "De Neve": [
+            "Bar Lemon Garlic Chicken Thighs",
+            "Burner Chicken Pot Pie",
+            "Vegetable Pot Pie",
+            "Macaroni & Cheese",
+            "Tillamook Ricotta & Fontina Pizza",
+            "Patty Melt"
+        ],
+        "Bruin Plate": [
+            "Pebre-marinated Flank Steak & Guacamole Bowl",
+            "Chayote Squash, Heirloom Bean Stew, & Kale Bowl",
+            "Garlic Cumin Chicken Wings",
+            "Breakfast Taco",
+            "Seared Salmon",
+            "Southwestern Tofu"
+        ]
+    }
+}

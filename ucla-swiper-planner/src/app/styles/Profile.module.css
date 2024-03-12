@@ -1,7 +1,36 @@
 /* src/app/styles/Profile.module.css */
+.podiumMessage,
+.title {
+  text-align: center;
+  /* Center the text */
+  color: #4b5b7e;
+  /* Set text color to white */
+  margin-bottom: 20px;
+  /* Add margin to create space below the title, adjust as needed */
+  /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); */
+  /* Add a subtle 3D text shadow */
+}
+
+.formLabelCont {
+  margin-right: 5px;
+}
+
+.updateSwipes {
+  padding-top: 5px;
+  font-size: small;
+}
+
+
+.formContainer {
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  /* Add margin to separate the form from buttons */
+}
+
 
 .container {
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
 }
@@ -9,7 +38,8 @@
 .buttonGroup {
   display: flex;
   gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+
 }
 
 .button {
@@ -21,8 +51,23 @@
 
 .button:hover {
   transform: scale(1.1);
-  background-color: #4285f4;
+  background-color: #8BB8E8;
   color: #fff;
+}
+
+.saveButton {
+  /* Added class for the Save button */
+  background-color: #c4f2c4;
+  /* Light green color */
+  color: #000;
+  margin-top: 5px;
+
+  /* Black text color, adjust as needed */
+}
+
+.saveButton:hover {
+  background-color: #90ee90;
+  /* Darker shade on hover, adjust as needed */
 }
 
 .table {
@@ -30,11 +75,21 @@
   width: 100%;
 }
 
+.table th:hover,
+.table td:hover,
+.table .hoverable:hover {
+  transform: scale(1.1);
+}
+
+/* Apply common styles to th and td */
 .table th,
 .table td {
   border: 1px solid #ddd;
   padding: 8px;
+  width: 100px;
   text-align: center;
+  transition: transform 0.2s ease-in-out;
+  /* Added transition */
 }
 
 .adjustButtons {
@@ -52,7 +107,6 @@
 
 .adjustButtons button:hover {
   transform: scale(1.1);
-  
 }
 
 .standings {
@@ -75,7 +129,7 @@
 }
 
 .selected {
-  background-color: #536895;
+  background-color: #8BB8E8;
   color: #fff;
 }
 
@@ -85,6 +139,7 @@
   border: 1px solid #ddd;
   background-color: #f2f2f2;
   transition: background-color 0.3s;
+  margin-bottom: 20px;
 }
 
 .message:hover {
@@ -94,30 +149,69 @@
 .podium {
   display: flex;
   align-items: flex-end;
-  justify-content: space-around;
-  margin-top: 20px;
+  /* justify-content: space-around; */
+  margin-right: 10px;
+  justify-content: center;
+
 }
 
+/* Adjust podium block styles for gold, silver, and bronze */
 .podiumBlock {
   width: 100px;
   text-align: center;
   color: white;
+  margin-right: 10px;
+  /* Adjust the negative margin to make podium blocks touch */
 }
 
 .podiumBlock1 {
-  height: 120px;
-  background-color: #536895;
+  height: 200px;
+  background-color: gold;
+  /* Change the color to gold for the first place */
   order: 2;
 }
 
+
 .podiumBlock2 {
-  height: 80px;
-  background-color: #536895;
+  height: 130px;
+  background-color: silver;
+  /* Change the color to silver for the second place */
   order: 1;
 }
 
 .podiumBlock3 {
-  height: 60px;
-  background-color: #536895;
+  height: 90px;
+  background-color: #cd7f32;
+  /* Change the color to bronze for the third place */
   order: 3;
+}
+
+.customP {
+  /* Reset to default styles of p tag */
+  color: black;
+  font-weight: 80;
+}
+
+.customP1 {
+  /* Reset to default styles of p tag */
+  color: black;
+  font-weight: 80;
+  margin-bottom: 40px;
+}
+
+.explanationBox {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+
+.explanationText{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
 }

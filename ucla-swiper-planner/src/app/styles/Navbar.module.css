@@ -1,31 +1,37 @@
 /* styles/Navbar.module.css */
 .navbar {
-    background-color: var(--ucla-blue);
-    padding: var(--spacing-medium);
-    font-size: 20px;
-  }
-  
-  .navList {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .navItem {
-    margin: 0 var(--spacing-small);
-  }
-  
-  .navLink {
-    color: var(--white);
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 8px;
-  }
-  
-  .navLink:hover {
-    text-decoration: none;
-    color: var(--ucla-gold);
-  }
+  background-color: var(--ucla-blue);
+  padding: var(--spacing-medium) var(--spacing-large);
+  font-size: 18px; /* Slightly reduced for a more balanced look */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  display: flex;
+  justify-content: center; /* Ensures the nav content is centered */
+  align-items: center;
+  min-height: 8vh;
+}
 
+.navList {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+}
 
-  
+.navItem {
+  margin: 0 var(--spacing-medium); /* Increased spacing for better separation */
+}
+
+.navLink {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: bold;
+  padding: var(--spacing-small) var(--spacing-medium); /* Added padding for a larger clickable area */
+  border-radius: var(--border-radius);
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.navLink:hover, .navLink:focus {
+  background-color: var(--ucla-gold); /* Subtle background color on hover/focus */
+  color: var(--dark-blue); /* Contrast color for better visibility */
+  text-decoration: none; /* Ensures text-decoration does not re-appear on hover/focus */
+}

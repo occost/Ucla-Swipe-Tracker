@@ -5,8 +5,8 @@
 
 :root {
   /* Color Palette */
-  --ucla-blue: #536895; /* UCLA Blue */
-  --ucla-gold: #ffb300; /* UCLA Gold */
+  --ucla-blue: #8BB8E8; /* UCLA Blue */
+  --ucla-gold: #FFD100; /* UCLA Gold */
   --dark-blue: #003c71; /* Darker shade for text and accents */
   --light-gray: #f4f4f4; /* Background and layout */
   --dark-gray: #333; /* Text color */
@@ -56,6 +56,7 @@ body {
   background-color: var(--light-gray);
   font-size: var(--font-size-base);
   line-height: 1.6;
+  min-height: 100vh; /* Ensure full vertical height */
 }
 
 
@@ -65,8 +66,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 p {
-  margin-bottom: var(--spacing-medium);
+  color: var(--dark-gray); /* Utilizes the dark gray color for text */
+  font-size: 1rem; /* Maintains a readable font size */
+  line-height: 1.75; /* Improves readability by increasing line height */
+  margin-bottom: 1.5rem; /* Adds spacing below paragraphs */
+  max-width: 80ch; /* Controls the maximum width of text lines for readability */
+  padding: 2rem; /* Adds internal spacing for the paragraph */
+  background-color: var(--light-gray); /* Light gray background for soft contrast */
+  border-left: 5px solid var(--ucla-blue); /* Stylistic accent line using UCLA Blue */
+  border-radius: var(--border-radius); /* Applies border-radius for rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
 }
+
 
 a {
   color: var(--ucla-blue);
