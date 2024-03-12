@@ -34,7 +34,7 @@ function SwipeTracker() {
     const [mealPlanType, setMealPlanType] = useState("14p");
     const [swipesUsedThisWeek, setSwipesUsedThisWeek] = useState(0);
 
-    const [swipeMessage, setSwipeMessage] = useState(""); // New state for the message
+    const [swipeMessage, setSwipeMessage] = useState("Please update your profile page."); // New state for the message
 
 
 
@@ -67,11 +67,12 @@ function SwipeTracker() {
                     const currentDayIndex = days.indexOf(today);
 
                     Object.keys(sortedData).forEach((day, index) => {
-                        if (index < currentDayIndex || (currentDayIndex === 6 && index === 6)) {
+                        console.log("index", index, "currDay index: ", currentDayIndex);
+                        if (index <= currentDayIndex || (currentDayIndex === 6 && index === 6)) {
                             console.log(currentDayIndex, "index < currentDayIndex: ", index, '<', currentDayIndex)
                             intendedSwipes += sortedData[day];
                         }
-                        console.log(day, "intendedSwipes", intendedSwipes);
+                        console.log(day, "intendedSwipes FROM SWIPE TRACKER", intendedSwipes);
                     });
 
                     console.log("currentDayIndex:", currentDayIndex);
@@ -96,7 +97,7 @@ function SwipeTracker() {
 
                     const loggedSwipes = weekEntries[0]["Current Week's Location Swipes"];
                     const nameCounts = sumNonEmptyNames(loggedSwipes);
-                    console.log("nameCounts: ",nameCounts);
+                    console.log("nameCounts: ", nameCounts);
                     setSwipesUsedThisWeek(nameCounts);
                     console.log(swipesUsedThisWeek);
 
@@ -120,8 +121,8 @@ function SwipeTracker() {
         }
 
         return () => unsubscribe(); // Cleanup subscription
-    }, [user,swipesUsedThisWeek]);
-    
+    }, [user, swipesUsedThisWeek]);
+
 
     if (mealPlanType === "19p") {
         totalSwipesAvailable = 205;
@@ -138,11 +139,21 @@ function SwipeTracker() {
 
     console.log("swipesUsedThisWeek: ", swipesUsedThisWeek)
 
+    let TSW;
+
+    if (isNaN(totalSwipesAvailable - remainingBalance)) {
+        TSW = " Please update your profile page. ";
+    } else {
+        TSW = totalSwipesAvailable - remainingBalance;
+    }
+
+    console.log("tsw:", TSW)
+
 
     return (
         <div className={styles.swipeTracker}>
             <h2>Swipe Tracker</h2>
-            <p>Total Swipes Used: {totalSwipesAvailable - remainingBalance}</p>
+            <p>Total Swipes Used: {TSW}</p>
             <p>Remaining Swipes for the Week: {weeklySwipesUsed}</p>
             {swipeMessage && <p>{swipeMessage}</p>}
         </div>
