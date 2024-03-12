@@ -1,14 +1,19 @@
 'use client'
+import { useEffect } from 'react';
 
 import app from '../../../firebase/FirebaseApp'; // Adjust the path as needed
 import { getAuth, signOut } from "firebase/auth";
 import {useRouter} from "next/navigation"
 import { useAuthState } from 'react-firebase-hooks/auth';
 
+import styles from "../styles/SignOut.module.css"
+
 export default function SignOut() {
     const auth = getAuth(app); // Initialize auth with the Firebase app instance
     const router = useRouter();
     const [user, loading] = useAuthState(auth);
+
+
 
     const handleSignOut = async () => {
         await signOut(auth); // Correctly call signOut
@@ -27,11 +32,9 @@ export default function SignOut() {
     // }
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-900">
-            <div className="bg-gray-800 p-8 rounded-md shadow-lg w-96">
-                <button onClick={handleSignOut}
-                    className="w-full bg-blue-500 text-white rounded-md py-2 px-4 hover:bg-blue-600 transition-colors"
-                >
+        <div className={styles.signOutContainer}>
+            <div className={styles.signOutBox}>
+                <button onClick={handleSignOut} className={styles.signOutButton}>
                     Sign Out
                 </button>
             </div>
