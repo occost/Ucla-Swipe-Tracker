@@ -344,7 +344,7 @@ const createEntryMap = (tableData) => {
     // Rest of your component code...
 
     return (
-      <div className ={styles.Calendar} >
+      <div className={styles.container} >
         {/* <h2>Month1 Day1 - Month2 Day2</h2> */}
         <table className={styles.Calendar}>
           <thead>
@@ -365,7 +365,7 @@ const createEntryMap = (tableData) => {
                       value={items[items.length - 1]?.name || ''}
                       onChange={(e) => handleChange(index, items.length - 1, 'name', e.target.value)}
                     >
-                      <option value="" disabled>Select Name</option>
+                      <option value="" disabled>Add Meal</option>
                       {nameOptions.map((option) => (
                         <option key={option.value} value={option.value}>
                           {option.label}
@@ -378,7 +378,7 @@ const createEntryMap = (tableData) => {
                       value={items[items.length - 1]?.period || ''}
                       onChange={(e) => handleChange(index, items.length - 1, 'period', e.target.value)}
                     >
-                      <option value="" disabled>Select Period</option>
+                      <option value="" disabled>Add Period</option>
                       {periodOptions.map((option) => (
                         <option key={option.value} value={option.value}>
                           {option.label}
@@ -387,7 +387,7 @@ const createEntryMap = (tableData) => {
                     </select>
 
                     {/* Buttons for Add and Clear*/}  
-                    <button className={styles.Button} onClick={() => handleAddItem(index)}>Add Item</button>
+                    <button className={styles.Button} onClick={() => handleAddItem(index)}>Confirm</button>
                     <button className={styles.Button} onClick={() => handleClearEntries(index)}>Clear Entries</button>
 
                   </div>
