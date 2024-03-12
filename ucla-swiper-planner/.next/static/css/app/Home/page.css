@@ -1,0 +1,221 @@
+/*!**************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[3]!./src/app/styles/Home.module.css ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************/
+/* styles/Home.module.css */
+.Home_container__XXbpJ {
+    padding: 0 2rem;
+}
+
+.Home_main__9U9PE {
+    min-height: 100vh;
+    padding: 4rem 0;
+    display: flex;  /* Enable flex for row layout */
+    flex-direction: column;  /* Stack components vertically */
+    justify-content: center;  /* Center content vertically */
+    align-items: center;  /* Center content horizontally */
+}
+
+.Home_header-container__vVXeg {
+    text-align: center;  /* Center the title text */
+  }
+
+
+.Home_title__u58B2 {
+    line-height: 1.15;
+    font-size: 4rem;
+    margin-bottom: var(--spacing-medium);
+    margin-top: 0;
+}
+
+.Home_swipeTracker__SyOaJ, .Home_balanceInfo__wezxO {
+    margin: 2rem;
+    padding: 2rem;
+    text-align: center;
+    color: inherit;
+    border: 1px solid #eaeaea;
+    border-radius: 10px;
+    transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+
+.Home_swipeTracker__SyOaJ:hover, .Home_swipeTracker__SyOaJ:focus, 
+.Home_balanceInfo__wezxO:hover, .Home_balanceInfo__wezxO:focus {
+    color: #0070f3;
+    border-color: #0070f3;
+}
+
+.Home_sideBySide___vBAe {
+    display: grid;
+    grid-template-columns: 1fr 1fr;  /* Define two grid columns */
+    grid-gap: 1rem;  /* Add spacing between grid items */
+    margin: 0 auto;  /* Center container horizontally on the page */
+    width: -moz-fit-content;
+    width: fit-content;  /* Adjust container width to fit content */
+  }
+
+/* Example media query in ui/Home.module.css */
+@media (max-width: 768px) {
+    .Home_main__9U9PE {
+        padding: 1rem; /* Adjust padding for smaller screens */
+    }
+    /* Add more responsive styles as needed */
+}
+/*!**************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[3]!./src/app/styles/Menu.module.css ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************/
+/* styles/Menu.module.css */
+.Menu_menu__Hj86w {
+    background-color: var(--light-gray);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-medium);
+    display: flex;
+    justify-content: space-around; /* Distribute space evenly around meal sections */
+    flex-wrap: wrap; /* Ensure responsiveness */
+    margin-top: var(--spacing-large);
+  }
+  
+  .Menu_menuTitle__hHNve {
+    color: var(--dark-blue);
+    text-align: center;
+    margin-bottom: var(--spacing-large);
+    width: 100%; /* Ensure the title spans the full width */
+  }
+  
+  .Menu_mealSection__dwTbS {
+    width: 30%; /* Adjust based on preference and available space */
+    margin-bottom: var(--spacing-large);
+    transition: transform 0.3s ease; /* Smooth transition for hover effect */
+    padding: 50px;
+  }
+  
+  .Menu_mealSection__dwTbS:hover {
+    transform: scale(1.05); /* Slightly enlarge sections on hover */
+  }
+
+  .Menu_mealSection__dwTbS div {
+    margin: var(--spacing-small) 0;
+  }
+  
+  .Menu_mealSection__dwTbS h3 {
+    color: var(--ucla-blue);
+    margin-bottom: var(--spacing-small);
+    transition: color 0.3s ease; /* Smooth transition for text color change */
+  }
+  
+  .Menu_mealSection__dwTbS:hover h3 {
+    color: var(--ucla-gold); /* Change color on hover */
+  }
+
+
+  .Menu_mealSection__dwTbS h4 {
+    margin-top: 100px;
+  }
+
+
+  .Menu_mealSection__dwTbS ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .Menu_mealSection__dwTbS ul li {
+    background-color: var(--white);
+    margin-bottom: var(--spacing-small);
+    padding: var(--spacing-small);
+    border-radius: var(--border-radius);
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions for hover effects */
+  }
+  
+  .Menu_mealSection__dwTbS ul li:hover {
+    background-color: var(--ucla-blue); /* Change background color on hover */
+    color: var(--white); /* Change text color on hover */
+    transform: translateY(-2px); /* Slightly raise the item */
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .Menu_mealSection__dwTbS {
+      width: 100%; /* Stack meal sections vertically on smaller screens */
+      margin-bottom: var(--spacing-medium);
+    }
+  }
+  
+/*!*****************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[3]!./src/app/styles/SignOut.module.css ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************/
+/* styles/SignOut.module.css */
+.SignOut_signOutContainer__C9lXb {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    background-color: var(--gray-900); /* Assuming this is a darker shade defined in your root or globals.css */
+  }
+  
+  .SignOut_signOutBox__d5uIR {
+    background-color: var(--gray-800); /* Assuming this is a shade defined in your root or globals.css */
+    padding: var(--spacing-medium);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 300px; /* Adjust width as necessary */
+  }
+  
+  .SignOut_signOutButton__D9Tds {
+    width: 100%;
+    background-color: var(--ucla-blue);
+    color: var(--white);
+    padding: var(--spacing-medium) var(--spacing-large);
+    font-size: var(--font-size-base);
+    font-weight: bold;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .SignOut_signOutButton__D9Tds:hover {
+    background-color: var(--ucla-gold);
+    color: var(--dark-blue);
+    transform: translateY(-2px);
+  }
+  
+/*!****************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[3]!./src/app/styles/Navbar.module.css ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************/
+/* styles/Navbar.module.css */
+.Navbar_navbar__vqhjI {
+  background-color: var(--ucla-blue);
+  padding: var(--spacing-medium) var(--spacing-large);
+  font-size: 18px; /* Slightly reduced for a more balanced look */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  display: flex;
+  justify-content: center; /* Ensures the nav content is centered */
+  align-items: center;
+  min-height: 8vh;
+}
+
+.Navbar_navList__hbwEz {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+}
+
+.Navbar_navItem__w5mON {
+  margin: 0 var(--spacing-medium); /* Increased spacing for better separation */
+}
+
+.Navbar_navLink__CdrRi {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: bold;
+  padding: var(--spacing-small) var(--spacing-medium); /* Added padding for a larger clickable area */
+  border-radius: var(--border-radius);
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.Navbar_navLink__CdrRi:hover, .Navbar_navLink__CdrRi:focus {
+  background-color: var(--ucla-gold); /* Subtle background color on hover/focus */
+  color: var(--dark-blue); /* Contrast color for better visibility */
+  text-decoration: none; /* Ensures text-decoration does not re-appear on hover/focus */
+}
+
