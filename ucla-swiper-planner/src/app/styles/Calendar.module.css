@@ -44,6 +44,12 @@
   justify-content: center;
 }
 
+.Welcome{
+  display:flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
 .Button:hover {
   transform: scale(1.1);
   background-color: #8BB8E8;
@@ -54,4 +60,40 @@
   transform: scale(1.1);
   background-color: #8BB8E8;
   color: #fff;
+}
+
+.explanationBox {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+
+.explanationText{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.p1 {
+  color: var(--dark-gray); /* Utilizes the dark gray color for text */
+  font-size: 1rem; /* Maintains a readable font size */
+  line-height: 1.75; /* Improves readability by increasing line height */
+  margin-bottom: 1.5rem; /* Adds spacing below paragraphs */
+   /* Controls the maximum width of text lines for readability */
+  padding: 2rem; /* Adds internal spacing for the paragraph */
+  background-color: var(--light-gray); /* Light gray background for soft contrast */
+  border-left: 5px solid var(--ucla-blue); /* Stylistic accent line using UCLA Blue */
+  border-radius: var(--border-radius); /* Applies border-radius for rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+
 }
