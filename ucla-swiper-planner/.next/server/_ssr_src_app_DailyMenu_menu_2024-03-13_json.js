@@ -1,0 +1,25 @@
+"use strict";
+/*
+ * ATTENTION: An "eval-source-map" devtool has been used.
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file with attached SourceMaps in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
+exports.id = "_ssr_src_app_DailyMenu_menu_2024-03-13_json";
+exports.ids = ["_ssr_src_app_DailyMenu_menu_2024-03-13_json"];
+exports.modules = {
+
+/***/ "(ssr)/./src/app/DailyMenu/menu_2024-03-13.json":
+/*!************************************************!*\
+  !*** ./src/app/DailyMenu/menu_2024-03-13.json ***!
+  \************************************************/
+/***/ ((module) => {
+
+module.exports = JSON.parse('{"Breakfast":{"Epicuria":["Closed"],"De Neve":["The Bacon","Breakfast Hash Brown","Scrambled Eggs","The Pizzeria Belgian Waffle","The Tex-mex Eggs Benedict"],"Bruin Plate":["Bruin Scramble (ham & Cheddar)","Bruin Scramble (vegetarian)","Pork Patty W/ Rice & Egg","Scrambled Eggs","Vegan Scrambled Eggs","Four Grain Waffles","Vegetable Stuffed Whole Wheat Crepe"]},"Lunch":{"Epicuria":["Closed"],"De Neve":["Bar Chicken Thigh","The Front Burner Cincinnati Style Chili","High Carbon Footprint","Spaghetti Noodles","Minnesota Spaghetti Pie","The Wisconsin Beer Brats","Vegetarian Hot Dog","The Pizzeria Garlic Chicken Pizza","The Omg Burger","High Carbon Footprint","Bacon Queso Double Dare"],"Bruin Plate":["Chicken"," Barley"," & Portobello Bowl","Winter Salad"," Mixed Grains"," & Avocado Bowl","Chicken Currant Pecan Salad","Barley & Kale Pesto Salad","Brussels Sprouts Slaw","Cucumber & Tomato Salad","Roasted Potato Salad","Spicy Roasted Beet & Carrot Salad","Beef Picadillo Flatbread","High Carbon Footprint","Shishito Pepper Flatbread","Fresh Herb Marinated Chicken Thigh","Peppercorn-crusted Portobello Stacker"]},"Dinner":{"Epicuria":["Fettuccine Puttanesca W/ Seared Salmon","Linguine W/ Lemon Sauce","Chicken & Sundried Tomato Pizza","Lebanese Beef Pita","High Carbon Footprint","Eggplant"," Red Pepper & Mozzarella Sandwich","Italian Chicken","Athenian Roasted Zucchini W/ Tomato"," Feta"," Oregano"," & Olives","Lebanese Style Fish","Pesto Bianco"],"De Neve":["Bar Chicken Thigh","The Front Burner German Meatballs W/ Caper Cream Sauce & Egg Noodles","High Carbon Footprint","Egg Noodles W/ Mushrooms","The Idaho Stuffed Potato Skin","Idaho Stuffed Potato Skin","The Pizzeria Garlic Chicken Pizza","The Omg Burger","High Carbon Footprint","Bacon Queso Double Dare"],"Bruin Plate":["Baked Cod W/ Spicy Roma Sauce Over Herbed Spaghetti","Whole Wheat Spaghetti W/ Vegan Italian Meatball & Spinach","Flank Steak Taco W/ Jicama-chipotle Salsa","High Carbon Footprint","Volcano Rice & Red Beans","Cilantro Jalapeno Marinated Chicken Thigh","Santa Maria Rubbed Tofu"]}}');
+
+/***/ })
+
+};
+;
