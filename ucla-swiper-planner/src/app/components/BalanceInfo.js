@@ -27,8 +27,10 @@ const user = auth.currentUser;
 // Styles
 import styles from '../styles/Home.module.css';
 
-function BalanceInfo({ totalSwipesUsed, totalSwipesAvailable, currentWeek, currentDay, swipesPerWeek, onTrack }) {
-
+function BalanceInfo() {
+  const currentWeek = 10;
+  let totalSwipesAvailable;
+  let swipesPerWeek;
   const [user, setUser] = useState(null);
   const [remainingBalance, setRemainingBalance] = useState('140');
   const [mealPlanType, setMealPlanType] = useState("14p");
