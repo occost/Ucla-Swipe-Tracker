@@ -1,29 +1,129 @@
-// Filename: src/app/components/Calendar.js
+"use client";
 
 // To inform Next.js that this is a client component
-'use client'
-import React, { useState } from 'react';
-import styles from '../styles/Calendar.module.css'
 
-import { updateWeeklySwipesForLocations } from '../../../firebase/FirebaseUtils';
+import React, { useState, useEffect } from 'react';
+import styles from '../styles/Calendar.module.css';
+
+import {
+  updateWeeklySwipesForLocations,
+  fetchWeeklySwipeSchedule,
+  
+} from '../../../firebase/FirebaseUtils';
+
+import {
+  getAuth,
+  onAuthStateChanged
+} from 'firebase/auth';
+
+import {
+  collection,
+  doc,
+  getDoc
+} from 'firebase/firestore';
+
+import { db } from '../../../firebase/FirebaseApp';
+
+
+const auth = getAuth();
+const usersRef = collection(db, "Users");
+const user = auth.currentUser;
 
 
 
 const Calendar = () => {
-    const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-  
-    const defaultEntry = { name: '', period: '' };
-  
-    const [tableData, setTableData] = useState(Array(7).fill([]).map(() => [{ ...defaultEntry }])); // Initialize as empty array
 
+  const [user, setUser] = useState(null); // Initialize user state
+  // Other states and variables remain the same
+  const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  
+  const defaultEntry = { name: "", period: ""};
+
+  const [tableData, setTableData] = useState(Array(7).fill([]).map(() => [{...defaultEntry }])); // Initialize as empty array
+
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser); // Update user state when auth state changes
+    });
+
+    if (user) { // Only proceed if the user object exists
+      const fetchData = async () => {
+        try {
+          console.log(user);
+          console.log('tableData', tableData);
+          const weekEntries = await fetchWeeklySwipeSchedule();
+          const formattedData = weekEntries[0]["Current Week's Location Swipes"]; // Assuming fetchWeeklySwipeSchedule needs the user's UID
+          const updatedTableData = convertEntryMapToTableData(formattedData);
+          
+          console.log('update data', updatedTableData);
+          console.log('formatted data', formattedData);
+          console.log('week data', weekEntries);
+          setTableData(updatedTableData);
+          console.log('settingtabledata', tableData);
+        } catch (error) {
+          console.error('Error fetching "week Entries":', error);
+        }
+      };
+  
+      fetchData(); 
+      console.log("after tableData", tableData);
+      // Call the fetchData function if the user is authenticated
+    }
+
+    return () => unsubscribe(); // Cleanup subscription
+  }, [user]);
+  
+   
+    //function to convert map from firebase back into tableData format
+    const convertEntryMapToTableData = (entryMap) => {
+      
+      const days = {
+        monday:0,
+        tuesday:1,
+        wednesday:2,
+        thursday:3,
+        friday:4,
+        saturday:5,
+        sunday:6
+      };
+      const result = [[]];
+
+      for (const [key, value] of Object.entries(days)) {
+        result[value] = entryMap[key] || [];
+        console.log('key', key);
+        console.log('value', entryMap[key]);
+      }
+      return result;
+    };
 
   
 const UpdateWeeklySwipes = async (e) =>{
   const result = createOptionMap(tableData);
-  updateWeeklySwipesForLocations(result);
+  const entryMap = createEntryMap(tableData); 
+  console.log('sent map', entryMap)//Just to test
+  updateWeeklySwipesForLocations(entryMap);
+  console.log('DATATABLE', tableData);
   }
 
+//Creates a map to change tableData into a map firebase can take
+const createEntryMap = (tableData) => {
+  let dict = {
 
+  };
+  // Iterate through each day in tableData
+  for (let i = 0; i < tableData.length; i++) {
+    const dayOfWeek = daysOfWeek[i].toLowerCase(); // Get the corresponding day of the week
+    const entries = tableData[i].map((item) => ({ name: item.name, period: item.period }));
+
+    // Add the entries to the dict based on the day of the week
+    dict[dayOfWeek] = entries;
+  }
+
+  console.log("converted into map", dict)
+  console.log("converted into array", convertEntryMapToTableData(dict));
+  return dict;
+};
 
 //Uses tableData to create a map of all the options
 //Need to update with all the options after
@@ -32,7 +132,7 @@ const UpdateWeeklySwipes = async (e) =>{
         deneve: 0,
         bplate: 0,
         epicuria: 0,
-        thestudy:0,
+        thestudy: 0,
         rendewest: 0,
         rendeeast: 0,
         feast: 0,
@@ -67,7 +167,10 @@ const UpdateWeeklySwipes = async (e) =>{
             if (entry.name == 'Rende East '){
               dict.rendeeast+=1;
             }
-            if (entry.name == 'Bcafe '){
+            if (entry.name == 'Feast '){
+              dict.feast+=1;
+            }
+            if (entry.name == 'BCafe '){
               dict.bcafe+=1;
             }
             if (entry.name == 'Campus '){
@@ -77,6 +180,7 @@ const UpdateWeeklySwipes = async (e) =>{
       }
       return dict;
     };
+
 
 
 //log table data
@@ -109,6 +213,7 @@ const UpdateWeeklySwipes = async (e) =>{
   
     //Sets table data based on selections in drop down menus
     const handleChange = (index, itemIndex, property, value) => {
+      console.log('CHangeing', tableData);
       setTableData((prevData) => {
         const newData = [...prevData];
         newData[index][itemIndex] = {
@@ -138,8 +243,40 @@ const UpdateWeeklySwipes = async (e) =>{
       { value: 'Campus ', label: 'Campus' },
       { value: 'Food Truck ', label: 'Food Truck' },
     ];
+
+    const [mounted, setMounted] = useState(false);
     
-  
+    useEffect(() => {
+      if (user) { // Only proceed if the user object exists
+        const fetchData = async () => {
+          try {
+            console.log('tableData', tableData);
+            const weekEntries = await fetchWeeklySwipeSchedule();
+            const formattedData = weekEntries[0]["Current Week's Location Swipes"]; // Assuming fetchWeeklySwipeSchedule needs the user's UID
+            const updatedTableData = convertEntryMapToTableData(formattedData);
+            
+            console.log('update data', updatedTableData);
+            console.log('formatted data', formattedData);
+            console.log('week data', weekEntries);
+            setTableData(updatedTableData);
+            console.log('settingtabledata', tableData);
+          } catch (error) {
+            console.error('Error fetching "week Entries":', error);
+          }
+        };
+    
+        fetchData(); 
+        console.log("after tableData", tableData);
+        // Call the fetchData function if the user is authenticated
+      }
+      return () => {
+        console.log('Component unmounted, cleanup code');
+      };
+    }, []); // Depend on `user` to re-run the effect when the user's sign-in state changes
+
+
+    // Rest of your component code...
+
     return (
       <div className ={styles.Calendar} >
         {/* <h2>Month1 Day1 - Month2 Day2</h2> */}
@@ -196,13 +333,15 @@ const UpdateWeeklySwipes = async (e) =>{
             </tr>
           </tbody>
         </table>
-        <button className={styles.Button} onClick={logDataStructure}>
+        <div className ={styles.UpdateButton}> 
+          <button className={styles.UpdateButton}  onClick={logDataStructure}>
         Send Update
       </button>
+      </div>
+       
         </div>
         
     );
   };
   
   export default Calendar;
-  

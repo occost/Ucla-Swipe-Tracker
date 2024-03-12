@@ -18,13 +18,13 @@ def condense_whitespace(input_text):
 def clean_menu(menu_string):
     # Removed menu's sublocation
     words_to_remove = ['Capri', 'Mezze', 'Flex', 'bar', 'Psistaria', 'Alimenti', 
-                       'Kitchen', 'The Pizzeria', 'Grill', 'Freshly', 'Bowled', 
-                       'Harvest', 'Stone', 'Oven', 'Simply', 'Grilled']
+                       'Kitchen', 'Pizzeria', 'Grill', 'Freshly', 'Bowled', 
+                       'Harvest', 'Stone', 'Oven', 'Simply', 'Grilled', 'Front', 'The']
     
     lines = menu_string.split('\n')
     cleaned_lines = []
     for line in lines: #removing extraneous information
-        if not any(phrase in line for phrase in ['Vegan Menu Option', 'Vegetarian Menu Option', 'Halal Menu Option', 'Low Carbon Footprint', 'Prepared', 'Detailed Menu' , 'Activity Level']) and 'Contains' not in line:
+        if not any(phrase in line for phrase in ['Vegan Menu Option', 'Vegetarian Menu Option', 'Halal Menu Option', 'Low Carbon Footprint', 'Prepared', 'Detailed Menu', 'High Carbon Footprint' , 'Activity Level', '\'', 'Origin/inspiration:']) and 'Contains' not in line:
             cleaned_line = ' '.join(word for word in line.split() if not any(remove_word in word for remove_word in words_to_remove))
             cleaned_lines.append(cleaned_line)
     
@@ -64,9 +64,8 @@ def parse_menu_items(html_content):
         text_menu = unidecode(menu.text.strip())
         no_whitespace_menu = condense_whitespace(text_menu)
         clean_menu_text = clean_menu(no_whitespace_menu)
-        
+
         lines = clean_menu_text.split('\n')
-        
         for line in lines:
             if 'Detailed Breakfast Menu' in line:
                 current_meal = 'Breakfast'
@@ -82,10 +81,25 @@ def parse_menu_items(html_content):
             if hall_name in menu_map:
                 current_hall = hall_name
             elif current_meal and current_hall:
-                menu_items = line.split(',')
+                # Split line into potential menu items
+                potential_items = line.split(',')
+                menu_items = []
+                for item in potential_items:
+                    # Check if the item is wrapped in quotes
+                    capitalized_item = ' '.join(word.capitalize() for word in item.strip().split())
+                    if item.startswith('"') and item.endswith('"'):
+                        menu_items.append(item.strip('"'))
+                    else:
+                        # Combine with the previous item if it doesn't end with a quote
+                        if menu_items:
+                            menu_items[-1] += f',{item}'
+                        else:
+                            menu_items.append(item)
                 menu_map[current_hall][current_meal].extend(menu_items)
-
+    
+    print(menu_map) #KEY POINT
     return menu_map
+
 
 
 def write_menu_to_json(menu_data, date):
@@ -94,17 +108,24 @@ def write_menu_to_json(menu_data, date):
         "Lunch": {},
         "Dinner": {}
     }
-    
-    for hall_name, menu in menu_data.items():
-        formatted_menus["Breakfast"][hall_name] = menu["Breakfast"]
-        formatted_menus["Lunch"][hall_name] = menu["Lunch"]
-        formatted_menus["Dinner"][hall_name] = menu["Dinner"]
+
+    halls_to_check = ["Epicuria", "De Neve", "Bruin Plate"]
+
+    # Loop through each meal period
+    for meal_period in formatted_menus.keys():
+        # Loop through each hall
+        for hall_name, menu in menu_data.items():
+            # If the hall is in the halls to check and it's empty for the current meal period, mark it as "Closed"
+            if hall_name in halls_to_check and not menu[meal_period]:
+                formatted_menus[meal_period][hall_name] = ["Closed"]
+            else:
+                formatted_menus[meal_period][hall_name] = menu[meal_period]
 
     # Format the date for the filename
     formatted_date = date.strftime("%Y-%m-%d")
 
     # Create the directory if it doesn't exist
-    directory = "Future-Menus"
+    directory = "./ucla-swiper-planner/src/app/DailyMenu"
     if not os.path.exists(directory):
         os.makedirs(directory)
 
@@ -112,6 +133,7 @@ def write_menu_to_json(menu_data, date):
     filename = os.path.join(directory, f"menu_{formatted_date}.json")
     with open(filename, 'w') as json_file:
         json.dump(formatted_menus, json_file, indent=4)
+
 
 # Loop through the next 7 days
 for i in range(7):
