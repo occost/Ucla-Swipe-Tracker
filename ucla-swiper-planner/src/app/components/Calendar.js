@@ -5,13 +5,18 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../styles/Calendar.module.css';
 
+import {getWeekString} from './WeekDates';
+
 import {
   updateWeeklySwipesForLocations,
   fetchWeeklySwipesForLocations,
   updateRemainingBalance,
-  fetchRemainingBalance
+  fetchRemainingBalance,
+  fetchLastLoggedEntry,
+  updateLastLoggedEntry
   
 } from '../../../firebase/FirebaseUtils';
+
 
 import {
   getAuth,
@@ -30,8 +35,8 @@ import { db } from '../../../firebase/FirebaseApp';
 const auth = getAuth();
 const usersRef = collection(db, "Users");
 const user = auth.currentUser;
-
-
+const TDYY= getWeekString();
+let lastEntry;
 
 const Calendar = () => {
 
@@ -45,6 +50,7 @@ const Calendar = () => {
 
   const [lastSentCalendar, setLastSentCalendar] = useState(Array(7).fill([]).map(() => [{...defaultEntry }])); 
 
+  //let tdyRn;
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser); // Update user state when auth state changes
@@ -53,11 +59,21 @@ const Calendar = () => {
     if (user) { // Only proceed if the user object exists
       const fetchData = async () => {
         try {
+          const week = getWeekString();
+          console.log('YOOOOOOOOO'  , week);
           console.log(user);
           console.log('tableData', tableData);
           const weekEntries = await fetchWeeklySwipesForLocations();
           const formattedData = weekEntries[0]["Current Week's Location Swipes"]; // Assuming fetchWeeklySwipeSchedule needs the user's UID
           const updatedTableData = convertEntryMapToTableData(formattedData);
+         
+          try{
+            lastEntry= weekEntries[0]["Last Entry Log"];
+          }
+          catch (error){
+            updateLastLoggedEntry(TDYY);
+            lastEntry=TDYY;
+          }
           
           console.log('update data', updatedTableData);
           console.log('formatted data', formattedData);
@@ -65,6 +81,9 @@ const Calendar = () => {
           setTableData(updatedTableData);
           setLastSentCalendar(updatedTableData);
           console.log('settingtabledata', tableData);
+          
+          checkAndClearCalendar();
+  
         } catch (error) {
           console.error('Error fetching "week Entries":', error);
         }
@@ -78,6 +97,28 @@ const Calendar = () => {
     return () => unsubscribe(); // Cleanup subscription
   }, [user]);
   
+  const clearCalendarToBlank = () => {
+    // const swipesOnOldCalendar = swipesOnCalander(tableData);
+    const blankTableData = Array(7).fill([]).map(() => [{...defaultEntry }]); 
+    const firebaseData= createEntryMap(blankTableData);
+    setTableData(blankTableData);
+    console.log("New Calendar:", tableData);
+    updateWeeklySwipesForLocations(firebaseData);
+    updateLastLoggedEntry(TDYY);
+  };
+
+
+  const checkAndClearCalendar = async () => {
+      if (!lastEntry) {
+        clearCalendarToBlank();
+        return;
+      }
+  
+      if (lastEntry!==TDYY) {
+        clearCalendarToBlank();
+      }
+    }
+
    function swipesOnCalander(Calendar){
     let total = 0;  
     for (let i=0; i<7; i++){
@@ -115,13 +156,10 @@ const Calendar = () => {
       const swipesOnNewCalendar = swipesOnCalander(tableData);
     
       console.log('swipesOnOldCalendar:', swipesOnOldCalendar);
-      console.log('typeOf swipesOnOldCalendar', typeof(swipesOnOldCalendar));
       console.log('swipesOnNewCalendar:', swipesOnNewCalendar);
-      console.log('typeOf swipesOnNewCalendar', typeof(swipesOnNewCalendar));
+     
       const data = await fetchRemainingBalance();
       const oldSwipeTotal = data[0]["Remaining Balance"]
-      console.log('oldSwipeTotal:', oldSwipeTotal);
-      console.log('swipesOnNewCalendar Type:', typeof(swipesOnNewCalendar));
       const updatedSwipeTotal = oldSwipeTotal - (swipesOnNewCalendar - swipesOnOldCalendar);
       console.log('updatedSwipeTotal:', updatedSwipeTotal);
     
