@@ -61,3 +61,26 @@ const WeekDatesDisplay = () => {
 };
 
 export default WeekDatesDisplay;
+
+
+function calculateCurrentWeek() {
+  const quarters = {
+    fall: { start: new Date('2023-10-02'), end: new Date('2023-12-15') },
+    winter: { start: new Date('2024-01-08'), end: new Date('2024-03-22') },
+    spring: { start: new Date('2024-04-01'), end: new Date('2024-06-14') },
+  };
+
+  const now = new Date();
+
+  for (const [quarter, dates] of Object.entries(quarters)) {
+    if (now >= dates.start && now <= dates.end) {
+      const weekDifference = Math.floor((now - dates.start) / (7 * 24 * 60 * 60 * 1000)) + 1;
+      return { currentWeek: weekDifference, currentQuarter: quarter };
+    }
+  }
+
+  return { currentWeek: null, currentQuarter: null };
+}
+
+const { currentWeek, currentQuarter } = calculateCurrentWeek();
+console.log(`Current week: ${currentWeek}, Current quarter: ${currentQuarter}`);
