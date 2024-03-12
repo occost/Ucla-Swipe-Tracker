@@ -4,8 +4,22 @@
 "use client";
 
 // Import useState from 'react' library
-import { useState } from "react";
+import { useState, useEffect} from "react";
 import styles from '../styles/Profile.module.css'; // Import your CSS file for styling
+import { db } from "../../../firebase/FirebaseApp";
+import { doc, setDoc, getDoc, collection, query, where, getDocs } from 'firebase/firestore';
+import { getAuth } from "firebase/auth";
+import {
+  fetchWeeklySwipeSchedule,
+  fetchAllTimeSwipes,
+  fetchWeeklySwipesForLocations,
+  updateWeeklySwipeCount,
+  updateAllTimeSwipes,
+  updateWeeklySwipesForLocations 
+} from "../../../firebase/FirebaseUtils"
+
+const auth = getAuth();
+const usersRef = collection(db, "Users");
 
 const SwipePlanner = () => {
   const [selectedOption, setSelectedOption] = useState("11p"); // Default selection
@@ -21,12 +35,13 @@ const SwipePlanner = () => {
   const [message, setMessage] = useState("You are using a valid amount of swipes"); // Message for swipe limit
 
   // Function to handle option change
-  const handleOptionChange = (option) => {
+  const handleOptionChange = async (option) => {
     setSelectedOption(option);
-
+  
     // Update swipe values based on the selected option
+    let newSwipeValues;
     if (option === "14p") {
-      setSwipeValues({
+      newSwipeValues = {
         Mon: 2,
         Tue: 2,
         Wed: 2,
@@ -34,9 +49,9 @@ const SwipePlanner = () => {
         Fri: 2,
         Sat: 2,
         Sun: 2,
-      });
+      };
     } else if (option === "19p") {
-      setSwipeValues({
+      newSwipeValues = {
         Mon: 3,
         Tue: 3,
         Wed: 3,
@@ -44,10 +59,10 @@ const SwipePlanner = () => {
         Fri: 3,
         Sat: 2,
         Sun: 2,
-      });
+      };
     } else {
       // Default option "11p" or any other option
-      setSwipeValues({
+      newSwipeValues = {
         Mon: 2,
         Tue: 2,
         Wed: 2,
@@ -55,15 +70,18 @@ const SwipePlanner = () => {
         Fri: 1,
         Sat: 1,
         Sun: 1,
-      });
+      };
     }
-
+  
+    await setSwipeValues(newSwipeValues);
+    await updateWeeklySwipeCount(newSwipeValues);
+  
     setMessage("You are using a valid amount of Swipes"); // Clear the message when changing the option
-    //updatefirestore(set)
   };
+  
 
   // Function to handle swipe value change for a day
-  const handleSwipeChange = (day, direction) => {
+  const handleSwipeChange = async (day, direction) => {
     const newSwipeValues = { ...swipeValues };
     newSwipeValues[day] = Math.max(0, newSwipeValues[day] + direction); // Ensure swipe values don't go below 0
 
@@ -77,10 +95,10 @@ const SwipePlanner = () => {
       setMessage(`You have ${limit - totalSwipes} swipes less than the limit`);
     } else {
       setMessage("You are using a valid amount of Swipes"); // Clear the message if total swipes meet the limit
-    }
+    }  
 
-    setSwipeValues(newSwipeValues);
-    //updateFirestore(newSwipesValues )
+    await setSwipeValues(newSwipeValues);
+    await updateWeeklySwipeCount(newSwipeValues);
   };
 
   return (

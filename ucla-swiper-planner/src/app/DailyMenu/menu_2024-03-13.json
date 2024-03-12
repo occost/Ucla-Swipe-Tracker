@@ -1,0 +1,79 @@
+{
+    "Breakfast": {
+        "Epicuria": [
+            "Closed"
+        ],
+        "De Neve": [
+            "Burner French Toast",
+            "Bacon",
+            "Breakfast Hash Brown",
+            "Scrambled Eggs",
+            "Belgian Waffle",
+            "Tex-mex Eggs Benedict"
+        ],
+        "Bruin Plate": [
+            "Bruin Scramble (ham & Cheddar)",
+            "Bruin Scramble (vegetarian)",
+            "Pork Patty W/ Rice & Egg",
+            "Scrambled Eggs",
+            "Vegan Scrambled Eggs",
+            "Four Grain Waffles",
+            "Vegetable Stuffed Whole Wheat Crepe"
+        ]
+    },
+    "Lunch": {
+        "Epicuria": [
+            "Closed"
+        ],
+        "De Neve": [
+            "Bar Chicken Thigh",
+            "Wisconsin Beer Brats",
+            "Vegetarian Hot Dog",
+            "Garlic Chicken Pizza",
+            "Omg Burger",
+            "Bacon Queso Double Dare"
+        ],
+        "Bruin Plate": [
+            "Chicken, Barley, & Portobello Bowl",
+            "Winter Salad, Mixed Grains, & Avocado Bowl",
+            "Chicken Currant Pecan Salad",
+            "Barley & Kale Pesto Salad",
+            "Brussels Sprouts Slaw",
+            "Cucumber & Tomato Salad",
+            "Roasted Potato Salad",
+            "Spicy Roasted Beet & Carrot Salad",
+            "Beef Picadillo Flatbread",
+            "Shishito Pepper Flatbread",
+            "Fresh Herb Marinated Chicken Thigh",
+            "Peppercorn-crusted Portobello Stacker"
+        ]
+    },
+    "Dinner": {
+        "Epicuria": [
+            "Fettuccine Puttanesca W/ Seared Salmon",
+            "Linguine W/ Lemon Sauce",
+            "Chicken & Sundried Tomato Pizza",
+            "Lebanese Beef Pita",
+            "Eggplant, Red Pepper & Mozzarella Sandwich",
+            "Italian Chicken",
+            "Athenian Roasted Zucchini W/ Tomato, Feta, Oregano, & Olives",
+            "Lebanese Style Fish",
+            "Pesto Bianco"
+        ],
+        "De Neve": [
+            "Bar Chicken Thigh",
+            "Vegetarian Hot Dog",
+            "Garlic Chicken Pizza",
+            "Omg Burger",
+            "Bacon Queso Double Dare"
+        ],
+        "Bruin Plate": [
+            "Baked Cod W/ Spicy Roma Sauce Over Herbed Spaghetti",
+            "Whole Wheat Spaghetti W/ Vegan Italian Meatball & Spinach",
+            "Flank Steak Taco W/ Jicama-chipotle Salsa",
+            "Volcano Rice & Red Beans",
+            "Cilantro Jalapeno Marinated Chicken Thigh",
+            "Santa Maria Rubbed Tofu"
+        ]
+    }
+}

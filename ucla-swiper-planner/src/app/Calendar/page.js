@@ -2,23 +2,29 @@
 
 // Filename: src/app/components/Calendar.js
 
-// To inform Next.js that this is a client component
-'use client'
-import React, { useState } from 'react';
-
 // Components
 import Wheel from "../components/Wheel.js";
 import Calendar from "../components/Calendar.js";
+
+import Navbar from "../components/navbar.js";
+import SignOut from "../components/SignOutButton.js";
+
+//import WeekDatesDisplay from '../components/weekDates.js';
+import WeekDatesDisplay from '../components/WeekDates.js';
+
 
 
 const CalendarPage = () => {
  
   return (
-   <div>
+   <>
+    <Navbar />
+    <SignOut />
     <h1>Welcome To The Calendar Page!</h1>
-    <Calendar></Calendar>
-    <Wheel></Wheel>
-   </div>
+    <WeekDatesDisplay></WeekDatesDisplay>
+    <Calendar />
+    <Wheel />
+   </>
   );
 };
 
