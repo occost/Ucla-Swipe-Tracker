@@ -8,7 +8,7 @@ const auth = getAuth(app);
 const usersRef = collection(db, "Users");
 
 export async function fetchFireStoreData(){
-  const user = auth.currentUser;
+  const user = auth.currentUser;``
   const q = query(usersRef, where("uid", "==", user.uid)); // Construct query using query() and where()
   const userData = [];
   try {
@@ -53,6 +53,25 @@ export async function fetchMealPlanType() {
   const swipes=userInfo[0]["Meal Plan Type"]
   console.log(swipes);
   return userInfo;
+}
+
+export async function fetchLastLoggedEntry() {
+  const userInfo = await fetchFireStoreData();
+  const log=userInfo[0]["Last Entry Log"]
+  console.log(log);
+  return log;
+}
+
+export async function updateLastLoggedEntry(date) {
+  const user = auth.currentUser;
+  const userRef = doc(db, "Users", user.uid);
+  
+  try {
+    await setDoc(userRef, { "Last Entry Log": date }, { merge: true });
+    console.log("Last Log updated successfully");
+  } catch (error) {
+    console.error("Last Log Updated Successfully: ", error);
+  }
 }
 
  
@@ -101,6 +120,7 @@ export async function initNewUser(newLogIn){
   try{
     await setDoc(userRef, { "uid": user.uid }, { merge: true });
     console.log("Initalized a new user");
+  //  await setDoc(userRef, { "Last Entry Log": user.uid }, { merge: true });
   }catch(error){
     console.error("Initalizing a new user: ", error);
   }
@@ -143,7 +163,6 @@ export async function updateWeeklySwipesForLocations(newCount) {
   const userRef = doc(db, "Users", user.uid);
   
   try {
-    await fetchWeeklySwipeSchedule(); // Wait for fetchWeeklySwipeSchedule() to complete
     await setDoc(userRef, { "Current Week's Location Swipes": newCount }, { merge: true });
     console.log("Weekly Swipes for Locations updated successfully");
   } catch (error) {
