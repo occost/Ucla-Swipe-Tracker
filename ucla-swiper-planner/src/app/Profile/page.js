@@ -21,18 +21,7 @@ const Profile = () => {
       <Navbar />
       <SignOut />
       <SwipePlanner />
-      <div className={styles.container}>
-        <div className={styles.podium}>
-          {/* Display the top 3 most visited restaurants */}
-          {sortedPodiumData.slice(0, 3).map((restaurant, index) => (
-            <div key={index} className={`${styles.podiumBlock} ${styles[`podiumBlock${index + 1}`]}`}>
-              <div className={styles.restaurantName}>
-                <h3 className={styles.customP}>{restaurant.name}</h3>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+
     </>
   );
 };

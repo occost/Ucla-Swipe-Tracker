@@ -25,8 +25,10 @@ const auth = getAuth();
 const usersRef = collection(db, "Users");
 const user = auth.currentUser;
 
-function SwipeTracker({ totalSwipesAvailable, weeklySwipesUsed }) {
+function SwipeTracker() {
 
+    let totalSwipesAvailable;
+    let weeklySwipesUsed;
     const [user, setUser] = useState(null);
     const [remainingBalance, setRemainingBalance] = useState(180);
     const [mealPlanType, setMealPlanType] = useState("14p");
