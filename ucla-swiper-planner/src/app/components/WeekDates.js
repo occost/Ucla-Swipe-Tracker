@@ -1,25 +1,9 @@
 'use client'
 import React, { useState, useEffect } from 'react';
+import styles from '../styles/Calendar.module.css';
 
-
-const WeekDatesDisplay = () => {
-
-  const [currentDate, setCurrentDate] = useState(new Date());
-  const [startOfWeek, setStartOfWeek] = useState(getStartOfWeek(currentDate));
-  const [endOfWeek, setEndOfWeek] = useState(getEndOfWeek(currentDate));
-
-  useEffect(() => {
-    const updateDates = () => {
-      const now = new Date();
-      setStartOfWeek(getStartOfWeek(now));
-      setEndOfWeek(getEndOfWeek(now));
-    };
-
-    const intervalId = setInterval(updateDates, 1000);
-
-    // Cleanup the interval on component unmount
-    return () => clearInterval(intervalId);
-  }, []);
+export function getWeekString() {
+  const currentDate = new Date();
 
   function getStartOfWeek(date) {
     const currentDay = date.getDay();
@@ -37,22 +21,41 @@ const WeekDatesDisplay = () => {
     return endOfWeek;
   }
 
-  //format strings to be displayed
+  const startOfWeek = getStartOfWeek(currentDate);
+  const endOfWeek = getEndOfWeek(currentDate);
+
   const startOfWeekFormatted = startOfWeek.toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
   });
-
   const endOfWeekFormatted = endOfWeek.toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
   });
 
+  return startOfWeekFormatted + " - " + endOfWeekFormatted;
+}
+
+const WeekDatesDisplay = () => {
+  const [weekString, setWeekString] = useState('');
+
+  useEffect(() => {
+    const updateWeekString = () => {
+      const weekString = getWeekString();
+      setWeekString(weekString);
+    };
+
+    const intervalId = setInterval(updateWeekString, 1000);
+
+    // Cleanup the interval on component unmount
+    return () => clearInterval(intervalId);
+  }, []);
+
   return (
-    <div>
-      <h2>{startOfWeekFormatted} - {endOfWeekFormatted}</h2>
+    <div className={styles.CenterText}>
+      <h2>{weekString}</h2>
     </div>
   );
 };

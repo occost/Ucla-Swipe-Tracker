@@ -5,11 +5,18 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../styles/Calendar.module.css';
 
+import {getWeekString} from './WeekDates';
+
 import {
   updateWeeklySwipesForLocations,
-  fetchWeeklySwipeSchedule,
+  fetchWeeklySwipesForLocations,
+  updateRemainingBalance,
+  fetchRemainingBalance,
+  fetchLastLoggedEntry,
+  updateLastLoggedEntry
   
 } from '../../../firebase/FirebaseUtils';
+
 
 import {
   getAuth,
@@ -28,8 +35,8 @@ import { db } from '../../../firebase/FirebaseApp';
 const auth = getAuth();
 const usersRef = collection(db, "Users");
 const user = auth.currentUser;
-
-
+const TDYY= getWeekString();
+let lastEntry;
 
 const Calendar = () => {
 
@@ -41,7 +48,9 @@ const Calendar = () => {
 
   const [tableData, setTableData] = useState(Array(7).fill([]).map(() => [{...defaultEntry }])); // Initialize as empty array
 
+  const [lastSentCalendar, setLastSentCalendar] = useState(Array(7).fill([]).map(() => [{...defaultEntry }])); 
 
+  //let tdyRn;
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser); // Update user state when auth state changes
@@ -50,17 +59,31 @@ const Calendar = () => {
     if (user) { // Only proceed if the user object exists
       const fetchData = async () => {
         try {
+          const week = getWeekString();
+          console.log('YOOOOOOOOO'  , week);
           console.log(user);
           console.log('tableData', tableData);
-          const weekEntries = await fetchWeeklySwipeSchedule();
+          const weekEntries = await fetchWeeklySwipesForLocations();
           const formattedData = weekEntries[0]["Current Week's Location Swipes"]; // Assuming fetchWeeklySwipeSchedule needs the user's UID
           const updatedTableData = convertEntryMapToTableData(formattedData);
+         
+          try{
+            lastEntry= weekEntries[0]["Last Entry Log"];
+          }
+          catch (error){
+            updateLastLoggedEntry(TDYY);
+            lastEntry=TDYY;
+          }
           
           console.log('update data', updatedTableData);
           console.log('formatted data', formattedData);
           console.log('week data', weekEntries);
           setTableData(updatedTableData);
+          setLastSentCalendar(updatedTableData);
           console.log('settingtabledata', tableData);
+          
+          checkAndClearCalendar();
+  
         } catch (error) {
           console.error('Error fetching "week Entries":', error);
         }
@@ -74,7 +97,35 @@ const Calendar = () => {
     return () => unsubscribe(); // Cleanup subscription
   }, [user]);
   
-   
+  const clearCalendarToBlank = () => {
+    // const swipesOnOldCalendar = swipesOnCalander(tableData);
+    const blankTableData = Array(7).fill([]).map(() => [{...defaultEntry }]); 
+    const firebaseData= createEntryMap(blankTableData);
+    setTableData(blankTableData);
+    console.log("New Calendar:", tableData);
+    updateWeeklySwipesForLocations(firebaseData);
+    updateLastLoggedEntry(TDYY);
+  };
+
+
+  const checkAndClearCalendar = async () => {
+      if (!lastEntry) {
+        clearCalendarToBlank();
+        return;
+      }
+  
+      if (lastEntry!==TDYY) {
+        clearCalendarToBlank();
+      }
+    }
+
+   function swipesOnCalander(Calendar){
+    let total = 0;  
+    for (let i=0; i<7; i++){
+        total += (Calendar[i].length -1);
+      } 
+      return total;  //for some reason its returned as an object I SPENT SO LONG DISCOVERING THIS SO U PARSE TO INT
+   }
     //function to convert map from firebase back into tableData format
     const convertEntryMapToTableData = (entryMap) => {
       
@@ -98,13 +149,28 @@ const Calendar = () => {
     };
 
   
-const UpdateWeeklySwipes = async (e) =>{
-  const result = createOptionMap(tableData);
-  const entryMap = createEntryMap(tableData); 
-  console.log('sent map', entryMap)//Just to test
-  updateWeeklySwipesForLocations(entryMap);
-  console.log('DATATABLE', tableData);
-  }
+    const UpdateWeeklySwipes = async () => {
+      const entryMap = createEntryMap(tableData);
+    
+      const swipesOnOldCalendar = swipesOnCalander(lastSentCalendar);
+      const swipesOnNewCalendar = swipesOnCalander(tableData);
+    
+      console.log('swipesOnOldCalendar:', swipesOnOldCalendar);
+      console.log('swipesOnNewCalendar:', swipesOnNewCalendar);
+     
+      const data = await fetchRemainingBalance();
+      const oldSwipeTotal = data[0]["Remaining Balance"]
+      const updatedSwipeTotal = oldSwipeTotal - (swipesOnNewCalendar - swipesOnOldCalendar);
+      console.log('updatedSwipeTotal:', updatedSwipeTotal);
+    
+      console.log('sent map', entryMap); // Just to test
+      updateWeeklySwipesForLocations(entryMap);
+      console.log('sent new bal: ', updatedSwipeTotal);
+      updateRemainingBalance(updatedSwipeTotal);
+      console.log('DATATABLE', tableData);
+      setLastSentCalendar(tableData);
+    };
+    
 
 //Creates a map to change tableData into a map firebase can take
 const createEntryMap = (tableData) => {
@@ -278,7 +344,7 @@ const createEntryMap = (tableData) => {
     // Rest of your component code...
 
     return (
-      <div className ={styles.Calendar} >
+      <div className={styles.container} >
         {/* <h2>Month1 Day1 - Month2 Day2</h2> */}
         <table className={styles.Calendar}>
           <thead>
@@ -299,7 +365,7 @@ const createEntryMap = (tableData) => {
                       value={items[items.length - 1]?.name || ''}
                       onChange={(e) => handleChange(index, items.length - 1, 'name', e.target.value)}
                     >
-                      <option value="" disabled>Select Name</option>
+                      <option value="" disabled>Add Meal</option>
                       {nameOptions.map((option) => (
                         <option key={option.value} value={option.value}>
                           {option.label}
@@ -312,7 +378,7 @@ const createEntryMap = (tableData) => {
                       value={items[items.length - 1]?.period || ''}
                       onChange={(e) => handleChange(index, items.length - 1, 'period', e.target.value)}
                     >
-                      <option value="" disabled>Select Period</option>
+                      <option value="" disabled>Add Period</option>
                       {periodOptions.map((option) => (
                         <option key={option.value} value={option.value}>
                           {option.label}
@@ -321,7 +387,7 @@ const createEntryMap = (tableData) => {
                     </select>
 
                     {/* Buttons for Add and Clear*/}  
-                    <button className={styles.Button} onClick={() => handleAddItem(index)}>Add Item</button>
+                    <button className={styles.Button} onClick={() => handleAddItem(index)}>Confirm</button>
                     <button className={styles.Button} onClick={() => handleClearEntries(index)}>Clear Entries</button>
 
                   </div>
@@ -333,7 +399,7 @@ const createEntryMap = (tableData) => {
             </tr>
           </tbody>
         </table>
-        <div className ={styles.UpdateButton}> 
+        <div className={styles.UpdateContainer} > 
           <button className={styles.UpdateButton}  onClick={logDataStructure}>
         Send Update
       </button>
