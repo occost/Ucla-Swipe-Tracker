@@ -361,7 +361,7 @@ const createEntryMap = (tableData) => {
             </tr>
           </tbody>
         </table>
-        <div className ={styles.UpdateButton}> 
+        <div className={styles.UpdateContainer} > 
           <button className={styles.UpdateButton}  onClick={logDataStructure}>
         Send Update
       </button>
