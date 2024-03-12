@@ -1,1 +1,0 @@
-self.__NEXT_FONT_MANIFEST="{\"pages\":{},\"app\":{\"/Users/esmailmozaffari/Documents/GitHub/swiper-no-swiping/ucla-swiper-planner/src/app/layout\":[\"static/media/c22ccc5eb58b83e1-s.p.woff2\"]},\"appUsingSizeAdjust\":true,\"pagesUsingSizeAdjust\":false}"
