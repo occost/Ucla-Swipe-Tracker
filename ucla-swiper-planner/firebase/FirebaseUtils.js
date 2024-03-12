@@ -8,7 +8,7 @@ const auth = getAuth(app);
 const usersRef = collection(db, "Users");
 
 export async function fetchFireStoreData(){
-  const user = auth.currentUser;
+  const user = auth.currentUser;``
   const q = query(usersRef, where("uid", "==", user.uid)); // Construct query using query() and where()
   const userData = [];
   try {
@@ -143,7 +143,6 @@ export async function updateWeeklySwipesForLocations(newCount) {
   const userRef = doc(db, "Users", user.uid);
   
   try {
-    await fetchWeeklySwipeSchedule(); // Wait for fetchWeeklySwipeSchedule() to complete
     await setDoc(userRef, { "Current Week's Location Swipes": newCount }, { merge: true });
     console.log("Weekly Swipes for Locations updated successfully");
   } catch (error) {
