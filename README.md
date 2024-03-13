@@ -32,13 +32,19 @@ Disclaimer: We scrape UCLA's menus for a week in advance and the dining options 
 * **Wheel:** Creates a spinning wheel to randomly select a dining hall or takeout location when a user is indecisive about what to eat for a particular meal.
 
 ## Frontend
-#### 
+#### UCLASwipeTracker uses Next.js, Javascript, and React.js components to create the UI, pulling information from the firestore database to update and display user information.
+
+**Next.js:** Next.js is a development framework providing React-based web applications with server-side rendering and static website generation. Next.js also provides an easy-to-use routing system that is utilized in the navigation between different pages in the form of the nav-bar.
+
+**Components:** React components that are rendered client-side for their respective purposes to then be passed to the page.js files for where the routing specifies.
+
+**Firebase Utilities:** Functions created to push and pull data from Firebase to the React code, where the data would then be passed to be rendered on the server from client-side components.
 
 ## Backend
 #### UCLASwipeTracker leverages Firebase to store and manage user data, swipe tracking, and even retrieve weekly menus. Here's a breakdown of how it works:
 
 **Firebase Configuration:**
-The backend starts by setting up the connection to Firebase using firebase.initializeApp(). This function requires your project's specific configuration details, essentially acting like a handshake between your app and Firebase.
+The backend starts by setting up the connection to Firebase using firebase.initializeApp(). This function requires your project's specific configuration details, essentially acting like a handshake between your app and Firebase. We used Firebase for its ease of use in authentication and its user-friendly NoSQL Firestore database.
 
 **Firestore:**
 Firestore is a document-based structure where each user has a dedicated document within a "Users" collection. This document retrieves and stores details like: Meal Plan Type, Remaining Swipe Balance, Weekly Swipe Count, and Last Logged Entry. 
@@ -52,6 +58,23 @@ Firestore is a document-based structure where each user has a dedicated document
 A separate Python script runs periodically to fetch menus from UCLA Dining's server. This script uses libraries like requests to grab the menu data in JSON format. The script then processes the fetched data, extracts relevant menu information for the upcoming week, and organizes it into a suitable structure.
 
 ## Setup
+In order to run a local instance of UCLASwipeTracker, first clone or download a copy of this repository. Follow the instructions below to initialize a local instance of the application.
+
+#### Dependencies
+To setup the dependencies for the backend server cd into the following directory 
+```
+cd ucla-swiper-planner
+```
+and run the following shell script: 
+```
+./setup.sh
+```
+This will download a set of node modules and the packages necessary for you to run our website. 
+
+The script will also prompt you to enter a list of Firebase Configuration variables which you can enter in one by one and create a .env.local file for the firebaseConfig to process.  
+
+After running successfully, the frontend will be available on http://localhost:3000, which should appear in your browser automatically.
+
 
 ## Contributors
 _UCLASwipeTracker_ was made as a project for **CS 35L** taught by Professor Paul Eggert at UCLA in Winter 2024. **Made by**: Oscar Cooper Stern, Danny Dang, Rhea Jain, 
