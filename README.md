@@ -55,5 +55,5 @@ A separate Python script runs periodically to fetch menus from UCLA Dining's ser
 ## Setup
 
 ## Contributors
-_UCLASwipeTracker_ was made as a project for **CS 35L** taught by Professor Paul Eggert at UCLA in Winter 2022. **Made by**: Oscar Cooper Stern, Danny Dang, Rhea Jain, 
+_UCLASwipeTracker_ was made as a project for **CS 35L** taught by Professor Paul Eggert at UCLA in Winter 2024. **Made by**: Oscar Cooper Stern, Danny Dang, Rhea Jain, 
 David Su, Eideen Mozaffari.
