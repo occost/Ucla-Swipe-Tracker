@@ -8,36 +8,36 @@ const auth = getAuth(app);
 const usersRef = collection(db, "Users");
 
 export async function fetchFireStoreData(){
-  const user = auth.currentUser;``
-  const q = query(usersRef, where("uid", "==", user.uid)); // Construct query using query() and where()
+  const user = auth.currentUser;
+  const q = query(usersRef, where("uid", "==", user.uid)); // we look in our documents for the one titled with the current user's id
   const userData = [];
   try {
-    const querySnapshot = await getDocs(q);
+    const querySnapshot = await getDocs(q); //add each user document that matches to the array (should only be one)
     querySnapshot.forEach((doc) => {
     userData.push(doc.data());
     });
   } catch (error) {
     console.log("Error getting documents: ", error);
   }
-  return userData;
+  return userData; //will return an empty array if no user is found (IMPORTANT BEHAVIOR)
 }
 
 export async function fetchRemainingBalance(){
   const userInfo = await fetchFireStoreData();
   const swipes=userInfo[0]["Remaning Balance"]
   console.log(swipes);
-  return userInfo;
+  return userInfo; //gets the users balance from firebase (not really, we return all their data, but the code is designed around this behavior now)
 }
 export async function fetchAllTimeSwipes() {
   const userInfo = await fetchFireStoreData();
   const swipes=userInfo[0]["All Time Swipes"]
-  return userInfo;
+  return userInfo; //same as remaining balance
 }
 
 export async function fetchWeeklySwipesForLocations() {
   const userInfo = await fetchFireStoreData();
   const swipes=userInfo[0]["Current Week's Location Swipes"]
-  return userInfo;
+  return userInfo; //same as remaining balance
 }
 
   
@@ -45,29 +45,29 @@ export async function fetchWeeklySwipeSchedule() {
   const userInfo = await fetchFireStoreData();
   const swipes=userInfo[0]["Weekly Swipe Count"]
   console.log(swipes);
-  return userInfo;
+  return userInfo; //same as remaining balance
 }
 
 export async function fetchMealPlanType() {
   const userInfo = await fetchFireStoreData();
   const swipes=userInfo[0]["Meal Plan Type"]
   console.log(swipes);
-  return userInfo;
+  return userInfo; //same again
 }
 
 export async function fetchLastLoggedEntry() {
   const userInfo = await fetchFireStoreData();
   const log=userInfo[0]["Last Entry Log"]
   console.log(log);
-  return log;
+  return log; //WE DO IT CORRECT HERE!!!!
 }
 
 export async function updateLastLoggedEntry(date) {
   const user = auth.currentUser;
-  const userRef = doc(db, "Users", user.uid);
+  const userRef = doc(db, "Users", user.uid); //get the document relating to the user's id
   
   try {
-    await setDoc(userRef, { "Last Entry Log": date }, { merge: true });
+    await setDoc(userRef, { "Last Entry Log": date }, { merge: true }); //update the user's time updating their calendar
     console.log("Last Log updated successfully");
   } catch (error) {
     console.error("Last Log Updated Successfully: ", error);
@@ -81,7 +81,7 @@ export async function updateWeeklySwipeCount(newCount) {
   const userRef = doc(db, "Users", user.uid);
   
   try {
-    await setDoc(userRef, { "Weekly Swipe Count": newCount }, { merge: true });
+    await setDoc(userRef, { "Weekly Swipe Count": newCount }, { merge: true }); //update weekly sweipe count in the db
     console.log("Weekly Swipe Count updated successfully");
   } catch (error) {
     console.error("Error updating Weekly Swipe Count: ", error);
@@ -93,7 +93,7 @@ export async function updateRemainingBalance(newCount) {
   const userRef = doc(db, "Users", user.uid);
   
   try {
-    await setDoc(userRef, { "Remaining Balance": newCount }, { merge: true });
+    await setDoc(userRef, { "Remaining Balance": newCount }, { merge: true }); //update their balance in the db
     console.log("Remaining Balance updated successfully");
   } catch (error) {
     console.error("Error updating Remaining Balance: ", error);
@@ -101,7 +101,7 @@ export async function updateRemainingBalance(newCount) {
 }
 
 
-export async function updateMealPlanType(newCount) {
+export async function updateMealPlanType(newCount) { //same idea again, pretty obvious whats happening
   const user = auth.currentUser;
   const userRef = doc(db, "Users", user.uid);
   
@@ -118,7 +118,7 @@ export async function initNewUser(newLogIn){
   const userRef = doc(db, "Users", user.uid);
 
   try{
-    await setDoc(userRef, { "uid": user.uid }, { merge: true });
+    await setDoc(userRef, { "uid": user.uid }, { merge: true }); //we create a user with the uid, which is all we need, so that we can start modify their db entry
     console.log("Initalized a new user");
   //  await setDoc(userRef, { "Last Entry Log": user.uid }, { merge: true });
   }catch(error){
@@ -126,7 +126,7 @@ export async function initNewUser(newLogIn){
   }
 }
 
-export async function updateAllTimeSwipes(newCount) {
+export async function updateAllTimeSwipes(newCount) { //we dont even use this :)
   const user = auth.currentUser;
   const userRef = doc(db, "Users", user.uid);
 
@@ -158,7 +158,7 @@ export async function updateAllTimeSwipes(newCount) {
   }
 }
 
-export async function updateWeeklySwipesForLocations(newCount) {
+export async function updateWeeklySwipesForLocations(newCount) { //new count is an array of amps or a map of arrays, and we update its entry
   const user = auth.currentUser;
   const userRef = doc(db, "Users", user.uid);
   
