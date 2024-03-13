@@ -2,13 +2,9 @@
 .podiumMessage,
 .title {
   text-align: center;
-  /* Center the text */
   color: #4b5b7e;
-  /* Set text color to white */
   margin-bottom: 20px;
-  /* Add margin to create space below the title, adjust as needed */
-  /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); */
-  /* Add a subtle 3D text shadow */
+
 }
 
 .formLabelCont {
@@ -62,12 +58,10 @@
   color: #000;
   margin-top: 5px;
 
-  /* Black text color, adjust as needed */
 }
 
 .saveButton:hover {
   background-color: #90ee90;
-  /* Darker shade on hover, adjust as needed */
 }
 
 .table {
@@ -81,7 +75,6 @@
   transform: scale(1.1);
 }
 
-/* Apply common styles to th and td */
 .table th,
 .table td {
   border: 1px solid #ddd;
@@ -146,45 +139,6 @@
   background-color: #ddd;
 }
 
-.podium {
-  display: flex;
-  align-items: flex-end;
-  /* justify-content: space-around; */
-  margin-right: 10px;
-  justify-content: center;
-
-}
-
-/* Adjust podium block styles for gold, silver, and bronze */
-.podiumBlock {
-  width: 100px;
-  text-align: center;
-  color: white;
-  margin-right: 10px;
-  /* Adjust the negative margin to make podium blocks touch */
-}
-
-.podiumBlock1 {
-  height: 200px;
-  background-color: gold;
-  /* Change the color to gold for the first place */
-  order: 2;
-}
-
-
-.podiumBlock2 {
-  height: 130px;
-  background-color: silver;
-  /* Change the color to silver for the second place */
-  order: 1;
-}
-
-.podiumBlock3 {
-  height: 90px;
-  background-color: #cd7f32;
-  /* Change the color to bronze for the third place */
-  order: 3;
-}
 
 .customP {
   /* Reset to default styles of p tag */
