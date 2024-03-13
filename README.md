@@ -20,7 +20,6 @@ Disclaimer: We scrape UCLA's menus for a week in advance and the dining options 
 ## Components
 * **Balance Info:** Fetches user data from Firebase, calculates remaining meal swipes, and displays a message based on the user's meal plan and swipe usage.
 * **Calendar:** Manages a calendar for tracking meal swipes, allowing users to add, clear, and update entries for each day of the week.
-* **Fetching Daily Menu:** Defines functions to fetch breakfast, lunch, and dinner menus from a JSON server.
 * **Menu:** Fetches today's menu from a dynamically imported JSON file based on the current date and displays the options categorized by meal type and dining locations.
 * **Navbar:** Defines a Navbar component with navigation links styled using CSS from the Navbar module, facilitating page navigation in a Next.js application.
 * **Profile:**  Enables users to plan weekly meal swipes by selecting preset options and adjusting swipe values for each day, accompanied by feedback messages.
@@ -51,7 +50,7 @@ Firestore is a document-based structure where each user has a dedicated document
 
 **API Triggers:**
 * User Login: Firebase Authentication validates each user's credentials. Once logged in, the backend fetches user data from Firestore using the Admin SDK. This allows secure access to information like remaining swipes through a unique UID.
-* Swipe Tracking: Whenever a swipe is used, an API call updates the user's swipe count in Firestore. This likely involves decrementing the value stored for remaining_swipes.
+* Swipe Tracking: Whenever a swipe is used, an API call updates the user's swipe count in Firestore. This decrements the value stored for remaining_swipes.
 * Calendar Management: Adding, removing, or updating planned swipes in the calendar triggers API interactions with Firestore.
 
 **Web Scraping:**
@@ -61,11 +60,17 @@ A separate Python script runs periodically to fetch menus from UCLA Dining's ser
 In order to run a local instance of UCLASwipeTracker, first clone or download a copy of this repository. Follow the instructions below to initialize a local instance of the application.
 
 #### Dependencies
+Ensure to have Node v20.11.1 or greater.
+
 To setup the dependencies for the backend server cd into the following directory 
 ```
 cd ucla-swiper-planner
 ```
-and run the following shell script: 
+Make sure to enable user executable permissions running
+```
+chmod +x setup.sh
+```
+and run the following shell script. 
 ```
 ./setup.sh
 ```
@@ -74,6 +79,21 @@ This will download a set of node modules and the packages necessary for you to r
 The script will also prompt you to enter a list of Firebase Configuration variables which you can enter in one by one and create a .env.local file for the firebaseConfig to process.  
 
 After running successfully, the frontend will be available on http://localhost:3000, which should appear in your browser automatically.
+
+## Appendix: Python Menu Scraping Script
+scraper.py scrapes UCLA Dining to get the daily menu for the next 7 days.
+If you would like to run the scraper, you will need to install the following python modules:
+```
+pip3 install requests
+pip3 install bs4
+pip3 install unidecode
+pip3 install lxml
+```
+Then, navigate to the top level of the repository and run:
+```
+python3 scraper.py
+```
+In the "ucla-swiper-planner/src/app/DailyMenu" folder, you can check the added JSON files
 
 
 ## Contributors
