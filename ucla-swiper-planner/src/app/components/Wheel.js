@@ -1,6 +1,6 @@
 //Credit to Shekhar Ramola 2022, react-wheel-of-prizes
 //Link: https://www.npmjs.com/package/react-wheel-of-prizes
-
+//Component for wheel in components/react-wheel-of-prizes
 
 'use client'
 import React, { useState } from 'react';
