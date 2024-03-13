@@ -78,8 +78,8 @@ export function calculateCurrentWeek() {
   const now = new Date();
 
   for (const [quarter, dates] of Object.entries(quarters)) {
-    if (now >= dates.start && now <= dates.end) {
-      const weekDifference = Math.floor((now - dates.start) / (7 * 24 * 60 * 60 * 1000)) + 1;
+    if (now >= dates.start && now <= dates.end) { //iterate through each quarter and detect if quarter i makes sense
+      const weekDifference = Math.floor((now - dates.start) / (7 * 24 * 60 * 60 * 1000)) + 1; //calculate the current week
       return { currentWeek: weekDifference, currentQuarter: quarter };
     }
   }
