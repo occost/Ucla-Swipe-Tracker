@@ -1,0 +1,83 @@
+{
+    "Breakfast": {
+        "Epicuria": [
+            "Closed"
+        ],
+        "De Neve": [
+            "Breakfast Hash Brown",
+            "Kielbasa",
+            "Scrambled Eggs",
+            "Belgian Waffle",
+            "Egg Benedict Sandwich"
+        ],
+        "Bruin Plate": [
+            "Bruin Scramble (ham & Cheddar)",
+            "Bruin Scramble (vegetarian)",
+            "Tri-color Quinoa & Spinach Breakfast Bake",
+            "Scrambled Eggs",
+            "Vegan Scrambled Eggs",
+            "Four Grain Waffles",
+            "Ginger Pancake W/ Banana Walnut Topping"
+        ]
+    },
+    "Lunch": {
+        "Epicuria": [
+            "Closed"
+        ],
+        "De Neve": [
+            "Bar Roasted Garlic Marinated Chicken Thigh",
+            "Burner Honey Mustard Hot Smoked Sockeye Salmon",
+            "Honey-dijon Mustard Tofu",
+            "Seattle Hot Dog",
+            "Vegan Sausage",
+            "Tillamook Ricotta & Fontina Pizza",
+            "Pepperoni Deluxe Pizza",
+            "Mushroom & Swiss Burger",
+            "Bacon & Onion Chicken Sandwich"
+        ],
+        "Bruin Plate": [
+            "Black Quinoa, Bbq Tofu & Red Bean Bowl",
+            "Parsnip & Swiss Chard Whole Wheat Pasta",
+            "Chicken Taco W/ Freekeh",
+            "Spinach & Bulgur Quesadilla",
+            "Cioppino Flatbread",
+            "Pear, Thyme, & Blue Cheese Pizza",
+            "Lamb & Beef Stacker W/ Greek Yogurt Sauce",
+            "Red Quinoa & Yam Stacker W/ Pineapple Salsa"
+        ]
+    },
+    "Dinner": {
+        "Epicuria": [
+            "Orecchiette W/ Chicken & Pesto",
+            "Spaghetti W/ Eggplant, Tomatoes & Olives",
+            "Lamb, Walnut, & Potato Stromboli",
+            "Perch Pakora",
+            "Roasted Cauliflower Pita",
+            "Roasted Salmon W/ Rosemary Garlic Drizzle",
+            "Potato Zucchini Latke",
+            "Lamb Shakshuka",
+            "Vegan Shakshuka"
+        ],
+        "De Neve": [
+            "Bar Roasted Garlic Marinated Chicken Thigh",
+            "Burner Pan Fried White Fish With Hazelnut Brown Butter And Arugula",
+            "Portobello Three Bean Chili",
+            "Braised Beef Short Ribs",
+            "Braised Escarole",
+            "Tillamook Ricotta & Fontina Pizza",
+            "Pepperoni Deluxe Pizza",
+            "Mushroom & Swiss Burger",
+            "Bacon & Onion Chicken Sandwich"
+        ],
+        "Bruin Plate": [
+            "Seitan Mole W/ Carrots & Zucchini",
+            "Whole Wheat Spaghetti W/ Wheatballs & Spinach Bowl",
+            "Moroccan Salmon",
+            "Mushroom-spinach Lasagna",
+            "Bbq Tofu Flatbread",
+            "Cilantro Pesto W/ Tri-tip Tortilla Pizza",
+            "Fresh Herb Marinated Chicken Thigh",
+            "Eggplant"
+        ]
+    }
+}

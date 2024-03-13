@@ -1,0 +1,83 @@
+{
+    "Breakfast": {
+        "Epicuria": [
+            "Closed"
+        ],
+        "De Neve": [
+            "Breakfast Hash Brown",
+            "Pork Sausage",
+            "Scrambled Eggs",
+            "Belgian Waffle",
+            "Buongiorno Pancetta Breakfast Sandwich"
+        ],
+        "Bruin Plate": [
+            "Bruin Scramble (ham & Cheddar)",
+            "Bruin Scramble (vegetarian)",
+            "Egg, Mushroom & Kale On W.w. English Muffin",
+            "Scrambled Eggs",
+            "Vegan Scrambled Eggs",
+            "Red Lentil Waffle",
+            "Lemon Cream Cheese Pancake"
+        ]
+    },
+    "Lunch": {
+        "Epicuria": [
+            "Closed"
+        ],
+        "De Neve": [
+            "Bar Lemon Ginger Marinated Chicken Thigh",
+            "Burner Pork Pozole",
+            "Pork, Hominy, Guajillo, Oregano, Garlic Vegetarian Pozole",
+            "Pan Con Pollo",
+            "Chicken Fajita Pizza",
+            "Nacho Burger",
+            "Habanero Fried Chicken Sandwich"
+        ],
+        "Bruin Plate": [
+            "Chicken, Lentil & Buckwheat Noodle Bowl",
+            "Kale & Squash Salad W/ Gorgonzola",
+            "Shrimp Pasta Salad W/ Avocado",
+            "Barley Salad",
+            "Farro Salad W/ Corn & Roasted Pepper",
+            "Spicy Cucumber Salad",
+            "Swiss Chard Salad W/ Lemon Vinaigrette Dressing",
+            "Tuscan Kale Salad",
+            "Caramelized Onion, Gouda & White Bean Flatbread",
+            "Guajillo Chili Chicken & Poblano Pepper Tortilla Pizza",
+            "Sundried Tomato Marinated Chicken Thigh",
+            "Black Bean & Brown Rice Stacker"
+        ]
+    },
+    "Dinner": {
+        "Epicuria": [
+            "Spaghetti & Meatballs",
+            "Spaghetti Broccolini",
+            "Shrimp, Sweet Pea, & Mint Pizza",
+            "Chicken Pesto Sandwich",
+            "Zucchini Fritters W/ Cilantro Lime Cream",
+            "Morroccan Seasoned Roast Lamb",
+            "Roasted Asparagus W/ Parmesan & Mint",
+            "Date Chicken W/ Polenta & Spinach",
+            "Charbroiled Chicken And Sauteed Spinach Served Over Sour-cream Polenta Topped With Sweet Sauce Made With Medjool Dates And Fresh Rosemary. Lemon Zhug Mushrooms Over Polenta"
+        ],
+        "De Neve": [
+            "Bar Lemon Ginger Marinated Chicken Thigh",
+            "Burner Mexican Style Deviled Shrimp (camarones A La Diabla)",
+            "Sopa De Fideos",
+            "Chipotle Bbq Pork Ribs",
+            "Mole Tofu",
+            "Chicken Fajita Pizza",
+            "Nacho Burger",
+            "Habanero Fried Chicken Sandwich"
+        ],
+        "Bruin Plate": [
+            "Coffee-braised Brisket W/ Turnip-squash Mash & Collards",
+            "Tofu, Black-eyed Peas, & Collard Greens Bowl",
+            "Spiced Chicken",
+            "Cauliflower Al Pastor Taco",
+            "Bbq Pork Tortilla Pizza",
+            "Southwest Black Bean & Avocado Tortilla Pizza",
+            "Seared Bass"
+        ]
+    }
+}
