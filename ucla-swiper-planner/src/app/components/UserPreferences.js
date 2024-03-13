@@ -199,10 +199,13 @@ const SwipePlanner = () => {
           This is the Profile Page where you will set the amount of swipes you would like to use each day.
           We will use this information to display how many swipes you should have for the remaining week.
           You can also update the current amount of swipes you have right now! This will give us an accurate
-          representation about how on track you actually are. If this is your first time on our site, please 
-          select your meal plan and your preferences for how you would like to distribute
-          your swipes for the week. 
+          representation about how on track you actually are. 
         </styles.p1>
+        <styles.p1 className={styles.explanationText}> 
+        **If this is your first time on our site, please log your week's swipes on the calendar page before inputting
+        the amount of swipes that you have for the rest of the quarter. If you do not do this, the information on the
+        profile page may be incorrect. **
+          </styles.p1>
       </div>
 
       <div className={styles.buttonGroup}>
@@ -246,6 +249,10 @@ const SwipePlanner = () => {
       </div>
 
       <h4 className={styles.customP1}>Hit Enter To Save Swipes</h4>
+
+      <h2 className={styles.CenterText}>
+      This Week's Plan
+      </h2>
 
       <table className={styles.table}>
         <thead>
