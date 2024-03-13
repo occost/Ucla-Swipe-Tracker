@@ -29,8 +29,9 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-export default app;
+const app = initializeApp(firebaseConfig); //retrieves our firebase using our api key
+
+export default app; //exports it 
 
 // Initialize Firestore
 export const db = getFirestore(app);
