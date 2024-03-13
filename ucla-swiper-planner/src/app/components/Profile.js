@@ -72,7 +72,7 @@ const SwipePlanner = () => {
         Sun: 1,
       };
     }
-  
+  //sends to the firebase everytime they switch option
     await setSwipeValues(newSwipeValues);
     await updateWeeklySwipeCount(newSwipeValues);
   
@@ -82,6 +82,7 @@ const SwipePlanner = () => {
 
   // Function to handle swipe value change for a day
   const handleSwipeChange = async (day, direction) => {
+    //copies swipeValues and adds or subtracts from the index they chose 
     const newSwipeValues = { ...swipeValues };
     newSwipeValues[day] = Math.max(0, newSwipeValues[day] + direction); // Ensure swipe values don't go below 0
 
@@ -89,6 +90,7 @@ const SwipePlanner = () => {
     const totalSwipes = Object.values(newSwipeValues).reduce((total, value) => total + value, 0);
     const limit = selectedOption === "11p" ? 11 : selectedOption === "14p" ? 14 : 19;
 
+    //sets message based on if they are on track 
     if (totalSwipes > limit) {
       setMessage(`You are using ${totalSwipes - limit} swipes over the limit`);
     } else if (totalSwipes < limit) {
