@@ -42,14 +42,17 @@ const Calendar = () => {
 
   const [user, setUser] = useState(null); // Initialize user state
   // Other states and variables remain the same
+
+  
   const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   
   const defaultEntry = { name: "", period: ""};
 
+//Data structure for the entries
   const [tableData, setTableData] = useState(Array(7).fill([]).map(() => [{...defaultEntry }])); // Initialize as empty array
 
   const [lastSentCalendar, setLastSentCalendar] = useState(Array(7).fill([]).map(() => [{...defaultEntry }])); 
-  
+
 // Runs when there is a new user, sets dataTable so that the info on screen is up to date with the database
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -209,6 +212,7 @@ const createEntryMap = (tableData) => {
         foodtruck: 0
       };
 
+      //Add the entries to the option map
       for (const day of tableData){
           for (const entry of day){
             if (entry.name == "De Neve "){
@@ -323,7 +327,7 @@ const createEntryMap = (tableData) => {
             const weekEntries = await fetchWeeklySwipeSchedule();
             const formattedData = weekEntries[0]["Current Week's Location Swipes"]; // Assuming fetchWeeklySwipeSchedule needs the user's UID
             const updatedTableData = convertEntryMapToTableData(formattedData);
-            
+            //console logs for testing
             console.log('update data', updatedTableData);
             console.log('formatted data', formattedData);
             console.log('week data', weekEntries);
