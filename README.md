@@ -48,9 +48,8 @@ Firestore is a document-based structure where each user has a dedicated document
 * Swipe Tracking: Whenever a swipe is used, an API call updates the user's swipe count in Firestore. This likely involves decrementing the value stored for remaining_swipes.
 * Calendar Management: Adding, removing, or updating planned swipes in the calendar triggers API interactions with Firestore.
 
-
 **Web Scraping:**
-A separate Python script runs periodically to fetch menus from UCLA Dining's server. This script uses libraries like requests to grab the menu data in JSON format. The script then processes the fetched data, extracts relevant menu information for the upcoming week, and organizes it into a suitable structure. Finally, the processed menu data is uploaded to Firestore. This might involve creating a new collection specifically for menus and storing the information for the next week.
+A separate Python script runs periodically to fetch menus from UCLA Dining's server. This script uses libraries like requests to grab the menu data in JSON format. The script then processes the fetched data, extracts relevant menu information for the upcoming week, and organizes it into a suitable structure.
 
 ## Setup
 
