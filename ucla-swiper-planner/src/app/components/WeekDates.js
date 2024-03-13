@@ -2,8 +2,25 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../styles/Calendar.module.css';
 
-export function getWeekString() {
-  const currentDate = new Date();
+const WeekDatesDisplay = () => {
+
+  const [currentDate, setCurrentDate] = useState(new Date());
+  const [startOfWeek, setStartOfWeek] = useState(getStartOfWeek(currentDate));
+  const [endOfWeek, setEndOfWeek] = useState(getEndOfWeek(currentDate));
+
+  //get the current date
+  useEffect(() => {
+    const updateDates = () => {
+      const now = new Date();
+      setStartOfWeek(getStartOfWeek(now));
+      setEndOfWeek(getEndOfWeek(now));
+    };
+
+    const intervalId = setInterval(updateDates, 1000);
+
+    // Cleanup the interval on component unmount
+    return () => clearInterval(intervalId);
+  }, []);
 
   function getStartOfWeek(date) {
     const currentDay = date.getDay();
@@ -21,41 +38,22 @@ export function getWeekString() {
     return endOfWeek;
   }
 
-  const startOfWeek = getStartOfWeek(currentDate);
-  const endOfWeek = getEndOfWeek(currentDate);
-
+  //format strings to be displayed
   const startOfWeekFormatted = startOfWeek.toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
   });
+
   const endOfWeekFormatted = endOfWeek.toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
   });
 
-  return startOfWeekFormatted + " - " + endOfWeekFormatted;
-}
-
-const WeekDatesDisplay = () => {
-  const [weekString, setWeekString] = useState('');
-
-  useEffect(() => {
-    const updateWeekString = () => {
-      const weekString = getWeekString();
-      setWeekString(weekString);
-    };
-
-    const intervalId = setInterval(updateWeekString, 1000);
-
-    // Cleanup the interval on component unmount
-    return () => clearInterval(intervalId);
-  }, []);
-
   return (
     <div className={styles.CenterText}>
-      <h2>{weekString}</h2>
+      <h2>{startOfWeekFormatted} - {endOfWeekFormatted}</h2>
     </div>
   );
 };
@@ -63,21 +61,4 @@ const WeekDatesDisplay = () => {
 export default WeekDatesDisplay;
 
 
-export function calculateCurrentWeek() {
-  const quarters = {
-    fall: { start: new Date('2023-10-02'), end: new Date('2023-12-15') },
-    winter: { start: new Date('2024-01-08'), end: new Date('2024-03-22') },
-    spring: { start: new Date('2024-04-01'), end: new Date('2024-06-14') },
-  };
-
-  const now = new Date();
-
-  for (const [quarter, dates] of Object.entries(quarters)) {
-    if (now >= dates.start && now <= dates.end) {
-      const weekDifference = Math.floor((now - dates.start) / (7 * 24 * 60 * 60 * 1000)) + 1;
-      return { currentWeek: weekDifference, currentQuarter: quarter };
-    }
-  }
-
-  return { currentWeek: null, currentQuarter: null };
-}
+currentweek = getCurrentWeek();
