@@ -49,8 +49,8 @@ const Calendar = () => {
   const [tableData, setTableData] = useState(Array(7).fill([]).map(() => [{...defaultEntry }])); // Initialize as empty array
 
   const [lastSentCalendar, setLastSentCalendar] = useState(Array(7).fill([]).map(() => [{...defaultEntry }])); 
-
-  //let tdyRn;
+  
+// Runs when there is a new user, sets dataTable so that the info on screen is up to date with the database
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser); // Update user state when auth state changes
@@ -97,6 +97,7 @@ const Calendar = () => {
     return () => unsubscribe(); // Cleanup subscription
   }, [user]);
   
+  //Clears the calendar and sends to database if it is a different week
   const clearCalendarToBlank = () => {
     // const swipesOnOldCalendar = swipesOnCalander(tableData);
     const blankTableData = Array(7).fill([]).map(() => [{...defaultEntry }]); 
@@ -107,7 +108,7 @@ const Calendar = () => {
     updateLastLoggedEntry(TDYY);
   };
 
-
+//checks to see if it is a different week, and clears calendar if it is
   const checkAndClearCalendar = async () => {
       if (!lastEntry) {
         clearCalendarToBlank();
@@ -149,6 +150,7 @@ const Calendar = () => {
     };
 
   
+    //Updates the database with the new data based on tableData
     const UpdateWeeklySwipes = async () => {
       const entryMap = createEntryMap(tableData);
     
@@ -290,6 +292,7 @@ const createEntryMap = (tableData) => {
       });
     };
   
+    //Objects for the buttons
     const periodOptions = [
       { value: 'Breakfast', label: 'Breakfast' },
       { value: 'Lunch', label: 'Lunch' },
