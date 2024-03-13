@@ -34,7 +34,7 @@ function SwipeTracker() {
     const [mealPlanType, setMealPlanType] = useState("14p");
     const [swipesUsedThisWeek, setSwipesUsedThisWeek] = useState(0);
 
-    const [swipeMessage, setSwipeMessage] = useState(""); // New state for the message
+    const [swipeMessage, setSwipeMessage] = useState("Please update your profile page."); // New state for the message
 
 
 
@@ -67,20 +67,12 @@ function SwipeTracker() {
                     const currentDayIndex = days.indexOf(today);
 
                     Object.keys(sortedData).forEach((day, index) => {
-                        if (index < currentDayIndex || (currentDayIndex === 6 && index === 6)) {
-                            console.log(currentDayIndex, "index < currentDayIndex: ", index, '<', currentDayIndex)
+                        if (index <= currentDayIndex || (currentDayIndex === 6 && index === 6)) {
                             intendedSwipes += sortedData[day];
                         }
-                        console.log(day, "intendedSwipes", intendedSwipes);
                     });
 
-                    console.log("currentDayIndex:", currentDayIndex);
-                    console.log("intendedSwipes:", intendedSwipes);
-
-
-
-
-                    //remaining swipes for the week
+                    //remaining swipes for the week  checks if the name is empty or not to see if its a real entry 
                     const sumNonEmptyNames = (loggedSwipes) => {
                         const dayNames = Object.keys(loggedSwipes);
                         let totalSum = 0;
@@ -96,11 +88,9 @@ function SwipeTracker() {
 
                     const loggedSwipes = weekEntries[0]["Current Week's Location Swipes"];
                     const nameCounts = sumNonEmptyNames(loggedSwipes);
-                    console.log("nameCounts: ",nameCounts);
                     setSwipesUsedThisWeek(nameCounts);
-                    console.log(swipesUsedThisWeek);
 
-                    // 10    8 
+                    //tells you if you are behind or ahead of personalized schedule
                     if (intendedSwipes < swipesUsedThisWeek) {
                         setSwipeMessage(`You have used ${swipesUsedThisWeek - intendedSwipes} more swipes than intended in your profile.`);
                         console.log("swipesUsedThisWeek - intendedSwipes", swipesUsedThisWeek, '-', intendedSwipes)
@@ -120,9 +110,9 @@ function SwipeTracker() {
         }
 
         return () => unsubscribe(); // Cleanup subscription
-    }, [user,swipesUsedThisWeek]);
-    
+    }, [user, swipesUsedThisWeek]);
 
+ //set the amount each meal plan starts with and how many swuipes they have left for thwe week 
     if (mealPlanType === "19p") {
         totalSwipesAvailable = 205;
         weeklySwipesUsed = 19 - swipesUsedThisWeek;
@@ -136,13 +126,20 @@ function SwipeTracker() {
         weeklySwipesUsed = 11 - swipesUsedThisWeek;
     }
 
-    console.log("swipesUsedThisWeek: ", swipesUsedThisWeek)
+    //if the user has not updated profile we dont want to show any data 
+    let TSW;
+
+    if (isNaN(totalSwipesAvailable - remainingBalance)) {
+        TSW = " Please update your profile page. ";
+    } else {
+        TSW = totalSwipesAvailable - remainingBalance;
+    }
 
 
     return (
         <div className={styles.swipeTracker}>
             <h2>Swipe Tracker</h2>
-            <p>Total Swipes Used: {totalSwipesAvailable - remainingBalance}</p>
+            <p>Total Swipes Used: {TSW}</p>
             <p>Remaining Swipes for the Week: {weeklySwipesUsed}</p>
             {swipeMessage && <p>{swipeMessage}</p>}
         </div>
