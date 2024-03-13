@@ -79,7 +79,7 @@
   height: 100%;
 }
 
-.p1 {
+.P1 {
   color: var(--dark-gray); /* Utilizes the dark gray color for text */
   font-size: 1rem; /* Maintains a readable font size */
   line-height: 1.75; /* Improves readability by increasing line height */
