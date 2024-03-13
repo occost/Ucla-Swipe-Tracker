@@ -4,7 +4,7 @@
             "Closed"
         ],
         "De Neve": [
-            "Burner French Toast",
+            "Burner Strawberry Pancake",
             "Bacon",
             "Breakfast Hash Brown",
             "Scrambled Eggs",
@@ -12,7 +12,7 @@
             "Tex-mex Eggs Benedict"
         ],
         "Bruin Plate": [
-            "Bruin Scramble (ham & Cheddar)",
+            "Bruin Scramble W/ Flank Steak",
             "Bruin Scramble (vegetarian)",
             "Pork Patty W/ Rice & Egg",
             "Scrambled Eggs",
@@ -26,7 +26,6 @@
             "Closed"
         ],
         "De Neve": [
-            "Bar Chicken Thigh",
             "Wisconsin Beer Brats",
             "Vegetarian Hot Dog",
             "Garlic Chicken Pizza",
@@ -44,7 +43,7 @@
             "Spicy Roasted Beet & Carrot Salad",
             "Beef Picadillo Flatbread",
             "Shishito Pepper Flatbread",
-            "Fresh Herb Marinated Chicken Thigh",
+            "Chipotle Bbq Chicken Thigh",
             "Peppercorn-crusted Portobello Stacker"
         ]
     },
@@ -53,15 +52,17 @@
             "Fettuccine Puttanesca W/ Seared Salmon",
             "Linguine W/ Lemon Sauce",
             "Chicken & Sundried Tomato Pizza",
+            "Mushroom, Pepper, & Onion Pizza",
             "Lebanese Beef Pita",
             "Eggplant, Red Pepper & Mozzarella Sandwich",
-            "Italian Chicken",
+            "Roasted Italian Chicken",
             "Athenian Roasted Zucchini W/ Tomato, Feta, Oregano, & Olives",
             "Lebanese Style Fish",
-            "Pesto Bianco"
+            "Gnocchi W/ Pesto Bianco"
         ],
         "De Neve": [
-            "Bar Chicken Thigh",
+            "Bar Honey Lime Chicken Thighs",
+            "Chicago Style Hot Dog",
             "Vegetarian Hot Dog",
             "Garlic Chicken Pizza",
             "Omg Burger",
@@ -72,6 +73,8 @@
             "Whole Wheat Spaghetti W/ Vegan Italian Meatball & Spinach",
             "Flank Steak Taco W/ Jicama-chipotle Salsa",
             "Volcano Rice & Red Beans",
+            "Chicken W/ Red Grapes & Pesto Tortilla Pizza",
+            "Marinated Roma Tomato Pizza",
             "Cilantro Jalapeno Marinated Chicken Thigh",
             "Santa Maria Rubbed Tofu"
         ]
