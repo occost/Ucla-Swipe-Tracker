@@ -5,6 +5,7 @@ import styles from '../styles/Calendar.module.css';
 export function getWeekString() {
   const currentDate = new Date();
 
+  //Using js Date() to get the start and end of the current week
   function getStartOfWeek(date) {
     const currentDay = date.getDay();
     const diff = currentDay === 0 ? 6 : currentDay - 1; // Adjust for Sunday
@@ -23,7 +24,8 @@ export function getWeekString() {
 
   const startOfWeek = getStartOfWeek(currentDate);
   const endOfWeek = getEndOfWeek(currentDate);
-
+  
+  //Formatting strings for start and end
   const startOfWeekFormatted = startOfWeek.toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
@@ -41,6 +43,7 @@ export function getWeekString() {
 const WeekDatesDisplay = () => {
   const [weekString, setWeekString] = useState('');
 
+  //Send to database
   useEffect(() => {
     const updateWeekString = () => {
       const weekString = getWeekString();
@@ -53,6 +56,7 @@ const WeekDatesDisplay = () => {
     return () => clearInterval(intervalId);
   }, []);
 
+  //Send component to be used in Calendar
   return (
     <div className={styles.CenterText}>
       <h2>{weekString}</h2>
@@ -62,8 +66,9 @@ const WeekDatesDisplay = () => {
 
 export default WeekDatesDisplay;
 
-
+//Export function to calculate the current week
 export function calculateCurrentWeek() {
+  //Manually set start and ned dates for each quarter
   const quarters = {
     fall: { start: new Date('2023-10-02'), end: new Date('2023-12-15') },
     winter: { start: new Date('2024-01-08'), end: new Date('2024-03-22') },
@@ -73,8 +78,8 @@ export function calculateCurrentWeek() {
   const now = new Date();
 
   for (const [quarter, dates] of Object.entries(quarters)) {
-    if (now >= dates.start && now <= dates.end) {
-      const weekDifference = Math.floor((now - dates.start) / (7 * 24 * 60 * 60 * 1000)) + 1;
+    if (now >= dates.start && now <= dates.end) { //iterate through each quarter and detect if quarter i makes sense
+      const weekDifference = Math.floor((now - dates.start) / (7 * 24 * 60 * 60 * 1000)) + 1; //calculate the current week
       return { currentWeek: weekDifference, currentQuarter: quarter };
     }
   }

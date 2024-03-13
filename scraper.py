@@ -16,19 +16,19 @@ def condense_whitespace(input_text):
     return condensed_text
     
 def clean_menu(menu_string):
-    # Removed menu's sublocation
+    # Removed menu's sublocation so the menu isnt cluttered
     words_to_remove = ['Capri', 'Mezze', 'Flex', 'bar', 'Psistaria', 'Alimenti', 
                        'Kitchen', 'Pizzeria', 'Grill', 'Freshly', 'Bowled', 
                        'Harvest', 'Stone', 'Oven', 'Simply', 'Grilled', 'Front', 'The']
     
     lines = menu_string.split('\n')
     cleaned_lines = []
-    for line in lines: #removing extraneous information
+    for line in lines: #removing extraneous information origin doesnt work to remove idk why, but that seems to be a one time occurance
         if not any(phrase in line for phrase in ['Vegan Menu Option', 'Vegetarian Menu Option', 'Halal Menu Option', 'Low Carbon Footprint', 'Prepared', 'Detailed Menu', 'High Carbon Footprint' , 'Activity Level', '\'', 'Origin/inspiration:']) and 'Contains' not in line:
-            cleaned_line = ' '.join(word for word in line.split() if not any(remove_word in word for remove_word in words_to_remove))
+            cleaned_line = ' '.join(word for word in line.split() if not any(remove_word in word for remove_word in words_to_remove)) #removing words to delete and putting each line into new entries
             cleaned_lines.append(cleaned_line)
     
-    cleaned_menu = '\n'.join(' '.join(word.capitalize() for word in line.strip().split()) for line in cleaned_lines if line.strip())
+    cleaned_menu = '\n'.join(' '.join(word.capitalize() for word in line.strip().split()) for line in cleaned_lines if line.strip()) #capiutalzing and removing extraneous whitesapce on the edges
     
     return cleaned_menu
 
@@ -42,18 +42,18 @@ def fetch_menu_items_html(date): #should be pretty obvious
         return None
 
 def parse_menu_items(html_content):
-    soup = BeautifulSoup(html_content, 'lxml')
+    soup = BeautifulSoup(html_content, 'lxml') #delcare betiful soup
     allMenus = []
-    h2Tags = soup.find_all('h2', id='page-header')
+    h2Tags = soup.find_all('h2', id='page-header') #h2 is important as it is right above where the menus for each location/time are
 
-    for i in range(3):
+    for i in range(3): #for 3 location
         if h2Tags and i < len(h2Tags):
-            for sibling in h2Tags[i].find_next_siblings():
+            for sibling in h2Tags[i].find_next_siblings(): #every item under the h2 is part of the menu, reaching the next h2 means we are on the enxt menu
                 if sibling.name == 'h2' or sibling.name == 'hr':
                     break
                 allMenus.append(sibling)
 
-    menu_map = {'Epicuria': {'Breakfast': [], 'Lunch': [], 'Dinner': []},
+    menu_map = {'Epicuria': {'Breakfast': [], 'Lunch': [], 'Dinner': []}, #this is the format we want the json to be
                 'De Neve': {'Breakfast': [], 'Lunch': [], 'Dinner': []},
                 'Bruin Plate': {'Breakfast': [], 'Lunch': [], 'Dinner': []}}
 
@@ -61,8 +61,8 @@ def parse_menu_items(html_content):
     current_meal = None
 
     for menu in allMenus:
-        text_menu = unidecode(menu.text.strip())
-        no_whitespace_menu = condense_whitespace(text_menu)
+        text_menu = unidecode(menu.text.strip()) #we don't want unicode characters
+        no_whitespace_menu = condense_whitespace(text_menu) #calling our funtions to clean the text
         clean_menu_text = clean_menu(no_whitespace_menu)
 
         lines = clean_menu_text.split('\n')
@@ -82,9 +82,9 @@ def parse_menu_items(html_content):
                 current_hall = hall_name
             elif current_meal and current_hall:
                 # Split line into potential menu items
-                potential_items = line.split(',')
+                potential_items = line.split(',') 
                 menu_items = []
-                for item in potential_items:
+                for item in potential_items: #INMPORATN!!! Normally in the formating of Pizza, Potatoes, etc. but if ONE menu item has a comma we need this so it doesn't become multiple items
                     # Check if the item is wrapped in quotes
                     capitalized_item = ' '.join(word.capitalize() for word in item.strip().split())
                     if item.startswith('"') and item.endswith('"'):
