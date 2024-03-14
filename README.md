@@ -1,6 +1,10 @@
 # swiper-no-swiping
 ### UCLASwipeTracker is designed with UCLA Bruins in mind, aiming to revolutionize the way you use and manage your meal plan. Embrace a smarter way to dine on campus, tailored to your preferences and dietary needs. Let UCLASwipeTracker guide you not just eat but to FEAST!
 
+## Link to Public Repository Hosted on GitHub
+#### https://github.com/EideenMoz/swiper-no-swiping/
+Navigate through remote branches to see the contributions of individual collaborators.
+
 #### To check a currently deployed version of UCLA Swipe Tracker please visit: https://swiper-no-swiping-ca90d.web.app/
 Disclaimer: We scrape UCLA's menus for a week in advance and the dining options are subject to change so what  is displayed might not be 100% accurate for that day.
 
