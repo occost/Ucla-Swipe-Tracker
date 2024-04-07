@@ -1,0 +1,82 @@
+{
+    "Breakfast": {
+        "Epicuria": [
+            "Closed"
+        ],
+        "De Neve": [
+            "Breakfast Hash Brown",
+            "Kielbasa",
+            "Scrambled Eggs",
+            "Belgian Waffle",
+            "Griddler"
+        ],
+        "Bruin Plate": [
+            "Bruin Scramble (ham & Cheddar)",
+            "Bruin Scramble (vegetarian)",
+            "Southwest Chicken & Egg White Scramble",
+            "Scrambled Eggs",
+            "Vegan Scrambled Eggs",
+            "Oat & Whole Wheat Waffle",
+            "Crunchy French Toast W/ Pistachio Butter & Pineapple",
+            "\"whole Wheat French Toast, Quinoa, Cocoa Nibs, Pineapple-jalapeno Salsa, Pistachio Butter\""
+        ]
+    },
+    "Lunch": {
+        "Epicuria": [
+            "Closed"
+        ],
+        "De Neve": [
+            "Bar Honey Lime Chicken Thighs",
+            "Burner Cuban Style Sandwich (pulled Pork & Ham)",
+            "Vegan Cuban Sandwich",
+            "Roasted Mojito Chicken",
+            "Roasted Chicken, Serrano, Garlic, Onion, Lemon, Cilantro Cuban-style Tofu Escabeche",
+            "Jerk Shrimp Pizza",
+            "Habanero Pepper Jack Burger",
+            "Peppa Chicken Sandwich"
+        ],
+        "Bruin Plate": [
+            "Chicken Pasta W/ Almond Tahini Sauce",
+            "Lemon Dill Tofu, Bulgur Wheat, & Cucumber Salad Bowl",
+            "Chicken, Farro, & Mixed Greens Salad",
+            "Corn & White Bean Chowder",
+            "Brisket, Red Pepper Pesto, & Mozzarella Pizza",
+            "Tri-color Cauliflower Flatbread",
+            "Herb De Provence Marinated Chicken Thigh",
+            "Peppercorn-crusted Portobello Stacker"
+        ]
+    },
+    "Dinner": {
+        "Epicuria": [
+            "Spaghetti W/ Red Clam Sauce",
+            "Vegetarian Chicken Broccoli Pasta",
+            "Turkish-style Pizza",
+            "Beef Shwarma Pita",
+            "Chickpea Fritters",
+            "Honey Balsamic Flank Steak",
+            "Zucchini W/ Dill & Yogurt Sauce",
+            "Harissa Chicken Wings",
+            "Spring Vegetable Provencal"
+        ],
+        "De Neve": [
+            "Bar Honey Lime Chicken Thighs",
+            "Burner Cuban-style Mojo Verde Shrimp",
+            "Cuban Style Vegetable Hash (picadillo)",
+            "Jerk Chicken",
+            "Coconut Crusted Tofu",
+            "kokonatsu Tofu",
+            "Origin/inspiration: Japan",
+            "Jerk Shrimp Pizza",
+            "Habanero Pepper Jack Burger",
+            "Peppa Chicken Sandwich"
+        ],
+        "Bruin Plate": [
+            "Arabic Chicken Bowl W/ Red Cabbage & Whole Wheat Pita",
+            "Lentil, Beet, Wheat Berry, & Kale Bowl",
+            "Spiced Catfish W/ Cardamom Quinoa & Raita",
+            "Stuffed Peppers W/ Roasted Vegetables & Farro",
+            "Garlic Coriander Pork",
+            "Pork Tenderloin, Garlic, Coriander Seed, Cumin, Jalapeno, Cilantro, Scallion, Lime Persian Style Tofu"
+        ]
+    }
+}
