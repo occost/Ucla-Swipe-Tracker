@@ -1,0 +1,68 @@
+{
+    "Breakfast": {
+        "Epicuria": [
+            "Closed"
+        ],
+        "De Neve": [
+            "Breakfast Hash Brown",
+            "Pork Sausage",
+            "Scrambled Eggs",
+            "Belgian Waffle",
+            "Smoked Salmon Egg Benedict"
+        ],
+        "Bruin Plate": [
+            "Bruin Scramble (ham & Cheddar)",
+            "Bruin Scramble (vegetarian)",
+            "Tri-tip, Cardamom Brown Rice, & Poached Egg Bowl",
+            "Scrambled Eggs",
+            "Vegan Scrambled Eggs",
+            "Four Grain Waffles",
+            "Carrot Pancake"
+        ]
+    },
+    "Lunch": {
+        "Epicuria": [
+            "Closed"
+        ],
+        "De Neve": [
+            "Bar Chipotle Bbq Chicken Thigh",
+            "Downtown Dog (bacon-wrapped Hot Dog)",
+            "Vegetarian Hot Dog",
+            "Flaming Hot Cheetos Pizza",
+            "Jalapeno Popper Pizza",
+            "Twisted Sister Burger",
+            "Bacon & Onion Chicken Sandwich"
+        ],
+        "Bruin Plate": [
+            "Spaghetti, Sherry Tomato, & Chicken Quinoa Meatball",
+            "Seasonal Field Green Salad, Mixed Grains & Avocado Bowl",
+            "Salmon, Dill Goat Cheese, & Cucumber Stacker",
+            "Kale Waldorf Salad",
+            "Guajillo Chili Chicken & Poblano Pepper Tortilla Pizza",
+            "Wild Mushroom & Arugula Flatbread",
+            "Orange Chipotle Herb Marinated Chicken Thigh"
+        ]
+    },
+    "Dinner": {
+        "Epicuria": [
+            "Closed"
+        ],
+        "De Neve": [
+            "Bar Chipotle Bbq Chicken Thigh",
+            "Burner Beef Birria Ramen",
+            "Vegetarian Miso Ramen Origin/inspiration: Japan",
+            "Chicken Tinga Mulita",
+            "Roasted Vegetable Mulita",
+            "Twisted Sister Burger",
+            "Bacon & Onion Chicken Sandwich"
+        ],
+        "Bruin Plate": [
+            "Ahi Poke Bowl",
+            "Beet Poke Bowl",
+            "Chicken & Parsnip Pulao",
+            "Wheat Berry, Apricot & Arugula Salad",
+            "Mole-spiced Turkey",
+            "Corn"
+        ]
+    }
+}

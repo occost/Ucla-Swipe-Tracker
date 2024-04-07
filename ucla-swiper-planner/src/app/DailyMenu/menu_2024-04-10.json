@@ -1,0 +1,86 @@
+{
+    "Breakfast": {
+        "Epicuria": [
+            "Closed"
+        ],
+        "De Neve": [
+            "Bacon",
+            "Breakfast Hash Brown",
+            "Scrambled Eggs",
+            "Belgian Waffle",
+            "Tex-mex Eggs Benedict"
+        ],
+        "Bruin Plate": [
+            "Bruin Scramble (ham & Cheddar)",
+            "Bruin Scramble (vegetarian)",
+            "Scrambled Egg, Potato, & Swiss Chard Taco",
+            "Scrambled Eggs",
+            "Vegan Scrambled Eggs",
+            "Toasted Coconut Waffle",
+            "Whole Wheat Crepe"
+        ]
+    },
+    "Lunch": {
+        "Epicuria": [
+            "Closed"
+        ],
+        "De Neve": [
+            "Bar Fresh Herb Marinated Chicken Thigh",
+            "Burner New England Style Clambake",
+            "New England Style Tofu Bake",
+            "Yankee Pot Roast",
+            "Cayenne Spiced Fried Cauliflower",
+            "New Haven-style White Clam Pizza",
+            "Pepperoni Deluxe Pizza",
+            "Chili Cheese Burger",
+            "Buffalo Bleu Chicken Sandwich"
+        ],
+        "Bruin Plate": [
+            "Whole Wheat Spaghetti W/ Garlic Clam Sauce",
+            "Baby Arugula, Chickpea & Avocado Salad",
+            "Cauliflower Skordalia Spread",
+            "Green Chile Guacamole",
+            "Green Pea Spread",
+            "Lentil Hummus",
+            "Sun Dried Tomato Hummus",
+            "White Bean Spread W/mushrooms",
+            "Broccolini, Swiss Chard, Mozzarella Pizza",
+            "Chicken, Dill, & Potato Flatbread",
+            "Moroccan Chicken Thigh",
+            "Tofu-shiitake Stacker"
+        ]
+    },
+    "Dinner": {
+        "Epicuria": [
+            "Pastitsio",
+            "Pastitsio W/ Eggplant",
+            "Athenian Gyro Pizza",
+            "Greek Sardine Flat Bread Pizza",
+            "Beef Kabob",
+            "Falafel",
+            "Grecian Lamb Chop",
+            "Greek Feta Salmon",
+            "Greek Style Chickpea Plaki"
+        ],
+        "De Neve": [
+            "Bar Fresh Herb Marinated Chicken Thigh",
+            "Burner Old Bay Shrimp W/ Pan Sauce And Cheddar Johnnycakes",
+            "Old Bay Vegan Chicken W/ Pan Sauce And Cheddar Johnnycakes",
+            "Buffalo Chicken Wings",
+            "New Haven-style White Clam Pizza",
+            "Pepperoni Deluxe Pizza",
+            "Chili Cheese Burger",
+            "Buffalo Bleu Chicken Sandwich"
+        ],
+        "Bruin Plate": [
+            "Chipotle Chicken, Brown Rice, & Avocado Bowl",
+            "Tempeh, Spaghetti Squash, Wheat Berry, & Mushroom Broth Bowl",
+            "Spicy Shrimp",
+            "Portobello & Asparagus Farro Risotto",
+            "Cilantro Pesto W/ Tri-tip Tortilla Pizza",
+            "Honey Wheat Flatbread W/ Strawberries & Goat Cheese",
+            "Persian-style Lamb Chops",
+            "Portobello Mushroom"
+        ]
+    }
+}
