@@ -1,0 +1,77 @@
+{
+    "Breakfast": {
+        "Epicuria": [
+            "Closed"
+        ],
+        "De Neve": [
+            "Bacon",
+            "Breakfast Hash Brown",
+            "Scrambled Eggs",
+            "Belgian Waffle"
+        ],
+        "Bruin Plate": [
+            "Bruin Scramble (ham & Cheddar)",
+            "Bruin Scramble (vegetarian)",
+            "Egg White, Spinach, & Turkey Sausage Sandwich",
+            "Scrambled Eggs",
+            "Vegan Scrambled Eggs",
+            "Red Lentil Waffle",
+            "Whole Wheat Pancakes W/ Amaranth & Chocolate Chips"
+        ]
+    },
+    "Lunch": {
+        "Epicuria": [
+            "Closed"
+        ],
+        "De Neve": [
+            "Bar Pineapple & Cilantro Marinated Chicken Thigh",
+            "Bacon",
+            "Pork Sausage",
+            "Scrambled Eggs",
+            "Brunch Burger",
+            "D.f.c."
+        ],
+        "Bruin Plate": [
+            "Bruin Scramble (ham & Cheddar)",
+            "Bruin Scramble (vegetarian)",
+            "Chicken, Watercress & Asparagus Stacker",
+            "Spinach & Bulgur Wheat Taco",
+            "Cilantro Pesto W/ Tri-tip Tortilla Pizza",
+            "Pear, Thyme, & Blue Cheese Pizza",
+            "Lemon Ginger Marinated Chicken Thigh",
+            "Potato & Cabbage Cake"
+        ]
+    },
+    "Dinner": {
+        "Epicuria": [
+            "Fettuccine Portofino",
+            "Lemon & Spinach Penne",
+            "Garlic Chicken Pizza",
+            "French Onion & Braised Beef Sandwich",
+            "Roasted Eggplant On Foccacia",
+            "Chicken Breast W/ Salsa Verde",
+            "Roasted Asparagus W/ Parmesan & Mint",
+            "Spanish Tilapia",
+            "Black Lentil Salad"
+        ],
+        "De Neve": [
+            "Bar Pineapple & Cilantro Marinated Chicken Thigh",
+            "Burner Al Pastor Pork Street Tacos",
+            "Al Pastor-style Mushroom Taco (taco De Hongos)",
+            "Pescado A La Veracruzana",
+            "Mole Tofu",
+            "Jalapeno Popper Pizza",
+            "Garlic Chicken Pizza",
+            "Brunch Burger",
+            "D.f.c."
+        ],
+        "Bruin Plate": [
+            "Yucatan Pork, Plantain, Yellow Zucchini, & Quinoa Bowl",
+            "Citrus-achiote Rubbed Pork Tenderloin Served Over Sauteed Butternut Squash And Plantains, Fresh Pineapple, Red Quinoa, And Garbanzo Beans. Baked Tofu Bowl W/wasabi-tahini Sauce",
+            "Roasted Lamb",
+            "Portobello, Quinoa, & Arugula Stack",
+            "Seared Steelhead Trout",
+            "Southwestern Tofu"
+        ]
+    }
+}
