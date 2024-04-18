@@ -1,0 +1,72 @@
+{
+    "Breakfast": {
+        "Epicuria": [
+            "Closed"
+        ],
+        "De Neve": [
+            "Breakfast Hash Brown",
+            "Pork Sausage",
+            "Scrambled Eggs",
+            "Belgian Waffle",
+            "Smoked Salmon Egg Benedict"
+        ],
+        "Bruin Plate": [
+            "Bruin Scramble (ham & Cheddar)",
+            "Bruin Scramble (vegetarian)",
+            "Chayote, Tri-tip & Egg Bowl",
+            "Scrambled Eggs",
+            "Vegan Scrambled Eggs",
+            "Four Grain Waffles",
+            "Whole Wheat Pancake"
+        ]
+    },
+    "Lunch": {
+        "Epicuria": [
+            "Closed"
+        ],
+        "De Neve": [
+            "Bar Fresh Herb Marinated Chicken Thigh",
+            "Burner Philly Cheesesteak Sandwich",
+            "Vegetarian Philly Cheese Steak Sandwich",
+            "Garlic Chicken Pizza",
+            "Pepperoni Deluxe Pizza",
+            "Breakfast Slam Burger",
+            "Nashville Hot Chicken Sandwich"
+        ],
+        "Bruin Plate": [
+            "Shrimp, Quinoa, & Barley Jambalaya",
+            "Cold Sesame Noodle Salad W/ Tofu, Roasted Corn, & Tomato",
+            "Fennel, Cucumber, & Chicken Salad W/ Pita Chips",
+            "Spinach & Bulgur Quesadilla",
+            "Chicken & Roasted Beet Hummus Flatbread",
+            "Southwest Black Bean & Avocado Tortilla Pizza",
+            "Cilantro Jalapeno Marinated Chicken Thigh",
+            "Tofu Caprese Stacker"
+        ]
+    },
+    "Dinner": {
+        "Epicuria": [
+            "Closed"
+        ],
+        "De Neve": [
+            "Bar Fresh Herb Marinated Chicken Thigh",
+            "Burner Smash Beef Tacos",
+            "Smash Impossible Taco",
+            "Beef Poutine With Cheese Curds",
+            "Poutine With Cheese Curds",
+            "Garlic Chicken Pizza",
+            "Pepperoni Deluxe Pizza",
+            "Pepperoni Deluxe Pizza",
+            "Breakfast Slam Burger",
+            "Nashville Hot Chicken Sandwich"
+        ],
+        "Bruin Plate": [
+            "Chipotle Chicken, Brown Rice, & Avocado Bowl",
+            "Potato, Kale, Brown Rice, & Red Bean Bowl",
+            "Coffee Crusted Beef Tri-tip",
+            "Portobello Loco Moco",
+            "Shrimp",
+            "Pineapple"
+        ]
+    }
+}

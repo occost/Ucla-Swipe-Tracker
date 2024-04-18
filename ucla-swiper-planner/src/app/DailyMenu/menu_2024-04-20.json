@@ -1,0 +1,67 @@
+{
+    "Breakfast": {
+        "Epicuria": [
+            "Closed"
+        ],
+        "De Neve": [
+            "Breakfast Hash Brown",
+            "Pork Sausage",
+            "Scrambled Eggs",
+            "Belgian Waffle"
+        ],
+        "Bruin Plate": [
+            "Bruin Scramble (ham & Cheddar)",
+            "Bruin Scramble (vegetarian)",
+            "Green Chile Rice W/ Black Beans & Egg",
+            "Scrambled Eggs",
+            "Vegan Scrambled Eggs",
+            "Chickpea & Oat Waffle",
+            "Ginger Pancake W/ Banana Walnut Topping"
+        ]
+    },
+    "Lunch": {
+        "Epicuria": [
+            "Closed"
+        ],
+        "De Neve": [
+            "Bar Honey Lime Chicken Thighs",
+            "Hot Links",
+            "Scrambled Eggs",
+            "Shrimp Scampi Pizza",
+            "Maple Bacon Breakfast Burger",
+            "D.f.c."
+        ],
+        "Bruin Plate": [
+            "Bruin Scramble (ham & Cheddar)",
+            "Bruin Scramble (vegetarian)",
+            "Baked Beef Tostada",
+            "Grain & Hummus Wrap",
+            "Layered Vegetable Flatbread",
+            "Poached Shrimp Flatbread W/ Avocado Spread",
+            "Moroccan Chicken Thigh",
+            "Falafel Stacker"
+        ]
+    },
+    "Dinner": {
+        "Epicuria": [
+            "Closed"
+        ],
+        "De Neve": [
+            "Bar Honey Lime Chicken Thighs",
+            "Burner Chocolate Chip Pancakes",
+            "Carne Asada Breakfast Burrito",
+            "Bean & Cheese Burrito",
+            "Shrimp Scampi Pizza",
+            "Maple Bacon Breakfast Burger",
+            "D.f.c."
+        ],
+        "Bruin Plate": [
+            "Louisiana Shrimp Stew Over Dirty Rice",
+            "Cajun-spiced Tofu W/ Country Grits",
+            "Roasted Chicken W/ Potato & Apple",
+            "Lemon And Herb Roasted Chicken Served With Grilled Sweet Potato And A Slice Of Baked Apple, Drizzled With Honey-apple Cider Vinaigrette. Leek & Corn Stew",
+            "Lime & Basil Turkey Cutlet",
+            "Mojo-marinated Tofu"
+        ]
+    }
+}
