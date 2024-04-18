@@ -1,0 +1,79 @@
+{
+    "Breakfast": {
+        "Epicuria": [
+            "Closed"
+        ],
+        "De Neve": [
+            "Breakfast Hash Brown",
+            "Kielbasa",
+            "Scrambled Eggs",
+            "Belgian Waffle",
+            "Griddler"
+        ],
+        "Bruin Plate": [
+            "Bruin Scramble W/ Roasted Tri Tip",
+            "Bruin Scramble (vegetarian)",
+            "Egg, Mushroom & Kale On W.w. English Muffin",
+            "Scrambled Eggs",
+            "Vegan Scrambled Eggs",
+            "Oat & Whole Wheat Waffle",
+            "Vegetable Stuffed Whole Wheat Crepe"
+        ]
+    },
+    "Lunch": {
+        "Epicuria": [
+            "Closed"
+        ],
+        "De Neve": [
+            "Bar Mesquite Barbecue Chicken Breast",
+            "Burner Southern Honey Bbq Salmon",
+            "Corn & Lima Bean Succotash",
+            "Smoked Chicken W/ Alabama White Sauce",
+            "Spicy Bbq Tofu Steak",
+            "Carolina Bbq Pulled Pork Pizza",
+            "Garlic Chicken Pizza",
+            "Bbq Bacon Cheeseburger",
+            "Kansas-style Bbq Fried Chicken Sandwich"
+        ],
+        "Bruin Plate": [
+            "Black Bean & Buckwheat Noodle W/ Chicken & Bok Choy",
+            "Roasted Mushroom & Broccolini W/ Black Bean Noodle",
+            "Tuna & Lentil Hummus Stacker",
+            "Chickpea Salad Sandwich",
+            "Hawaiian Macadamia Pesto, Goat Cheese, & Peppadew Flatbread",
+            "Spicy Anaheim & Jalapeno Chicken Tortilla Pizza",
+            "Italian Marinated Chicken Thigh",
+            "Farro-mushroom Stacker"
+        ]
+    },
+    "Dinner": {
+        "Epicuria": [
+            "Pasta W/ Lemon Sauce",
+            "Puttanesca W/ Seared Salmon",
+            "Tuscan Kale Pizza W/ Orange Chili Oil",
+            "Battered Cod Sandwich",
+            "Italian Impossible(tm) Meatball Sub",
+            "Morroccan Seasoned Roast Lamb",
+            "Israeli Spring Salad W/ Pistachios",
+            "Harissa Chicken Wings",
+            "Baked Rotini"
+        ],
+        "De Neve": [
+            "Bar Mesquite Barbecue Chicken Breast",
+            "Kansas City Bbq Pork Ribs",
+            "Steam-roasted Pork Spareribs With Sauce. Vegetarian Bbq Beef Sandwich",
+            "Carolina Bbq Pulled Pork Pizza",
+            "Garlic Chicken Pizza",
+            "Bbq Bacon Cheeseburger",
+            "Kansas-style Bbq Fried Chicken Sandwich"
+        ],
+        "Bruin Plate": [
+            "Baked Cod W/ Spicy Roma Sauce Over Herbed Spaghetti",
+            "Whole Wheat Spaghetti W/ Wheatballs & Spinach Bowl",
+            "Roasted Pork Tenderloin",
+            "Roasted Eggplant & Mozzarella W/ Spicy Tomato Coulis",
+            "Orange Chipotle Herb Marinated Chicken Thigh",
+            "Mole Tofu"
+        ]
+    }
+}

@@ -1,0 +1,76 @@
+{
+    "Breakfast": {
+        "Epicuria": [
+            "Closed"
+        ],
+        "De Neve": [
+            "Breakfast Hash Brown",
+            "Pork Sausage",
+            "Scrambled Eggs",
+            "Belgian Waffle",
+            "Buongiorno Pancetta Breakfast Sandwich"
+        ],
+        "Bruin Plate": [
+            "Bruin Scramble (ham & Cheddar)",
+            "Bruin Scramble (vegetarian)",
+            "Flank Steak, Egg, & Brown Rice Bowl",
+            "Scrambled Eggs",
+            "Vegan Scrambled Eggs",
+            "Four Grain Waffles W/ Oranges & Citrus Marmalade",
+            "Chunky Apple Oatmeal Pancake"
+        ]
+    },
+    "Lunch": {
+        "Epicuria": [
+            "Closed"
+        ],
+        "De Neve": [
+            "Bar Honey Lime Chicken Thighs",
+            "Burner Brazilian Loaded Hot Dog",
+            "Vegetarian Hot Dog",
+            "Orange Glazed Brazilian Chicken Wings",
+            "Sao Paulo Flatbread",
+            "X-tudo Burger",
+            "Piri Piri Chicken Sandwich"
+        ],
+        "Bruin Plate": [
+            "Spaghetti, Sherry Tomato, & Chicken Quinoa Meatball",
+            "Seasonal Field Green Salad, Mixed Grains & Avocado Bowl",
+            "Spicy Soy Beef W/sweet Potato Noodles In Lettuce Cup",
+            "Quinoa, Kale, Mushroom, & Avocado Lettuce Wrap",
+            "Mango & Chicken Tortilla Pizza",
+            "Tri-color Cauliflower Flatbread",
+            "Chicken - Fennel Coriander Marinade",
+            "Spinach & White Bean Stacker W/ Arugula"
+        ]
+    },
+    "Dinner": {
+        "Epicuria": [
+            "Spaghetti & Meatballs",
+            "Spaghetti Fradiavolo",
+            "Shrimp Scampi Pizza",
+            "Chicken Pesto Sandwich",
+            "Artichoke, Mushroom, & Fontina Sandwich",
+            "Italian Herb Roasted Pork Chop",
+            "Roasted Asparagus W/ Parmesan & Mint",
+            "Salmon Salad W/ Citrus Vinaigrette",
+            "Turkish Eggplant Gratin W/ Mustard Greens & Bulgur"
+        ],
+        "De Neve": [
+            "Bar Honey Lime Chicken Thighs",
+            "Camarao De Coco",
+            "Vegan Brazilian Coconut Stew",
+            "Sao Paulo Flatbread",
+            "X-tudo Burger",
+            "Piri Piri Chicken Sandwich"
+        ],
+        "Bruin Plate": [
+            "Striped Bass Over Black Bean Noodles In Mushroom Broth",
+            "Tempeh, Spaghetti Squash, Wheat Berry, & Mushroom Broth Bowl",
+            "Chicken Enchilada W/ Avocado Salsa",
+            "Black Bean, Red Lentil, & Sweet Potato Quesadilla",
+            "Pork Tenderloin",
+            "Broiled Pork Tenderloin Seasoned With Berbere, An Earthy Blend Of Ethiopian Spices. Portobello Mushroom"
+        ]
+    }
+}

@@ -1,0 +1,82 @@
+{
+    "Breakfast": {
+        "Epicuria": [
+            "Closed"
+        ],
+        "De Neve": [
+            "Bacon",
+            "Breakfast Hash Brown",
+            "Scrambled Eggs",
+            "Belgian Waffle",
+            "Tex-mex Eggs Benedict"
+        ],
+        "Bruin Plate": [
+            "Bruin Scramble (ham & Cheddar)",
+            "Bruin Scramble (vegetarian)",
+            "Quinoa Scramble W/ Asparagus",
+            "Scrambled Eggs",
+            "Vegan Scrambled Eggs",
+            "Toasted Coconut Waffle",
+            "Whole Wheat Crepe"
+        ]
+    },
+    "Lunch": {
+        "Epicuria": [
+            "Closed"
+        ],
+        "De Neve": [
+            "Bar Chicken Thigh",
+            "Burner Cincinnati Style Chili",
+            "Spaghetti Noodles",
+            "Minnesota Spaghetti Pie",
+            "Wisconsin Beer Brats",
+            "Vegetarian Hot Dog",
+            "Garlic Chicken Pizza",
+            "Omg Burger",
+            "Bacon Queso Double Dare"
+        ],
+        "Bruin Plate": [
+            "Flank Steak On Arugula W/ Quinoa & Goat Cheese Bowl",
+            "Beet Carpaccio W/ Arugula, Quinoa & Goat Cheese",
+            "Bbq Pork & Kale Slaw Stacker",
+            "Cucumber, Tomato, & Spicy Tofu Salad",
+            "Cilantro Pesto W/ Tri-tip Tortilla Pizza",
+            "Marinated Roma Tomato Pizza",
+            "Chicken - Moroccan Marinade",
+            "Chicken, Cumin, Smoked Paprika, Cinnamon, Lemon Tofu-shiitake Stacker"
+        ]
+    },
+    "Dinner": {
+        "Epicuria": [
+            "Tortellini Pasta W/ Pesto & Sundried Tomatoes",
+            "Tortellini W/ Tomato Garlic Basil Sauce",
+            "Gemelli Pomodoro",
+            "Roasted Pork & Sauteed Spinach Pizza W/ Pesto & Fontina",
+            "Perch Pakora",
+            "Impossible Harissa Slaw Burger",
+            "Mediterranean Roasted Chicken",
+            "Endive Salad W/ Walnuts & Bleu Cheese",
+            "Andalucia Pork Stew",
+            "Braised Zucchini W/ Tomatoes"
+        ],
+        "De Neve": [
+            "Bar Chicken Thigh",
+            "Midwest Pepper Steak",
+            "Garlic Chicken Pizza",
+            "Omg Burger",
+            "Bacon Queso Double Dare"
+        ],
+        "Bruin Plate": [
+            "Brown Rice & Chickpea Pilaf",
+            "Roasted Garlic Honey Glaze",
+            "Seared Salmon",
+            "Honey-glazed Tempeh, Tri Color Quinoa & Collard Greens",
+            "Honey Huli Huli Chicken Wings",
+            "Almond-crusted Tofu",
+            "Honey Wheat Flatbread W/ Strawberries & Goat Cheese",
+            "Lamb, Tomato, Onion & Jalapeno Flatbread",
+            "Honey Balsamic Flank Steak",
+            "Yuca W/ Honey Habanero & Mojo"
+        ]
+    }
+}

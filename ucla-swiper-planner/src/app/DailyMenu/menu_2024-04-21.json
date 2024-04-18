@@ -1,0 +1,78 @@
+{
+    "Breakfast": {
+        "Epicuria": [
+            "Closed"
+        ],
+        "De Neve": [
+            "Bacon",
+            "Breakfast Hash Brown",
+            "Scrambled Eggs",
+            "Belgian Waffle"
+        ],
+        "Bruin Plate": [
+            "Bruin Scramble (ham & Cheddar)",
+            "Bruin Scramble (vegetarian)",
+            "Tri Tip, Egg White, & Smoked Gouda Sandwich",
+            "Scrambled Eggs",
+            "Vegan Scrambled Eggs",
+            "Red Lentil Waffle",
+            "Whole Wheat Pancakes W/ Amaranth & Chocolate Chips"
+        ]
+    },
+    "Lunch": {
+        "Epicuria": [
+            "Closed"
+        ],
+        "De Neve": [
+            "Bar Cilantro Jalapeno Marinated Chicken Thigh",
+            "Bacon",
+            "Breakfast Hash Brown",
+            "Scrambled Eggs",
+            "Three Cheese & Tomato Pizza",
+            "Garlic Chicken Pizza",
+            "Brunch Burger",
+            "D.f.c."
+        ],
+        "Bruin Plate": [
+            "Bruin Scramble (ham & Cheddar)",
+            "Bruin Scramble (vegetarian)",
+            "Pork Tenderloin Torta Ahogada",
+            "Spinach & Bulgur Wheat Taco",
+            "Chicken, Arugula, & Radish Flatbread",
+            "Pear, Thyme, & Blue Cheese Pizza",
+            "Chicken - Lemon-ginger Marinade",
+            "Potato & Cabbage Cake"
+        ]
+    },
+    "Dinner": {
+        "Epicuria": [
+            "Greek Style Gemelli W/ Asparagus & Tomatoes",
+            "Ziti W/ Pepperoni & Marinara",
+            "Athenian Chicken Pizza",
+            "Harissa Roast Beef Sandwich",
+            "Arancini",
+            "Baharat Chicken",
+            "Persian Style Tofu",
+            "Bulgur-crusted Cod",
+            "Manicotti"
+        ],
+        "De Neve": [
+            "Bar Cilantro Jalapeno Marinated Chicken Thigh",
+            "Burner Mission St. Chicken Burrito",
+            "Bean & Cheese Burrito",
+            "Carne Asada Fries",
+            "Three Cheese & Tomato Pizza",
+            "Garlic Chicken Pizza",
+            "Brunch Burger",
+            "D.f.c."
+        ],
+        "Bruin Plate": [
+            "Pork W/ Buckwheat Noodle In Roasted Vegetable Broth",
+            "Lentil, Beet, Wheat Berry, & Kale Bowl",
+            "Lemongrass Beef W/ Brown Rice & Cucumber Relish",
+            "Braised Parsnips & Carrots",
+            "Polynesian Bass W/ Preserved Lemon & Fried Garlic",
+            "Southwestern Tofu"
+        ]
+    }
+}
